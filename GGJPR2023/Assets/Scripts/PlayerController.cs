@@ -8,8 +8,7 @@ public class PlayerController : Actor
     CharacterController controller;
 
     [Header("Player Attributes")]
-    [SerializeField] float playerSpeed = 10;
-    [SerializeField] float rotationSpeed = 5;
+    [SerializeField] float speed = 10;
     [SerializeField] float gravity = 9.81f;
     [SerializeField] float mass = 2;
     private float vSpeed = 0;
@@ -30,7 +29,7 @@ public class PlayerController : Actor
         // Vector3 playerInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         // playerInput = Vector3.ClampMagnitude(playerInput, 1f);
 
-        controller.Move(moveDirection * playerSpeed * Time.deltaTime);
+        controller.Move(moveDirection * speed * Time.deltaTime);
 
         if (controller.isGrounded)
         {

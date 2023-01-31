@@ -3,9 +3,10 @@ using UnityEngine;
 using ExtEvents;
 using System.Collections.Generic;
 
-public class Actor : MonoBehaviour
+public class Actor : MonoBehaviour, IDamageable
 {
-    public int Health = 10, MaxHealth = 10, Damage = 1;
+    public int Health { set; get; } = 10;
+    public int MaxHealth = 10, Damage = 1;
     public Collider AttackCollider;
     //TODO: Inventory
     public Dictionary<int, int> Inventory;
