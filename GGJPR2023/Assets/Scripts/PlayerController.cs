@@ -10,7 +10,6 @@ public class PlayerController : Actor
     [Header("Player Attributes")]
     [SerializeField] float speed = 10;
     [SerializeField] float gravity = 9.81f;
-    [SerializeField] float mass = 2;
     private float vSpeed = 0;
 
     public Vector3 moveDirection = Vector3.zero;
@@ -45,8 +44,6 @@ public class PlayerController : Actor
         Vector2 dir = val.Get<Vector2>();
         moveDirection = new Vector3(dir.x, 0, dir.y);
     }
-
-
 
     void TDPMovement()
     {
