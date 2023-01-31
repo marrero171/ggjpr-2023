@@ -9,7 +9,7 @@ public class Actor : MonoBehaviour, IDamageable
     public int MaxHealth = 10, Damage = 1;
     public Collider AttackCollider;
     //TODO: Inventory
-    public Dictionary<int, int> Inventory;
+    public Dictionary<ItemInfo, int> Inventory;
     private void OnEnable()
     {
         Health = MaxHealth;
@@ -23,4 +23,26 @@ public class Actor : MonoBehaviour, IDamageable
 
     public void AttackOn() => AttackCollider?.gameObject.SetActive(true);
     public void AttackOff() => AttackCollider?.gameObject.SetActive(false);
+
+    public void AddItem(ItemInfo item, int ammount = 1)
+    {
+        if (Inventory.ContainsKey(item)) Inventory[item] += ammount;
+        else Inventory.Add(item, ammount);
+    }
+
+    public bool DropItem(ItemInfo item, int ammount = 1)
+    {
+        if (Inventory.ContainsKey(item))
+        {
+            if (Inventory[item] >= ammount)
+            {
+                //TODO: Request DroppedItem from PoolManager
+                Inventory[item] -= ammount;
+                if (Inventory[item] <= 0) Inventory.Remove(item);
+                return true;
+            }
+            return false;
+        }
+        return false;
+    }
 }
