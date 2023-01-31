@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 public class Actor : MonoBehaviour
 {
-    public int Health = 10, MaxHealth = 10;
+    [SerializeField]
+    protected int Health = 10, MaxHealth = 10;
     //TODO: Inventory
     public Dictionary<int, int> Inventory;
     private void OnEnable()
