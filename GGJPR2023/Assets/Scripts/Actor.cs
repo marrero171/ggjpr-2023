@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 public class Actor : MonoBehaviour
 {
-    [SerializeField]
-    protected int Health = 10, MaxHealth = 10;
+    public int Health = 10, MaxHealth = 10, Damage = 1;
+    public Collider AttackCollider;
     //TODO: Inventory
     public Dictionary<int, int> Inventory;
     private void OnEnable()
@@ -14,4 +14,12 @@ public class Actor : MonoBehaviour
         Health = MaxHealth;
     }
 
+    public void ApplyDamage(int dmg)
+    {
+        Health -= dmg;
+        if (Health <= 0) gameObject.SetActive(false);
+    }
+
+    public void AttackOn() => AttackCollider?.gameObject.SetActive(true);
+    public void AttackOff() => AttackCollider?.gameObject.SetActive(false);
 }

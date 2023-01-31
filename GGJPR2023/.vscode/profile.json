@@ -1,0 +1,26 @@
+{
+    "name": "UnityDev",
+    "userSettings": {
+      "window.title": "Unity Dev — ${activeEditorShort}${separator}${rootName}",
+      "omnisharp.useModernNet": false,
+      "git.autofetch": true,
+      "editor.formatOnSave": true,
+      "window.zoomLevel": 2
+    },
+    "extensions": [
+      "aaron-bond.better-comments",
+      "deitry.unity-debug",
+      "diegosarmentero.unity-dots-snippets",
+      "eamodio.gitlens",
+      "k--kato.docomment",
+      "kleber-swf.unity-code-snippets",
+      "lionize.unity-snippets-modified",
+      "mrsauravsahu.vscode-manager",
+      "ms-dotnettools.csharp",
+      "ms-vscode.mono-debug",
+      "PTD.vscode-unitymeta",
+      "TimGJones.hlsltools",
+      "TTOOWA.in-your-face-incredible",
+      "Unity.unity-debug"
+    ]
+  }
