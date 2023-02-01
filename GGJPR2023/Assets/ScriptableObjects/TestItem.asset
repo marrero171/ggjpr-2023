@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TestItem
   m_EditorClassIdentifier: 
   <itemSprite>k__BackingField: {fileID: 211497280, guid: 0a8659abf7ac5f2a5b7f05c6538b484c, type: 3}
-  <itemType>k__BackingField: 0
+  <itemType>k__BackingField: 1
   <itemName>k__BackingField: Sus
   description: This item is a test item.

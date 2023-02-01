@@ -13,6 +13,7 @@ public class Actor : MonoBehaviour, IDamageable
     // public Dictionary<ItemInfo, int> Inventory;
     public GenericDictionary<ItemInfo, int> Inventory;
     public Interactable activeIntractable = null;
+    public ItemInfo selectedItem = null;
 
     private void OnEnable()
     {
@@ -65,12 +66,20 @@ public class Actor : MonoBehaviour, IDamageable
             return interactable;
         }
     }
-    /*
     public void TryInteract(string ev = "default")
     {
-        if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
+        //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
+        switch (activeIntractable.gameObject.tag)
+        {
+            case "Soil":
+                if (selectedItem.itemType == ItemType.Plantable)
+                    activeIntractable.GetComponent<Soil>().Plant(selectedItem);
+                break;
+            default:
+                activeIntractable?.RequestByActor(this, "Grab");
+                break;
+        }
     }
-    */
     public void AddItem(ItemInfo item, int ammount = 1)
     {
         if (Inventory.ContainsKey(item)) Inventory[item] += ammount;

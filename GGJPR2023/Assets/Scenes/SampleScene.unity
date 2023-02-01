@@ -1068,6 +1068,7 @@ GameObject:
   - component: {fileID: 1844512946}
   - component: {fileID: 1844512945}
   - component: {fileID: 1844512944}
+  - component: {fileID: 1844512949}
   m_Layer: 0
   m_Name: Soil
   m_TagString: Soil
@@ -1237,6 +1238,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1844512949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844512943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc46bc94fb3e2043b44d89a702958a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events:
+    list: []
+    keyCollision: 0
+  activeActor: {fileID: 0}
 --- !u!1 &1913493358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,10 +1392,11 @@ MonoBehaviour:
   Inventory:
     list: []
     keyCollision: 0
+  activeIntractable: {fileID: 0}
+  selectedItem: {fileID: 11400000, guid: 1a080636684f8d440bebf6d244bda54c, type: 2}
   speed: 10
   gravity: 9.81
   smoothInputSpeed: 0.15
-  selectedItem: {fileID: 0}
 --- !u!114 &1913493365
 MonoBehaviour:
   m_ObjectHideFlags: 0

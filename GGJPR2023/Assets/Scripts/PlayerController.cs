@@ -18,7 +18,7 @@ public class PlayerController : Actor
     private Vector3 lastDirection = Vector3.zero;
     private Vector3 moveDirection = Vector3.zero;
     [SerializeField] float smoothInputSpeed = 0.15f;
-    public ItemInfo selectedItem = null;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -51,17 +51,7 @@ public class PlayerController : Actor
     public void OnInteract()
     {
         activeIntractable = FindClosestInteraction();
-
-        switch(activeIntractable.gameObject.tag)
-        {
-            case "Soil":
-                if (selectedItem.itemType == ItemType.Plantable)
-                    activeIntractable.GetComponent<Soil>().Plant(selectedItem);
-                break;
-            default:
-                activeIntractable?.RequestByActor(this, "Grab");
-                break;
-        }
+        TryInteract();
         
         /*
         switch (selectedItem.itemType)
