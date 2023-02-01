@@ -4,7 +4,7 @@ using ExtEvents;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider))]
-public class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviour, IInteractable
 {
     public GenericDictionary<string, ExtEvent> events;
     [HideInInspector] public Actor activeActor;
@@ -28,5 +28,13 @@ public class Interactable : MonoBehaviour
     {
         print("Requesting " + name);
         if (events.ContainsKey(name)) events[name].Invoke();
+    }
+
+    public void Illuminate()
+    {
+        Debug.Log("Illuminated");
+        if (TryGetComponent(out SpriteRenderer spriteRenderer)) {
+            spriteRenderer.color = Color.red;
+        }
     }
 }

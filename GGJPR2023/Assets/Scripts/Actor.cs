@@ -12,7 +12,7 @@ public class Actor : MonoBehaviour, IDamageable
     //TODO: Inventory
     // public Dictionary<ItemInfo, int> Inventory;
     public GenericDictionary<ItemInfo, int> Inventory;
-    public Interactable activeIntractable = null;
+    public IInteractable activeIntractable = null;
 
     private void OnEnable()
     {
@@ -27,11 +27,18 @@ public class Actor : MonoBehaviour, IDamageable
 
     public void AttackOn() => AttackCollider?.gameObject.SetActive(true);
     public void AttackOff() => AttackCollider?.gameObject.SetActive(false);
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "HitCollider") print("Mira canto'e");
         if (other.tag == "Soil") activeIntractable = other.GetComponent<Interactable>();
         if (other.name.StartsWith("DroppedItem")) activeIntractable = other.GetComponent<Interactable>();
+    }
+    */
+
+    private void FixedUpdate()
+    {
+        activeIntractable = FindClosestInteraction();
     }
 
     protected IInteractable FindClosestInteraction()

@@ -48,16 +48,10 @@ public class PlayerController : Actor
 
     public void OnInteract()
     {
-        print("Trying to touch grass.");
-        // FindClosestInteraction()?.Interact(); //Classic
         if (selectedItem == null) TryInteract("Grab");
         else TryInteract();
+        print("Trying to touch grass.");
     }
-
-
-
-
-
 
 
 

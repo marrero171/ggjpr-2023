@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class DroppedItem : Interactable, IInteractable
+public class DroppedItem : Interactable
 {
     public ItemInfo item;
     SpriteRenderer renderer;
@@ -31,16 +31,6 @@ public class DroppedItem : Interactable, IInteractable
         collider.isTrigger = true;
     }
 
-    //TODO: Grab
-    public void Interact()
-    {
-        gameObject.SetActive(false);
-    }
-
-    public void Illuminate()
-    {
-
-    }
     public void GrabItem()
     {
         print("Giving an item");
