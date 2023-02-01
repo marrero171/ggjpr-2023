@@ -52,21 +52,6 @@ public class PlayerController : Actor
     {
         activeIntractable = FindClosestInteraction();
         TryInteract();
-        
-        /*
-        switch (selectedItem.itemType)
-        {
-            case ItemType.Plantable:
-                break;
-            case ItemType.Consumable:
-                break;
-            case ItemType.Throwable:
-                break;
-        }
-        */
-        // TODO
-        // If the interactable is soil, then do planting
-        // If no active interactable, eat item if consumable
     }
 
 

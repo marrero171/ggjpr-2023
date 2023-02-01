@@ -34,6 +34,21 @@ public class CountDownTimer : MonoBehaviour
 
     private void Update()
     {
+        if (processMode == TimerProcessMode.TIMER_PROCESS_IDLE)
+        {
+            UpdateTimer();
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (processMode == TimerProcessMode.TIMER_PROCESS_PHYSICS)
+        {
+            UpdateTimer();
+        }
+    }
+
+    private void UpdateTimer()
+    {
         if (!isStopped)
         {
             if (timeLeft > 0 && !paused)

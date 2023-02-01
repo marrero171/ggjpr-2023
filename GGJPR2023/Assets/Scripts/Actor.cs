@@ -67,21 +67,35 @@ public class Actor : MonoBehaviour, IDamageable
         }
     }
 
-    public void TryInteract(string ev = "")
+    public void TryInteract()
     {
         //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
-        if (activeIntractable)
+        if (activeIntractable && selectedItem)
         {
-            switch (activeIntractable.gameObject.tag)
+            switch (selectedItem.itemType)
             {
-                case "Soil":
-                    if (selectedItem.itemType == ItemType.Plantable)
-                        activeIntractable.GetComponent<Tree>().Plant(selectedItem);
+                //Plant tree if is not planted
+                case ItemType.Plantable:
+                    activeIntractable.TryGetComponent(out TreeScript tree);
+                    if (!tree.isPlanted)
+                        {
+                            tree.RequestByActor(this, "Plant");
+                        }
                     break;
+                
+                case ItemType.Consumable:
+                    break;
+                
+                case ItemType.Resource: 
+                    break;
+
                 default:
-                    activeIntractable?.RequestByActor(this, "Grab");
+                    activeIntractable.RequestByActor(this, "Grab");
                     break;
             }
+        } else
+        {
+            activeIntractable?.RequestByActor(this, "Grab");
         }
         
     }
@@ -91,10 +105,20 @@ public class Actor : MonoBehaviour, IDamageable
         else Inventory.Add(item, ammount);
     }
 
-    // TODO
-    public void UseItem(ItemInfo item)
+    // Uses up item (without dropping)
+    public bool UseItem(ItemInfo item, int amount = 1)
     {
-
+        if (Inventory.ContainsKey(item))
+        {
+            if (Inventory[item] >= amount)
+            {
+                Inventory[item] -= amount;
+                if (Inventory[item] <= 0) Inventory.Remove(item);
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     public bool DropItem(ItemInfo item, int ammount = 1)

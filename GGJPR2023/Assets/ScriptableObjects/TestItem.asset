@@ -16,3 +16,5 @@ MonoBehaviour:
   <itemType>k__BackingField: 1
   <itemName>k__BackingField: Sus
   description: This item is a test item.
+  effectiveAmount: 5
+  externalReference: {fileID: 11400000, guid: 4d1e34cd8e2be804ab54b947fc8019af, type: 2}

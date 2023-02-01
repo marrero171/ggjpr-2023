@@ -1252,11 +1252,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events:
-    list: []
+    list:
+    - Key: default
+      Value:
+        _persistentListeners: []
+        Expanded: 1
+    - Key: Plant
+      Value:
+        _persistentListeners:
+        - _persistentArguments: []
+          _target: {fileID: 1844512949}
+          _isStatic: 0
+          CallState: 2
+          _staticType:
+            GuidAssignmentFailed: 0
+            GUID: 
+            _typeNameAndAssembly: 
+            _suppressLogs: 0
+          _methodName: Plant
+        Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
   treeSprite: {fileID: 1641871307}
-  plantInfo: {fileID: 11400000, guid: 4d1e34cd8e2be804ab54b947fc8019af, type: 2}
+  plantInfo: {fileID: 0}
+  fullyGrown: 0
 --- !u!114 &1844512950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1280,7 +1299,7 @@ MonoBehaviour:
         GUID: 
         _typeNameAndAssembly: 
         _suppressLogs: 0
-      _methodName: TestFunc
+      _methodName: Grow
     Expanded: 1
   waitTime: 1
   autostart: 0
@@ -1427,7 +1446,7 @@ MonoBehaviour:
     list: []
     keyCollision: 0
   activeIntractable: {fileID: 0}
-  selectedItem: {fileID: 11400000, guid: 1a080636684f8d440bebf6d244bda54c, type: 2}
+  selectedItem: {fileID: 0}
   speed: 10
   gravity: 9.81
   smoothInputSpeed: 0.15

@@ -4,7 +4,7 @@ using ExtEvents;
 using System.Collections.Generic;
 using System.Collections.Generic;
 using System;
-
+    
 [RequireComponent(typeof(Collider))]
 public class Interactable : MonoBehaviour
 {
