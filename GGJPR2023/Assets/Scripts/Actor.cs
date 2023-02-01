@@ -77,6 +77,12 @@ public class Actor : MonoBehaviour, IDamageable
         else Inventory.Add(item, ammount);
     }
 
+    // TODO
+    public void UseItem(ItemInfo item)
+    {
+       
+    }
+
     public bool DropItem(ItemInfo item, int ammount = 1)
     {
         if (Inventory.ContainsKey(item))

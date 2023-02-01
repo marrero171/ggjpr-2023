@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
+
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : Actor
 {
@@ -49,8 +51,29 @@ public class PlayerController : Actor
     public void OnInteract()
     {
         activeIntractable = FindClosestInteraction();
-        activeIntractable?.RequestByActor(this, "Grab");
-        print("Trying to touch grass.");
+
+        switch(activeIntractable.gameObject.tag)
+        {
+            case "Soil":
+                if (selectedItem.itemType == ItemType.Plantable)
+                    activeIntractable.GetComponent<Soil>().Plant(selectedItem);
+                break;
+            default:
+                activeIntractable?.RequestByActor(this, "Grab");
+                break;
+        }
+        
+        /*
+        switch (selectedItem.itemType)
+        {
+            case ItemType.Plantable:
+                break;
+            case ItemType.Consumable:
+                break;
+            case ItemType.Throwable:
+                break;
+        }
+        */
         // TODO
         // If the interactable is soil, then do planting
         // If no active interactable, eat item if consumable
