@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class DroppedItem : TriggerEvent
+public class DroppedItem : TriggerEvent, IInteractable
 {
     SpriteRenderer renderer;
     Rigidbody rigidbody;
@@ -32,4 +32,13 @@ public class DroppedItem : TriggerEvent
     }
 
     //TODO: Grab
+    public void Interact()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Illuminate()
+    {
+
+    }
 }

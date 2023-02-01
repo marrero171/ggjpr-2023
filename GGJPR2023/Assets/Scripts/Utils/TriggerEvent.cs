@@ -13,7 +13,6 @@ public class NamedEvent
 [RequireComponent(typeof(Collider))]
 public class TriggerEvent : MonoBehaviour
 {
-
     public List<NamedEvent> events;
     Actor activeActor;
 

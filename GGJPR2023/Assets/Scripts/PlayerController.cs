@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
@@ -15,9 +12,9 @@ public class PlayerController : Actor
     private float vSpeed = 0;
 
     //For inputs and moving
-    public Vector3 smoothInputVelocity;
-    public Vector3 lastDirection = Vector3.zero;
-    public Vector3 moveDirection = Vector3.zero;
+    private Vector3 smoothInputVelocity;
+    private Vector3 lastDirection = Vector3.zero;
+    private Vector3 moveDirection = Vector3.zero;
     [SerializeField] float smoothInputSpeed = 0.15f;
 
     // Start is called before the first frame update
@@ -46,6 +43,11 @@ public class PlayerController : Actor
     {
         Vector2 dir = val.Get<Vector2>();
         moveDirection = new Vector3(dir.x, 0, dir.y);
+    }
+
+    public void OnInteract()
+    {
+        FindClosestInteraction()?.Interact();
     }
 
     void TDPMovement()
