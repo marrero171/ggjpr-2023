@@ -2,6 +2,8 @@ using System.Linq;
 using UnityEngine;
 using ExtEvents;
 using System.Collections.Generic;
+using System.Collections.Generic;
+using System;
 
 [RequireComponent(typeof(Collider))]
 public class Interactable : MonoBehaviour
@@ -27,6 +29,17 @@ public class Interactable : MonoBehaviour
     public void requestEvent(string name)
     {
         print("Requesting " + name);
+        if (System.String.IsNullOrEmpty(name))
+        {
+            ExtEvent ev = events.FirstOrDefault().Value;
+            ev.Invoke();
+        }
         if (events.ContainsKey(name)) events[name].Invoke();
+
+    }
+
+    private object KeyValuePair<T1, T2>()
+    {
+        throw new NotImplementedException();
     }
 }

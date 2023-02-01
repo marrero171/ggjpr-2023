@@ -66,15 +66,16 @@ public class Actor : MonoBehaviour, IDamageable
             return interactable;
         }
     }
-    public void TryInteract(string ev = "default")
+
+    public void TryInteract(string ev)
     {
         //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
         switch (activeIntractable.gameObject.tag)
         {
             case "Soil":
                 if (selectedItem.itemType == ItemType.Plantable)
-                    activeIntractable.GetComponent<Soil>().Plant(selectedItem);
-                break;
+                    // activeIntractable.GetComponent<Soil>().Plant(selectedItem);
+                    break;
             default:
                 activeIntractable?.RequestByActor(this, "Grab");
                 break;
@@ -89,7 +90,7 @@ public class Actor : MonoBehaviour, IDamageable
     // TODO
     public void UseItem(ItemInfo item)
     {
-       
+
     }
 
     public bool DropItem(ItemInfo item, int ammount = 1)
