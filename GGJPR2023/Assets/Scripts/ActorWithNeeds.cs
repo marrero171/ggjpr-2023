@@ -29,6 +29,7 @@ public class ActorWithNeeds : Actor
     [HideInInspector] public Collider collider;
     [HideInInspector] public Actor lastAttacker;
     [HideInInspector] public Transform target;
+    [HideInInspector] public Transform lastTarget;
 
     public void Start()
     {

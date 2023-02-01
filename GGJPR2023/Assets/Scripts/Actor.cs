@@ -10,7 +10,10 @@ public class Actor : MonoBehaviour, IDamageable
     public float interactionRadius = 3;
     public Collider AttackCollider;
     //TODO: Inventory
-    public Dictionary<ItemInfo, int> Inventory;
+    // public Dictionary<ItemInfo, int> Inventory;
+    public GenericDictionary<ItemInfo, int> Inventory;
+    public Interactable activeIntractable = null;
+
     private void OnEnable()
     {
         Health = MaxHealth;
@@ -24,6 +27,12 @@ public class Actor : MonoBehaviour, IDamageable
 
     public void AttackOn() => AttackCollider?.gameObject.SetActive(true);
     public void AttackOff() => AttackCollider?.gameObject.SetActive(false);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "HitCollider") print("Mira canto'e");
+        if (other.tag == "Soil") activeIntractable = other.GetComponent<Interactable>();
+        if (other.name.StartsWith("DroppedItem")) activeIntractable = other.GetComponent<Interactable>();
+    }
 
     protected IInteractable FindClosestInteraction()
     {
@@ -54,6 +63,12 @@ public class Actor : MonoBehaviour, IDamageable
             return interactable;
         }
     }
+
+    public void TryInteract(string ev = "default")
+    {
+        if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
+    }
+
     public void AddItem(ItemInfo item, int ammount = 1)
     {
         if (Inventory.ContainsKey(item)) Inventory[item] += ammount;

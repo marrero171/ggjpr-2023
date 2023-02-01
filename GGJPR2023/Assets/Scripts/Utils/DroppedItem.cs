@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class DroppedItem : TriggerEvent, IInteractable
+public class DroppedItem : Interactable, IInteractable
 {
     public ItemInfo item;
     SpriteRenderer renderer;
@@ -41,9 +41,10 @@ public class DroppedItem : TriggerEvent, IInteractable
     {
 
     }
-    public void GrabItem(Actor actor)
+    public void GrabItem()
     {
-        actor.AddItem(item);
+        print("Giving an item");
+        activeActor.AddItem(item);
         gameObject.SetActive(false);
     }
 }

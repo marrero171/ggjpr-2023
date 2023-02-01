@@ -16,6 +16,7 @@ public class PlayerController : Actor
     private Vector3 lastDirection = Vector3.zero;
     private Vector3 moveDirection = Vector3.zero;
     [SerializeField] float smoothInputSpeed = 0.15f;
+    public ItemInfo selectedItem = null;
 
     // Start is called before the first frame update
     void Start()
@@ -47,24 +48,39 @@ public class PlayerController : Actor
 
     public void OnInteract()
     {
-        FindClosestInteraction()?.Interact();
+        print("Trying to touch grass.");
+        // FindClosestInteraction()?.Interact(); //Classic
+        if (selectedItem == null) TryInteract("Grab");
+        else TryInteract();
     }
 
-    void TDPMovement()
-    {
-        Transform Cam = Camera.main.transform;
-        Vector3 CamForward = Cam.forward, moveDir = Vector3.zero; //Camera Forawrd and Move Direction
-        Vector2 JoyDir = Vector2.zero; //Joystick Direction;
-        if (Cam != null) { CamForward = Vector3.Scale(Cam.forward, new Vector3(1, 0, 1)).normalized; }
-        //Annoying move hack
-        if (JoyDir.magnitude > 0) moveDir = JoyDir.y * CamForward + JoyDir.x * Cam.right;
-        else if (moveDir.magnitude > 0) moveDir = Vector3.zero;
 
-        if (moveDir.magnitude > 0)
-        {
-            // agent.Move(moveDir * Time.deltaTime * Speed); //If Using NavMeshAgent
-            // if (moveDir != Vector3.zero)
-            // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir, transform.up), Time.deltaTime * Speed);
-        }
-    }
+
+
+
+
+
+
+
+
+
+
+
+    // void TDPMovement()
+    // {
+    //     Transform Cam = Camera.main.transform;
+    //     Vector3 CamForward = Cam.forward, moveDir = Vector3.zero; //Camera Forawrd and Move Direction
+    //     Vector2 JoyDir = Vector2.zero; //Joystick Direction;
+    //     if (Cam != null) { CamForward = Vector3.Scale(Cam.forward, new Vector3(1, 0, 1)).normalized; }
+    //     //Annoying move hack
+    //     if (JoyDir.magnitude > 0) moveDir = JoyDir.y * CamForward + JoyDir.x * Cam.right;
+    //     else if (moveDir.magnitude > 0) moveDir = Vector3.zero;
+
+    //     if (moveDir.magnitude > 0)
+    //     {
+    //         // agent.Move(moveDir * Time.deltaTime * Speed); //If Using NavMeshAgent
+    //         // if (moveDir != Vector3.zero)
+    //         // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir, transform.up), Time.deltaTime * Speed);
+    //     }
+    // }
 }

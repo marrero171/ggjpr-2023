@@ -11,6 +11,7 @@ namespace Utils.AIHelpers
     public enum OpponentCloseEnough { Act, Approach, DoNothing }
     public enum OpponentLowHealth { Attack, Approach, Leave, NotifyOthers, NotifyOpponents }
 
+
     public static class Functions
     {
 
@@ -36,6 +37,10 @@ namespace Utils.AIHelpers
             return fDir;
 
         }
+
+        public static void PrintMessage(string msg) => MonoBehaviour.print(msg);
     }
+
+
 
 }
