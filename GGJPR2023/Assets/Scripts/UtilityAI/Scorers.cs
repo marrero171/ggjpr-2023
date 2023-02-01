@@ -120,7 +120,7 @@ public sealed class HasItemOfTypeNearBy : ContextualScorerBase
 
 public sealed class HasItemOfTypeInInventory : ContextualScorerBase
 {
-    [ApexSerialization, FriendlyName("Item Type")] public ItemInfo.ItemType type;
+    [ApexSerialization, FriendlyName("Item Type")] public ItemType type;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
