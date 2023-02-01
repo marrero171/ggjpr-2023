@@ -4,7 +4,7 @@ using ExtEvents;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Collider))]
-public class Interactable : MonoBehaviour, IInteractable
+public class Interactable : MonoBehaviour
 {
     public GenericDictionary<string, ExtEvent> events;
     [HideInInspector] public Actor activeActor;

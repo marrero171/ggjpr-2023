@@ -12,7 +12,7 @@ public class Actor : MonoBehaviour, IDamageable
     //TODO: Inventory
     // public Dictionary<ItemInfo, int> Inventory;
     public GenericDictionary<ItemInfo, int> Inventory;
-    public IInteractable activeIntractable = null;
+    public Interactable activeIntractable = null;
 
     private void OnEnable()
     {
@@ -36,7 +36,7 @@ public class Actor : MonoBehaviour, IDamageable
     }
     */
 
-    protected IInteractable FindClosestInteraction()
+    protected Interactable FindClosestInteraction()
     {
         float distanceToClosest = Mathf.Infinity;
         Collider closest = null;
@@ -44,7 +44,7 @@ public class Actor : MonoBehaviour, IDamageable
 
         foreach (Collider nearby in colliders)
         {
-            if (nearby.TryGetComponent(out IInteractable interactable))
+            if (nearby.TryGetComponent(out Interactable interactable))
             {
                 float distanceToObject = (nearby.transform.position - gameObject.transform.position).sqrMagnitude;
                 if (distanceToObject < distanceToClosest)
@@ -61,7 +61,7 @@ public class Actor : MonoBehaviour, IDamageable
         }
         else
         {
-            closest.TryGetComponent(out IInteractable interactable);
+            closest.TryGetComponent(out Interactable interactable);
             return interactable;
         }
     }

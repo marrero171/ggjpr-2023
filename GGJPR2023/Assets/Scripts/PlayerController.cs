@@ -34,7 +34,7 @@ public class PlayerController : Actor
         if (controller.isGrounded)
         {
             vSpeed = 0;
-        }activeIntractable = FindClosestInteraction();
+        }
         // Apply gravity
         vSpeed -= gravity * Time.deltaTime;
         controller.Move(new Vector3(0, vSpeed * Time.deltaTime, 0));
@@ -51,6 +51,9 @@ public class PlayerController : Actor
         activeIntractable = FindClosestInteraction();
         activeIntractable?.RequestByActor(this, "Grab");
         print("Trying to touch grass.");
+        // TODO
+        // If the interactable is soil, then do planting
+        // If no active interactable, eat item if consumable
     }
 
 
