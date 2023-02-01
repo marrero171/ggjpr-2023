@@ -33,7 +33,7 @@ public class Actor : MonoBehaviour, IDamageable
 
         foreach (Collider nearby in colliders)
         {
-            if (nearby.TryGetComponent(out IInteractable interactable)) 
+            if (nearby.TryGetComponent(out IInteractable interactable))
             {
                 float distanceToObject = (nearby.transform.position - gameObject.transform.position).sqrMagnitude;
                 if (distanceToObject < distanceToClosest)
@@ -53,6 +53,7 @@ public class Actor : MonoBehaviour, IDamageable
             closest.TryGetComponent(out IInteractable interactable);
             return interactable;
         }
+    }
     public void AddItem(ItemInfo item, int ammount = 1)
     {
         if (Inventory.ContainsKey(item)) Inventory[item] += ammount;
