@@ -6,10 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class DroppedItem : TriggerEvent
 {
+    public ItemInfo item;
     SpriteRenderer renderer;
     Rigidbody rigidbody;
     Collider collider;
-    //TODO: Reference ScriptableObject
     void Awake()
     {
         renderer = GetComponent<SpriteRenderer>();
@@ -19,7 +19,7 @@ public class DroppedItem : TriggerEvent
 
     void OnEnable()
     {
-        // renderer.sprite=Item.img;
+        renderer.sprite = item.itemSprite;
         rigidbody.isKinematic = false;
         collider.isTrigger = false;
         rigidbody.AddForce(new Vector3(Random.Range(-2, 2), 8, Random.Range(-1, -5)), ForceMode.Impulse);
@@ -32,4 +32,9 @@ public class DroppedItem : TriggerEvent
     }
 
     //TODO: Grab
+    public void GrabItem(Actor actor)
+    {
+        actor.AddItem(item);
+        gameObject.SetActive(false);
+    }
 }
