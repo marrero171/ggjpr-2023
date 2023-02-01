@@ -4,51 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Or is of sort of a dickward.
-/// </summary>
-public sealed class IsKindEnough : ContextualScorerBase
-{
-
-    [ApexSerialization, FriendlyName("Compare Value")] public float compareValue = .5f;
-    [ApexSerialization, FriendlyName("Use Negative instead")] public bool useNegative = true;
-    public override float Score(IAIContext context)
-    {
-        VillagerContext ctx = (VillagerContext)context;
-        if (ctx.instance.BehaviorVector.x >= compareValue && !useNegative) return score;
-        if (ctx.instance.BehaviorVector.x <= compareValue && useNegative) return score;
-        return 0;
-    }
-}
-
-public sealed class IsItSteadyEnough : ContextualScorerBase
-{
-
-    [ApexSerialization, FriendlyName("Compare Value")] public float compareValue = .5f;
-    [ApexSerialization, FriendlyName("Use Negative instead")] public bool useNegative = true;
-    public override float Score(IAIContext context)
-    {
-        VillagerContext ctx = (VillagerContext)context;
-        if (ctx.instance.BehaviorVector.y >= compareValue && !useNegative) return score;
-        if (ctx.instance.BehaviorVector.y <= compareValue && useNegative) return score;
-        return 0;
-    }
-}
-
-public sealed class IsEagerEnough : ContextualScorerBase
-{
-
-    [ApexSerialization, FriendlyName("Compare Value")] public float compareValue = .5f;
-    [ApexSerialization, FriendlyName("Use Negative instead")] public bool useNegative = true;
-    public override float Score(IAIContext context)
-    {
-        VillagerContext ctx = (VillagerContext)context;
-        if (ctx.instance.BehaviorVector.z >= compareValue && !useNegative) return score;
-        if (ctx.instance.BehaviorVector.z <= compareValue && useNegative) return score;
-        return 0;
-    }
-}
-
+#region  Needs
 public sealed class HungerLevel : ContextualScorerBase
 {
     [ApexSerialization, FriendlyName("Comparable Value")] public float refVal = 0;
@@ -90,7 +46,9 @@ public sealed class EmotionLevel : ContextualScorerBase
         return 0;
     }
 }
+#endregion
 
+#region Current Personality
 public sealed class KindRudeRatio : ContextualScorerBase
 {
     [ApexSerialization, FriendlyName("Comparable Value")] public float refVal = 0;
@@ -132,7 +90,113 @@ public sealed class EagerRatio : ContextualScorerBase
         return 0;
     }
 }
+#endregion
 
-// public sealed class HasItemOfTypeNearBy: ContextualScorerBase{
-//     [ApexSerialization, FriendlyName("")]
-// }
+#region Items
+public sealed class HasItemOfTypeNearBy : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Layer Mask")] public LayerMask mask;
+    [ApexSerialization, FriendlyName("Max Distance")] public LayerMask radius;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        Collider[] hits = Physics.OverlapSphere(ctx.baseParent.transform.position, radius, mask);
+        Transform curr = null;
+        float lastDist = radius * 2, dist = lastDist;
+        hits.ToList().ForEach(hit =>
+        {
+            dist = Vector3.Distance(ctx.baseParent.transform.position, hit.transform.position);
+            if (dist < lastDist) { lastDist = dist; curr = hit.transform; }
+        });
+        if (curr != null)
+        {
+            ctx.baseParent.lastTarget = ctx.baseParent.target;
+            ctx.baseParent.target = curr;
+            return score;
+        }
+        return 0;
+    }
+}
+
+public sealed class HasItemOfTypeInInventory : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Item Type")] public ItemInfo.ItemType type;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        ItemInfo item = ctx.baseParent.Inventory.Where(it => it.Key.itemType == type).FirstOrDefault().Key;
+        // ctx.baseParent.
+        return item == null ? 0 : score;
+    }
+
+}
+
+#endregion
+#region Behaviour Enums
+
+public sealed class IsBored : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.NormalBehaviour behaviour;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return (ctx.baseParent.WhenBored == behaviour) ? score : 0;
+    }
+}
+
+public sealed class WhenHungry : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.HungryBehaviour behaviour;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return (ctx.baseParent.WhenHungry == behaviour) ? score : 0;
+    }
+}
+public sealed class WhenThirsty : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.ThirstyBehaviour behaviour;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return (ctx.baseParent.WhenThirsty == behaviour) ? score : 0;
+    }
+}
+public sealed class HealthCrtical : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.LowHealthBehavior behaviour;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return (ctx.baseParent.WhenHealthCritical == behaviour) ? score : 0;
+    }
+}
+public sealed class SpottedAnOppenent : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.OpponentSpotted behaviour;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return (ctx.baseParent.WhenSpotted == behaviour) ? score : 0;
+    }
+}
+public sealed class CloseEnoughToOpponent : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.OpponentCloseEnough behaviour;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return (ctx.baseParent.WhenCloseEnough == behaviour) ? score : 0;
+    }
+}
+public sealed class OpponentWeak : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.OpponentLowHealth behaviour;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return (ctx.baseParent.WhenEnemyLowHealth == behaviour) ? score : 0;
+    }
+}
+
+#endregion

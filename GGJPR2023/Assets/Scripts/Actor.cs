@@ -67,7 +67,7 @@ public class Actor : MonoBehaviour, IDamageable
         }
     }
 
-    public void TryInteract(string ev)
+    public void TryInteract(string ev = "")
     {
         //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
         switch (activeIntractable.gameObject.tag)
