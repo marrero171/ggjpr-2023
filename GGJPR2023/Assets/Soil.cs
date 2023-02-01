@@ -15,10 +15,4 @@ public class Soil : Interactable
     {
         
     }
-
-    public void Plant(ItemInfo plantInfo)
-    {
-        // Use plis
-        Debug.Log("Planting go brr");
-    }
 }

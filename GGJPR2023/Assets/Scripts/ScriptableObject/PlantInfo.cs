@@ -6,14 +6,16 @@ using UnityEngine;
 public class PlantInfo : ScriptableObject
 {
     public string plantName;
+    public PlantLifeCycle cycleInfo;
     public ItemInfo harvestable;
 }
 
 [System.Serializable]
 public class PlantLifeCycle
 {
-    Sprite plantSprite;
-    int waterRequired = 1;
-    float cycleInterval = 300;
-    bool canHarvest = false;
+    [Tooltip("Add sprites for each stage")]
+    public List<Sprite> plantStageSprites;
+    public int waterRequired = 1;
+    public float cycleInterval = 300;
+    public bool canHarvest = false;
 }

@@ -6,7 +6,7 @@ using ExtEvents;
 
 public class CountDownTimer : MonoBehaviour
 {
-    [SerializeField] ExtEvent onTimeout;
+    [SerializeField] public ExtEvent onTimeout;
 
     public enum TimerProcessMode
     {
@@ -21,7 +21,7 @@ public class CountDownTimer : MonoBehaviour
     [SerializeField] bool isStopped = false;
     
     TimerProcessMode processMode = TimerProcessMode.TIMER_PROCESS_IDLE;
-    private void Start()
+    private void OnEnable()
     {
         if (autostart)
         {
@@ -45,7 +45,7 @@ public class CountDownTimer : MonoBehaviour
                 isStopped = true;
                 timeLeft = 0;
                 onTimeout?.Invoke();
-                Debug.Log(gameObject.name + " timed out");
+                //Debug.Log(gameObject.name + " timed out");
                 // Loop if one shot is false
                 Loop();
             }
@@ -67,12 +67,12 @@ public class CountDownTimer : MonoBehaviour
 
     public void StartTimer(float timeSec = -1)
     {
-        isStopped = false;
         if (timeSec > 0)
         {
             waitTime = timeSec;
         }
         timeLeft = waitTime;
+        isStopped = false;
     }
 
     public void Stop()
@@ -126,4 +126,5 @@ public class CountDownTimer : MonoBehaviour
     {
         return waitTime;
     }
+
 }
