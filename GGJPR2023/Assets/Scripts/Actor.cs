@@ -73,8 +73,8 @@ public class Actor : MonoBehaviour, IDamageable
         switch (activeIntractable.gameObject.tag)
         {
             case "Soil":
-                if (selectedItem.itemType == ItemType.Plantable)
-                    // activeIntractable.GetComponent<Soil>().Plant(selectedItem);
+                if (selectedItem.itemType == ItemInfo.ItemType.Plantable)
+                    activeIntractable.GetComponent<Soil>().Plant(selectedItem);
                     break;
             default:
                 activeIntractable?.RequestByActor(this, "Grab");

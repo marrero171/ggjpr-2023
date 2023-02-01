@@ -1,15 +1,15 @@
 using UnityEngine;
-public enum ItemType
+
+[CreateAssetMenu(fileName = "ItemInfo", menuName = "General/Item Info")]
+public class ItemInfo : ScriptableObject
+{
+    public enum ItemType
     {
         Consumable,
         Plantable,
         Resource,
         Throwable
     }
-[CreateAssetMenu(fileName = "ItemInfo", menuName = "General/Item Info")]
-public class ItemInfo : ScriptableObject
-{
-    
 
     [field:SerializeField] public Sprite itemSprite { get; private set;}
     [field:SerializeField] public ItemType itemType { get; private set;}
