@@ -18,7 +18,7 @@ public class PlayerController : Actor
     private Vector3 lastDirection = Vector3.zero;
     private Vector3 moveDirection = Vector3.zero;
     [SerializeField] float smoothInputSpeed = 0.15f;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +53,9 @@ public class PlayerController : Actor
         activeIntractable = FindClosestInteraction();
         TryInteract();
     }
+
+    public void OnScrollUp() => ScrollSelectItem(1);
+    public void OnScrollDown() => ScrollSelectItem(-1);
 
 
 

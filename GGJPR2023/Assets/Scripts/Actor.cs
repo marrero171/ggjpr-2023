@@ -14,6 +14,7 @@ public class Actor : MonoBehaviour, IDamageable
     public GenericDictionary<ItemInfo, int> Inventory;
     public Interactable activeIntractable = null;
     public ItemInfo selectedItem = null;
+    int selectedItemIndex = 0;
 
     private void OnEnable()
     {
@@ -78,26 +79,27 @@ public class Actor : MonoBehaviour, IDamageable
                 case ItemType.Plantable:
                     activeIntractable.TryGetComponent(out TreeScript tree);
                     if (!tree.isPlanted)
-                        {
-                            tree.RequestByActor(this, "Plant");
-                        }
+                    {
+                        tree.RequestByActor(this, "Plant");
+                    }
                     break;
-                
+
                 case ItemType.Consumable:
                     break;
-                
-                case ItemType.Resource: 
+
+                case ItemType.Resource:
                     break;
 
                 default:
                     activeIntractable.RequestByActor(this, "Grab");
                     break;
             }
-        } else
+        }
+        else
         {
             activeIntractable?.RequestByActor(this, "Grab");
         }
-        
+
     }
     public void AddItem(ItemInfo item, int ammount = 1)
     {
@@ -135,5 +137,15 @@ public class Actor : MonoBehaviour, IDamageable
             return false;
         }
         return false;
+    }
+
+    public void ScrollSelectItem(int byAmmount, bool specify = false)
+    {
+        if (!specify) selectedItemIndex += byAmmount;
+        else selectedItemIndex = byAmmount;
+        if (selectedItemIndex > 10) selectedItemIndex = 1;
+        //Lazy Check, rework later?
+        if (Inventory.Count > selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
+        else selectedItem = null;
     }
 }
