@@ -10,7 +10,7 @@ public class Actor : MonoBehaviour, IDamageable
     public float interactionRadius = 3;
     public Collider AttackCollider;
     //TODO: Inventory
-    public Dictionary<int, int> Inventory;
+    public Dictionary<ItemInfo, int> Inventory;
     private void OnEnable()
     {
         Health = MaxHealth;
@@ -53,5 +53,25 @@ public class Actor : MonoBehaviour, IDamageable
             closest.TryGetComponent(out IInteractable interactable);
             return interactable;
         }
+    public void AddItem(ItemInfo item, int ammount = 1)
+    {
+        if (Inventory.ContainsKey(item)) Inventory[item] += ammount;
+        else Inventory.Add(item, ammount);
+    }
+
+    public bool DropItem(ItemInfo item, int ammount = 1)
+    {
+        if (Inventory.ContainsKey(item))
+        {
+            if (Inventory[item] >= ammount)
+            {
+                //TODO: Request DroppedItem from PoolManager
+                Inventory[item] -= ammount;
+                if (Inventory[item] <= 0) Inventory.Remove(item);
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 }
