@@ -14,7 +14,7 @@ public class Interactable : MonoBehaviour, IInteractable
     /// </summary>
     /// <param name="name">event name</param>
     /// <param name="actor">actor in question, usually "this"</param>
-    public void RequestByActor(string name, Actor actor)
+    public void RequestByActor(Actor actor, string name = "default")
     {
         activeActor = actor;
         requestEvent(name);
@@ -28,13 +28,5 @@ public class Interactable : MonoBehaviour, IInteractable
     {
         print("Requesting " + name);
         if (events.ContainsKey(name)) events[name].Invoke();
-    }
-
-    public void Illuminate()
-    {
-        Debug.Log("Illuminated");
-        if (TryGetComponent(out SpriteRenderer spriteRenderer)) {
-            spriteRenderer.color = Color.red;
-        }
     }
 }

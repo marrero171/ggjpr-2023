@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public void RequestByActor(string name, Actor actor);
+    public void RequestByActor(Actor actor, string name);
 }

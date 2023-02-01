@@ -36,11 +36,6 @@ public class Actor : MonoBehaviour, IDamageable
     }
     */
 
-    private void FixedUpdate()
-    {
-        activeIntractable = FindClosestInteraction();
-    }
-
     protected IInteractable FindClosestInteraction()
     {
         float distanceToClosest = Mathf.Infinity;
@@ -70,12 +65,12 @@ public class Actor : MonoBehaviour, IDamageable
             return interactable;
         }
     }
-
+    /*
     public void TryInteract(string ev = "default")
     {
         if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
     }
-
+    */
     public void AddItem(ItemInfo item, int ammount = 1)
     {
         if (Inventory.ContainsKey(item)) Inventory[item] += ammount;
