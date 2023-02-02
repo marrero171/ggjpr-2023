@@ -19,6 +19,7 @@ public sealed class ActorGetItem : ActionBase
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
         ctx.baseParent.selectedItem = null;
+        MonoBehaviour.print("Attempting Grab");
         ctx.baseParent.TryInteract();
     }
 }

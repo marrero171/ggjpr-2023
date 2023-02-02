@@ -58,7 +58,9 @@ public abstract class Actor : MonoBehaviour, IDamageable
     private void LateUpdate()
     {
         transform.LookAt(Camera.main.transform);
-        renderer.flipX = moveDir.x > 0;
+
+        if (Mathf.Abs(moveDir.x) >= 0.1f)
+            renderer.flipX = moveDir.x > 0;
         // animator.SetFloat("DirX", moveDir.x);
         // animator.SetFloat("DirZ", moveDir.z);
     }
@@ -141,20 +143,70 @@ public abstract class Actor : MonoBehaviour, IDamageable
         //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
         if (activeIntractable && selectedItem)
         {
+            if (activeIntractable.name.StartsWith("DroppedItem"))
+            {
+                activeIntractable.RequestByActor(this, "Grab");
+                return;
+            }
             switch (selectedItem.itemType)
             {
+                case ItemType.Food: Consume(selectedItem, true); break;
+
                 //Plant tree if is not planted
                 case ItemType.Plantable:
-                    activeIntractable.TryGetComponent(out TreeScript tree);
-                    if (!tree.isPlanted)
-                    {
-                        tree.RequestByActor(this, "Plant");
-                    }
+                    activeIntractable.RequestByActor(this, "Plant");
                     break;
 
-                case ItemType.Food: Consume(selectedItem, true); break;
                 case ItemType.Water:
-                    if (activeIntractable?.tag == "Soil") print("Water plant");
+                    if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
+                    else Consume(selectedItem, true);
+                    break;
+
+                case ItemType.Resource:
+                    break;
+
+                case ItemType.Throwable: //Attack
+                    AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
+                    projectile.refSprite = selectedItem.itemSprite;
+                    projectile.direction = transform.forward;
+                    projectile.DamageAmmount = selectedItem.effectiveAmount;
+                    projectile.Speed = 8;
+                    projectile.gameObject.SetActive(true);
+                    break;
+
+                default:
+                    break;
+            }
+        } else if (activeIntractable)
+        {
+            if (activeIntractable.name.StartsWith("DroppedItem"))
+            {
+                activeIntractable.RequestByActor(this, "Grab");
+            } else
+            {
+                activeIntractable.RequestByActor(this);
+            }
+        }
+    }
+
+    //Old For Reference
+    /*
+    public void aTryInteract()
+    {
+        //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
+        if (activeIntractable && selectedItem)
+        {
+            switch (selectedItem.itemType)
+            {
+                case ItemType.Food: Consume(selectedItem, true); break;
+
+                //Plant tree if is not planted
+                case ItemType.Plantable:
+                    if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Plant");
+                    break;
+
+                case ItemType.Water:
+                    if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
                     else Consume(selectedItem, true);
                     break;
 
@@ -180,6 +232,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
         }
 
     }
+    */
     public void AddItem(ItemInfo item, int ammount = 1)
     {
         if (Inventory.ContainsKey(item)) Inventory[item] += ammount;
@@ -205,7 +258,11 @@ public abstract class Actor : MonoBehaviour, IDamageable
             if (Inventory[item] >= ammount)
             {
                 Inventory[item] -= ammount;
-                if (Inventory[item] <= 0) Inventory.Remove(item);
+                if (Inventory[item] <= 0)
+                {
+                    if (selectedItem == item) selectedItem = null;
+                    Inventory.Remove(item);
+                }
                 return true;
             }
             return false;
