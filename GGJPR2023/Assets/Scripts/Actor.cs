@@ -9,7 +9,8 @@ using System.Collections;
 [RequireComponent(typeof(Animator))]
 public abstract class Actor : MonoBehaviour, IDamageable
 {
-    public int Health { set; get; } = 10;
+    public ExtEvent onIsDead;
+
     public int MaxHealth = 10, Damage = 1;
     public float interactionRadius = 3;
     public Collider AttackCollider;
@@ -24,6 +25,22 @@ public abstract class Actor : MonoBehaviour, IDamageable
     [HideInInspector] public SpriteRenderer renderer;
     [HideInInspector] public Animator animator;
     Coroutine lastAttackerCooldown;
+
+    public bool isDead = false;
+
+    public int Health
+    {
+        set 
+        { 
+            Health = Mathf.Clamp(Health, 0, MaxHealth);
+            if (Health < 0)
+            {
+                isDead = true;
+                onIsDead?.Invoke();
+            }
+        }
+        get { return Health; }
+    }
 
     public void Start()
     {
