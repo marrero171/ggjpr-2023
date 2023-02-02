@@ -10,6 +10,7 @@ using System.Collections;
 public abstract class Actor : MonoBehaviour, IDamageable
 {
     public ExtEvent onIsDead;
+    public ExtEvent<int> OnHealthUpdated;
 
     public int MaxHealth = 10, Damage = 1;
     public float interactionRadius = 3;
@@ -33,8 +34,13 @@ public abstract class Actor : MonoBehaviour, IDamageable
         get { return health; }
         set 
         {
+            int oldHealth = health;
             health = Mathf.Clamp(value, 0, MaxHealth);
-            if (health < 0)
+            if (health != oldHealth)
+            {
+                OnHealthUpdated?.Invoke(health);
+            }
+            if (health <= 0)
             {
                 Die();
                 onIsDead?.Invoke();
@@ -179,19 +185,15 @@ public abstract class Actor : MonoBehaviour, IDamageable
     }
 
     // Uses up item (without dropping)
-    public bool UseItem(ItemInfo item, int amount = 1)
+    public void UseItem(ItemInfo item, int amount = 1)
     {
-        if (Inventory.ContainsKey(item))
-        {
-            if (Inventory[item] >= amount)
-            {
-                Inventory[item] -= amount;
-                if (Inventory[item] <= 0) Inventory.Remove(item);
-                return true;
-            }
-            return false;
-        }
-        return false;
+        RemoveItem(item, amount);
+    }
+
+    public void DropItem(ItemInfo item, int amount = 1)
+    {
+        RemoveItem(item, amount);
+        //TODO: Request DroppedItem from PoolManager
     }
 
     public bool RemoveItem(ItemInfo item, int ammount = 1)
@@ -200,7 +202,6 @@ public abstract class Actor : MonoBehaviour, IDamageable
         {
             if (Inventory[item] >= ammount)
             {
-                //TODO: Request DroppedItem from PoolManager
                 Inventory[item] -= ammount;
                 if (Inventory[item] <= 0) Inventory.Remove(item);
                 return true;
