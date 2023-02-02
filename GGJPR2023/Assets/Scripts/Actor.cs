@@ -33,7 +33,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
     public int Health
     {
         get { return health; }
-        set 
+        set
         {
             int oldHealth = health;
             health = Mathf.Clamp(value, 0, MaxHealth);
@@ -51,6 +51,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
 
     public void Start()
     {
+        Inventory = new GenericDictionary<ItemInfo, int>();
         animator = GetComponent<Animator>();
         renderer = GetComponent<SpriteRenderer>();
     }
@@ -216,9 +217,11 @@ public abstract class Actor : MonoBehaviour, IDamageable
     {
         if (!specify) selectedItemIndex += byAmmount;
         else selectedItemIndex = byAmmount;
-        if (selectedItemIndex > 10) selectedItemIndex = 1;
+        if (selectedItemIndex > 10 || selectedItemIndex > Inventory.Count - 1) selectedItemIndex = 0;
+        if (selectedItemIndex < 0) selectedItemIndex = Inventory.Count - 1;
+        // print(selectedItemIndex);
         //Lazy Check, rework later?
-        if (Inventory.Count > selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
+        if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
         else selectedItem = null;
     }
 
