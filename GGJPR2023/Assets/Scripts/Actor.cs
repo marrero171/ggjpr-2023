@@ -27,18 +27,14 @@ public abstract class Actor : MonoBehaviour, IDamageable
     Coroutine lastAttackerCooldown;
 
     public bool isDead = false;
-
+    [SerializeField] private int health = 0;
     public int Health
     {
-        get
-        {
-            return Health;
-        }
+        get { return health; }
         set 
         {
-            int newHealth;
-            newHealth = Mathf.Clamp(value, 0, MaxHealth);
-            if (newHealth < 0)
+            health = Mathf.Clamp(value, 0, MaxHealth);
+            if (health < 0)
             {
                 Die();
                 onIsDead?.Invoke();
