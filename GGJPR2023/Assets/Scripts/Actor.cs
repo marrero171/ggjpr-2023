@@ -141,7 +141,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
     public void TryInteract()
     {
         //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
-        if (activeIntractable)
+        if (activeIntractable && selectedItem)
         {
             if (activeIntractable.GetComponent<DroppedItem>())
             {
@@ -174,10 +174,11 @@ public abstract class Actor : MonoBehaviour, IDamageable
                     break;
 
                 default:
-                    //activeIntractable.RequestByActor(this);
-
                     break;
             }
+        } else if (activeIntractable)
+        {
+            activeIntractable.RequestByActor(this);
         }
     }
     public void AddItem(ItemInfo item, int ammount = 1)
