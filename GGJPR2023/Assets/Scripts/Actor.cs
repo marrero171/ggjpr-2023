@@ -154,7 +154,15 @@ public abstract class Actor : MonoBehaviour, IDamageable
 
                 //Plant tree if is not planted
                 case ItemType.Plantable:
-                    activeIntractable.RequestByActor(this, "Plant");
+                    if (selectedItem.isEdible)
+                    {
+                        if (activeIntractable?.tag == "Soil")
+                            activeIntractable?.RequestByActor(this, "Plant");
+                        else Consume(selectedItem, true);
+                    } else
+                    {
+                        activeIntractable?.RequestByActor(this, "Plant");
+                    }
                     break;
 
                 case ItemType.Water:
@@ -185,6 +193,26 @@ public abstract class Actor : MonoBehaviour, IDamageable
             } else
             {
                 activeIntractable.RequestByActor(this);
+            }
+        } else if (selectedItem)
+        {
+            switch (selectedItem.itemType)
+            {
+                case ItemType.Food:
+                    Consume(selectedItem, true);
+                    break;
+
+                case ItemType.Water:
+                    Consume(selectedItem, true);
+                    break;
+
+                case ItemType.Plantable: 
+                    if (selectedItem.isEdible)
+                        Consume(selectedItem, true);
+                    break;
+
+                default:
+                    break;
             }
         }
     }

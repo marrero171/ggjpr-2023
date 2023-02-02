@@ -15,6 +15,7 @@ MonoBehaviour:
   <itemSprite>k__BackingField: {fileID: 0}
   <itemType>k__BackingField: 0
   <itemName>k__BackingField: Item
+  <isEdible>k__BackingField: 1
   description: A Delicious Guineo. Plantable.
   effectiveAmount: 5
   externalReference: {fileID: 0}
