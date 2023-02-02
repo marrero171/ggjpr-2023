@@ -138,7 +138,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
         }
     }
 
-    public void aTryInteract()
+    public void TryInteract()
     {
         //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
         if (activeIntractable && selectedItem)
@@ -154,8 +154,9 @@ public abstract class Actor : MonoBehaviour, IDamageable
 
                 //Plant tree if is not planted
                 case ItemType.Plantable:
-                    if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Plant");
+                    activeIntractable.RequestByActor(this, "Plant");
                     break;
+
                 case ItemType.Water:
                     if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
                     else Consume(selectedItem, true);
@@ -163,6 +164,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
 
                 case ItemType.Resource:
                     break;
+
                 case ItemType.Throwable: //Attack
                     AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
                     projectile.refSprite = selectedItem.itemSprite;
@@ -177,12 +179,19 @@ public abstract class Actor : MonoBehaviour, IDamageable
             }
         } else if (activeIntractable)
         {
-            activeIntractable.RequestByActor(this);
+            if (activeIntractable.name.StartsWith("DroppedItem"))
+            {
+                activeIntractable.RequestByActor(this, "Grab");
+            } else
+            {
+                activeIntractable.RequestByActor(this);
+            }
         }
     }
 
     //Old For Reference
-    public void TryInteract()
+    /*
+    public void aTryInteract()
     {
         //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
         if (activeIntractable && selectedItem)
@@ -223,6 +232,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
         }
 
     }
+    */
     public void AddItem(ItemInfo item, int ammount = 1)
     {
         if (Inventory.ContainsKey(item)) Inventory[item] += ammount;
