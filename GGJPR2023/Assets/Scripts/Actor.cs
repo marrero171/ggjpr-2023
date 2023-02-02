@@ -35,7 +35,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
             Health = Mathf.Clamp(Health, 0, MaxHealth);
             if (Health < 0)
             {
-                isDead = true;
+                Die();
                 onIsDead?.Invoke();
             }
         }
@@ -64,7 +64,12 @@ public abstract class Actor : MonoBehaviour, IDamageable
     public void ApplyDamage(int dmg)
     {
         Health -= dmg;
-        if (Health <= 0) gameObject.SetActive(false);
+    }
+
+    public void Die()
+    {
+        isDead = true;
+        gameObject.SetActive(false);
     }
 
     public void AttackOn() => AttackCollider?.gameObject.SetActive(true);
