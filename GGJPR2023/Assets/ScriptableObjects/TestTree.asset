@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4651d5761f5b9146b0857e210ea2633, type: 3}
   m_Name: TestTree
   m_EditorClassIdentifier: 
-  plantName: Eucalyptus
+  plantName: Yuca
   cycleInfo:
     plantStageSprites:
     - {fileID: -766686204, guid: 0a8659abf7ac5f2a5b7f05c6538b484c, type: 3}

@@ -19,6 +19,7 @@ public class CountDownTimer : MonoBehaviour
     [SerializeField] bool paused = false;
     [SerializeField] float timeLeft = 0;
     [SerializeField] bool isStopped = false;
+    [SerializeField] public float timeMultiplier { set; get; } = 1;
     
     TimerProcessMode processMode = TimerProcessMode.TIMER_PROCESS_IDLE;
     private void OnEnable()
@@ -53,7 +54,7 @@ public class CountDownTimer : MonoBehaviour
         {
             if (timeLeft > 0 && !paused)
             {
-                timeLeft -= Time.deltaTime;
+                timeLeft -= Time.deltaTime * timeMultiplier;
             }
             else if (timeLeft <= 0)
             {

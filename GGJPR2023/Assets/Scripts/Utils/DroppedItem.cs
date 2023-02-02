@@ -35,7 +35,6 @@ public class DroppedItem : Interactable
     public void GrabItem()
     {
         print("Giving an item");
-        activeActor.activeIntractable = null;
         activeActor.AddItem(item);
         gameObject.SetActive(false);
     }

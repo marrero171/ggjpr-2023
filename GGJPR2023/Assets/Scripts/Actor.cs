@@ -58,7 +58,9 @@ public abstract class Actor : MonoBehaviour, IDamageable
     private void LateUpdate()
     {
         transform.LookAt(Camera.main.transform);
-        renderer.flipX = moveDir.x > 0;
+        
+        if (Mathf.Abs(moveDir.x) >= 0.1f)
+            renderer.flipX = moveDir.x > 0;
         // animator.SetFloat("DirX", moveDir.x);
         // animator.SetFloat("DirZ", moveDir.z);
     }
@@ -139,20 +141,22 @@ public abstract class Actor : MonoBehaviour, IDamageable
     public void TryInteract()
     {
         //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
-        if (activeIntractable && selectedItem)
+        if (activeIntractable)
         {
+            if (activeIntractable.GetComponent<DroppedItem>())
+            {
+                activeIntractable.RequestByActor(this, "Grab");
+                return;
+            }
             switch (selectedItem.itemType)
             {
                 //Plant tree if is not planted
                 case ItemType.Plantable:
-                    activeIntractable.TryGetComponent(out TreeScript tree);
-                    if (!tree.isPlanted)
-                    {
-                        tree.RequestByActor(this, "Plant");
-                    }
+                    activeIntractable.RequestByActor(this, "Plant"); 
                     break;
 
                 case ItemType.Food: Consume(selectedItem, true); break;
+
                 case ItemType.Water:
                     if (activeIntractable?.tag == "Soil") print("Water plant");
                     else Consume(selectedItem, true);
@@ -170,15 +174,11 @@ public abstract class Actor : MonoBehaviour, IDamageable
                     break;
 
                 default:
-                    activeIntractable.RequestByActor(this);
+                    //activeIntractable.RequestByActor(this);
+
                     break;
             }
         }
-        else
-        {
-            activeIntractable?.RequestByActor(this);
-        }
-
     }
     public void AddItem(ItemInfo item, int ammount = 1)
     {
@@ -205,7 +205,11 @@ public abstract class Actor : MonoBehaviour, IDamageable
             if (Inventory[item] >= ammount)
             {
                 Inventory[item] -= ammount;
-                if (Inventory[item] <= 0) Inventory.Remove(item);
+                if (Inventory[item] <= 0)
+                {
+                    if (selectedItem == item) selectedItem = null;
+                    Inventory.Remove(item);
+                }
                 return true;
             }
             return false;

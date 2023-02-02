@@ -157,11 +157,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
     list:
-    - Key: 
+    - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 131774411}
           _isStatic: 0
           CallState: 2
@@ -170,6 +169,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -397,6 +397,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &456768597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+  m_PrefabInstance: {fileID: 2315637760459342196}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f5ca276004491499aa45154b83827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &510261507
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,11 +442,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
     list:
-    - Key: 
+    - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 510261508}
           _isStatic: 0
           CallState: 2
@@ -444,6 +454,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -771,6 +782,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f824fc2b72b55a3a907e27354ad55f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onIsDead:
+    _persistentListeners: []
+    Expanded: 1
+  OnHealthUpdated:
+    _persistentListeners: []
+    Expanded: 1
   MaxHealth: 10
   Damage: 1
   interactionRadius: 3
@@ -785,6 +802,9 @@ MonoBehaviour:
   moveDir: {x: 0, y: 0, z: 0}
   renderer: {fileID: 0}
   animator: {fileID: 0}
+  isDead: 0
+  isPlayer: 0
+  health: 0
   basicNeeds:
     Hunger: 0
     Thirst: 0
@@ -1395,8 +1415,7 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 1396627433}
           _isStatic: 0
           CallState: 2
@@ -1405,6 +1424,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -1999,6 +2019,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb64dee945deb641b5f2985948e47ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onIsDead:
+    _persistentListeners: []
+    Expanded: 1
+  OnHealthUpdated:
+    _persistentListeners: []
+    Expanded: 1
   MaxHealth: 10
   Damage: 1
   interactionRadius: 3
@@ -2013,6 +2039,9 @@ MonoBehaviour:
   moveDir: {x: 0, y: 0, z: 0}
   renderer: {fileID: 0}
   animator: {fileID: 0}
+  isDead: 0
+  isPlayer: 0
+  health: 0
   speed: 10
   gravity: 9.81
   smoothInputSpeed: 0.15
@@ -2152,11 +2181,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
     list:
-    - Key: 
+    - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 1989706785}
           _isStatic: 0
           CallState: 2
@@ -2165,6 +2193,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -2315,6 +2344,54 @@ PrefabInstance:
     - target: {fileID: 2315637760806357440, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.keyCollision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[2].Key
+      value: Water plant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[2].Value.Expanded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[1].Value._persistentListeners.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[2].Value._persistentListeners.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[1].Value._persistentListeners.Array.data[1]._target
+      value: 
+      objectReference: {fileID: 456768597}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[2].Value._persistentListeners.Array.data[0]._target
+      value: 
+      objectReference: {fileID: 456768597}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[1].Value._persistentListeners.Array.data[1].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[2].Value._persistentListeners.Array.data[0].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[1].Value._persistentListeners.Array.data[1]._methodName
+      value: Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: events.list.Array.data[2].Value._persistentListeners.Array.data[0]._methodName
+      value: Water
       objectReference: {fileID: 0}
     - target: {fileID: 2315637760806357467, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
       propertyPath: m_Name

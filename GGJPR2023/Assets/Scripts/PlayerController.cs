@@ -56,16 +56,21 @@ public class PlayerController : Actor
 
     public void OnInteract()
     {
+        Debug.Log("Interacted");
         activeIntractable = FindClosestInteraction();
         TryInteract();
+        if (!selectedItem && Inventory.Count == 1)
+            ScrollSelectItem(1);
     }
 
-    public void OnScrollUp() => ScrollSelectItem(1);
-    public void OnScrollDown() => ScrollSelectItem(-1);
+    //public void OnScrollUp() => ScrollSelectItem(1);
+    //public void OnScrollDown() => ScrollSelectItem(-1);
 
-    public void OnScrollWheel(InputValue val)
-    {
-        ScrollSelectItem((int)Mathf.Clamp(val.Get<Vector2>().y, -1, 1));
+    public void OnScrollInventory(InputValue val)
+    {if (val.Get<Vector2>().y != 0)
+        {
+            ScrollSelectItem((int)Mathf.Clamp(val.Get<Vector2>().y, -1, 1));
+        }
     }
     public void OnPutAway() => selectedItem = null;
 
