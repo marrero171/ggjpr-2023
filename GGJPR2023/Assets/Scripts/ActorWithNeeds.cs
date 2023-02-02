@@ -64,14 +64,6 @@ public class ActorWithNeeds : Actor, IContextProvider
         }
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Weapon" || other.tag == "Attack")
-        {
-            referenceActor = other.GetComponentInParent<Actor>();
-            ApplyDamage(referenceActor.Damage);
-        }
-    }
 
     public override void Consume(ItemInfo item, bool useItem = true)
     {

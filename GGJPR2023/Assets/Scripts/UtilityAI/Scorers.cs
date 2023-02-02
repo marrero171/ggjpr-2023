@@ -13,7 +13,6 @@ public sealed class HungerLevel : ContextualScorerBase
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        MonoBehaviour.print(ctx.baseParent.basicNeeds.Hunger);
         if (sated && ctx.baseParent.basicNeeds.Hunger >= refVal) return raw ? ctx.baseParent.basicNeeds.Hunger * .1f : score;
         if (!sated && ctx.baseParent.basicNeeds.Hunger <= refVal) return raw ? -ctx.baseParent.basicNeeds.Hunger * .1f : score;
         return 2;

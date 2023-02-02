@@ -30,7 +30,8 @@ public class TreeScript : Interactable
             {
                 healthy = true;
                 timer.timeMultiplier = 1;
-            } else
+            }
+            else
             {
                 healthy = false;
                 timer.timeMultiplier = 0.75f;
@@ -43,7 +44,7 @@ public class TreeScript : Interactable
         }
     }
 
-    public bool isPlanted  = false;
+    public bool isPlanted = false;
     public bool fullyGrown = false;
 
     private void OnEnable()
@@ -53,10 +54,22 @@ public class TreeScript : Interactable
         timer.SetTimerProcessMode(CountDownTimer.TimerProcessMode.TIMER_PROCESS_PHYSICS);
     }
 
+    void LateUpdate()
+    {
+        treeSprite.transform.LookAt(Camera.main.transform);
+
+    }
+
     public void Harvest()
     {
         //This will drop an item and reset timers
 
+    }
+
+    public void TryPlanting()
+    {
+        if (isPlanted) return;
+        Grow();
     }
 
     public void Grow()
@@ -64,7 +77,7 @@ public class TreeScript : Interactable
         WaterLevel--;
         if (!isPlanted)
             return;
-        
+
         timer.StartTimer(plantInfo.cycleInfo.cycleInterval);
         if (currentCycle < growthCycles - 1)
         {
@@ -72,7 +85,8 @@ public class TreeScript : Interactable
             currentCycle++;
             UpdateSprite(currentCycle);
             Debug.Log(currentCycle);
-        } else
+        }
+        else
         {
             Debug.Log("Grew, lol dropping item");
             DropItem();

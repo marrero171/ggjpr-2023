@@ -8,6 +8,7 @@ public class ReferenceMaster : MonoBehaviour
     [Header("Items to be referenced")]
     public DroppedItem DroppedItem;
     public AttackProjectile Projectile;
+    public PlayerController player;
 
 
 
