@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Apex.AI;
+using Apex.AI.Components;
 
 public class Villager : ActorWithNeeds
 {
@@ -13,7 +15,14 @@ public class Villager : ActorWithNeeds
     [Tooltip("Rude/Kind | Rush/Steady | Lazy/Eager")]
     public Vector3 BehaviorVector = Vector3.zero;
 
+    public new VillagerContext ctx;
 
+    public new IAIContext GetContext(System.Guid id) { return ctx; }
+
+    public new void OnEnable()
+    {
+        ctx = new VillagerContext(this);
+    }
 
 
 }

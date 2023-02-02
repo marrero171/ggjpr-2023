@@ -18,8 +18,7 @@ MonoBehaviour:
   configuration: '{"@type":"Apex.AI.UtilityAI, Assembly-CSharp","_rootSelectorId":92f27479e1eb4682a659532112c08464,"_id":fc433eb733a545699d5ef5ae3bc13e95,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":92f27479e1eb4682a659532112c08464,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":1c0f2f88cb9d46f7beefa0bc278b3066},"_scorers":[{"@type":"HungerLevel,
-    Assembly-CSharp","refVal":0,"sated":false,"raw":false,"score":10},{"@type":"HealthCrtical,
-    Assembly-CSharp","behaviour":Continue}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","refVal":5,"sated":false,"raw":false,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":b5d4a1ae5fa4448fad4c0b17bb02718b},"_scorers":[{"@type":"ThirstLevel,
     Assembly-CSharp","refVal":0,"sated":false,"raw":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp"}},{"@type":"Apex.AI.ScoreSelector, Assembly-CSharp","_id":1c0f2f88cb9d46f7beefa0bc278b3066,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
@@ -47,18 +46,18 @@ MonoBehaviour:
     Assembly-CSharp","action":{"@type":"ActorGetItem, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeNearBy,
     Assembly-CSharp","mask":16,"radius":2,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":-55,"@y":-134},"zoom":1,"SelectorView":{"ViewArea":{"@left":5,"@top":166,"@width":200,"@height":220},"Name":"Main
+  editorConfiguration: '{"offset":{"@x":32,"@y":-57},"zoom":0.85000002,"SelectorView":{"ViewArea":{"@left":83,"@top":198,"@width":170,"@height":187},"Name":"Main
     Selector","QualifierView":{"Name":"Father, I seek substenance","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"I
-    have THIRST.","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":305,"@top":-34,"@width":200,"@height":280},"Name":"Mano
+    have THIRST.","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":338,"@top":28,"@width":170,"@height":238},"Name":"Mano
     tengo hambre.","QualifierView":{"Name":"Pocket Lechon?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Thou may eat, muh child"}},"QualifierView":{"Name":"Where
     can I get food?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgently
-    Need food!","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":545,"@top":126,"@width":200,"@height":160},"Name":"Grab
+    Need food!","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":542,"@top":164,"@width":170,"@height":136},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Am I next to food?","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":305,"@top":266,"@width":200,"@height":280},"Name":"Thristy
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":338,"@top":283,"@width":170,"@height":238},"Name":"Thristy
     people problems.","QualifierView":{"Name":"Pocket Water?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Drink. --Tyrion''s GF"}},"QualifierView":{"Name":"Where
     can I get woughtur?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"The
-    Thirst.","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":545,"@top":426,"@width":200,"@height":160},"Name":"Grab
+    Thirst.","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":542,"@top":419,"@width":170,"@height":136},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Can I at least get some ","ActionView":{"Name":"Food
     go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}}}'

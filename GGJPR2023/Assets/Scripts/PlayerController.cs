@@ -16,13 +16,13 @@ public class PlayerController : Actor
     //For inputs and moving
     private Vector3 smoothInputVelocity;
     private Vector3 lastDirection = Vector3.zero;
-    private Vector3 moveDirection = Vector3.zero;
     [SerializeField] float smoothInputSpeed = 0.15f;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         controller = GetComponent<CharacterController>();
     }
 
@@ -30,7 +30,7 @@ public class PlayerController : Actor
     void Update()
     {
         // Movement for player
-        lastDirection = Vector3.SmoothDamp(lastDirection, moveDirection, ref smoothInputVelocity, smoothInputSpeed);
+        lastDirection = Vector3.SmoothDamp(lastDirection, moveDir, ref smoothInputVelocity, smoothInputSpeed);
         controller.Move(lastDirection * speed * Time.deltaTime);
 
         if (controller.isGrounded)
@@ -45,7 +45,7 @@ public class PlayerController : Actor
     public void OnMove(InputValue val)
     {
         Vector2 dir = val.Get<Vector2>();
-        moveDirection = new Vector3(dir.x, 0, dir.y);
+        moveDir = new Vector3(dir.x, 0, dir.y);
     }
 
     public void OnInteract()

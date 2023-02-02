@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils.AIHelpers;
+using Apex.AI;
+using Apex.AI.Components;
 
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
-[RequireComponent(typeof(Apex.AI.Components.UtilityAIComponent))]
-public class ActorWithNeeds : Actor, Apex.AI.Components.IContextProvider
+[RequireComponent(typeof(UtilityAIComponent))]
+public class ActorWithNeeds : Actor, IContextProvider
 {
     [Header("Needs")]
     public BaseNeeds basicNeeds;
@@ -31,14 +33,20 @@ public class ActorWithNeeds : Actor, Apex.AI.Components.IContextProvider
     [HideInInspector] public Transform lastTarget;
     [HideInInspector] public HomeArea home;
 
-    public Apex.AI.IAIContext ctx;
-    public Apex.AI.IAIContext GetContext(System.Guid id) { return ctx; }
+    public NeedyActorContext ctx;
+    public IAIContext GetContext(System.Guid id) { return ctx; }
 
-
-    public void Start()
+    public void OnEnable()
     {
+        ctx = new NeedyActorContext(this);
+        print(ctx);
+    }
+
+    public new void Start()
+    {
+        base.Start();
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        collider = GetComponent<Collider>();
+        if (needDecreaseRate > 0) StartCoroutine(UpdateNeeds());
     }
 
     /// <summary>

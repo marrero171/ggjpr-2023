@@ -33,7 +33,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
     private void LateUpdate()
     {
         transform.LookAt(Camera.main.transform);
-        renderer.flipX = moveDir.x > 1;
+        renderer.flipX = moveDir.x > 0;
         // animator.SetFloat("DirX", moveDir.x);
         // animator.SetFloat("DirZ", moveDir.z);
     }
@@ -122,9 +122,10 @@ public abstract class Actor : MonoBehaviour, IDamageable
                     }
                     break;
 
-                case ItemType.Food:
+                case ItemType.Food: Consume(selectedItem, true); break;
                 case ItemType.Water:
-                    Consume(selectedItem, true);
+                    if (activeIntractable?.tag == "Soil") print("Water plant");
+                    else Consume(selectedItem, true);
                     break;
 
                 case ItemType.Resource:
