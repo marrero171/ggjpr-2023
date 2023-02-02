@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -443,6 +443,20 @@ MonoBehaviour:
   events:
     list:
     - Key: Grab
+      Value:
+        _persistentListeners:
+        - _persistentArguments: []
+          _target: {fileID: 510261508}
+          _isStatic: 0
+          CallState: 2
+          _staticType:
+            GuidAssignmentFailed: 0
+            GUID: 
+            _typeNameAndAssembly: 
+            _suppressLogs: 0
+          _methodName: GrabItem
+        Expanded: 1
+    - Key: default
       Value:
         _persistentListeners:
         - _persistentArguments: []
@@ -1041,7 +1055,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.2989194, y: -0.00000003283936, z: 0.0000000102866435, w: 0.95427835}
+  m_LocalRotation: {x: 0.2989194, y: 0.00000003283936, z: -0.0000000102866435, w: 0.95427835}
   m_LocalPosition: {x: 0, y: 16.79, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1753,7 +1767,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714356935}
-  m_LocalRotation: {x: -0.17978515, y: -0.000000012136416, z: 0.000000012197006, w: 0.9837059}
+  m_LocalRotation: {x: -0.17978515, y: 0.000000012136416, z: -0.000000012197006, w: 0.9837059}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
