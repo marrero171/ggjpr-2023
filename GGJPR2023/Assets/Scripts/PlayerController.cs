@@ -19,6 +19,11 @@ public class PlayerController : Actor
     [SerializeField] float smoothInputSpeed = 0.15f;
 
 
+    private void OnEnable()
+    {
+        isPlayer = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

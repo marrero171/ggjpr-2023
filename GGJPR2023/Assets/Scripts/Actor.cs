@@ -9,7 +9,7 @@ using System.Collections;
 [RequireComponent(typeof(Animator))]
 public abstract class Actor : MonoBehaviour, IDamageable
 {
-    public ExtEvent onIsDead;
+    public ExtEvent<bool> onIsDead;
     public ExtEvent<int> OnHealthUpdated;
 
     public int MaxHealth = 10, Damage = 1;
@@ -28,6 +28,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
     Coroutine lastAttackerCooldown;
 
     public bool isDead = false;
+    public bool isPlayer = false;
     [SerializeField] private int health = 0;
     public int Health
     {
@@ -43,7 +44,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
             if (health <= 0)
             {
                 Die();
-                onIsDead?.Invoke();
+                onIsDead?.Invoke(isPlayer);
             }
         }
     }
