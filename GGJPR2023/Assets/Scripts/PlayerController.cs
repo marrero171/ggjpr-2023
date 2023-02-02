@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.Progress;
@@ -59,9 +60,13 @@ public class PlayerController : Actor
         TryInteract();
     }
 
-    public void OnScrollUp() => ScrollSelectItem(1);
-    public void OnScrollDown() => ScrollSelectItem(-1);
+    //public void OnScrollUp() => ScrollSelectItem(1);
+    //public void OnScrollDown() => ScrollSelectItem(-1);
 
+    public void OnScrollWheel(InputValue val)
+    {
+        ScrollSelectItem((int)Mathf.Clamp(val.Get<Vector2>().y, -1, 1));
+    }
 
     public override void Consume(ItemInfo item, bool useItem = true)
     {
