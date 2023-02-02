@@ -30,16 +30,20 @@ public abstract class Actor : MonoBehaviour, IDamageable
 
     public int Health
     {
+        get
+        {
+            return Health;
+        }
         set 
-        { 
-            Health = Mathf.Clamp(Health, 0, MaxHealth);
-            if (Health < 0)
+        {
+            int newHealth;
+            newHealth = Mathf.Clamp(value, 0, MaxHealth);
+            if (newHealth < 0)
             {
                 Die();
                 onIsDead?.Invoke();
             }
         }
-        get { return Health; }
     }
 
     public void Start()
