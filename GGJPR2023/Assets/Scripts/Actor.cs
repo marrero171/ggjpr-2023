@@ -158,7 +158,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
                 case ItemType.Food: Consume(selectedItem, true); break;
 
                 case ItemType.Water:
-                    if (activeIntractable?.tag == "Soil") print("Water plant");
+                    if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
                     else Consume(selectedItem, true);
                     break;
 
