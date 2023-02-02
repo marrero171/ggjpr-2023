@@ -58,7 +58,12 @@ public class PlayerController : Actor
     public void OnScrollDown() => ScrollSelectItem(-1);
 
 
-
+    public override void Consume(ItemInfo item, bool useItem = true)
+    {
+        if (item == null) return;
+        Health += item.effectiveAmount;
+        if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
+    }
 
 
 

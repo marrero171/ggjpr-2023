@@ -7,6 +7,7 @@ public class ReferenceMaster : MonoBehaviour
     public static ReferenceMaster instance;
     [Header("Items to be referenced")]
     public DroppedItem DroppedItem;
+    public AttackProjectile Projectile;
 
 
 

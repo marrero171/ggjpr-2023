@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utils.AIHelpers;
 
-[RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
-public class ActorWithNeeds : Actor
+[RequireComponent(typeof(Apex.AI.Components.UtilityAIComponent))]
+public class ActorWithNeeds : Actor, Apex.AI.Components.IContextProvider
 {
     [Header("Needs")]
-    public BaseNeeds BasicNeeds;
+    public BaseNeeds basicNeeds;
 
     [Tooltip("Ammount to reduce per seccond")]
     [Range(0, 1)]
@@ -27,9 +27,13 @@ public class ActorWithNeeds : Actor
 
     [HideInInspector] public UnityEngine.AI.NavMeshAgent navMeshAgent;
     [HideInInspector] public Collider collider;
-    [HideInInspector] public Actor lastAttacker;
     [HideInInspector] public Transform target;
     [HideInInspector] public Transform lastTarget;
+    [HideInInspector] public HomeArea home;
+
+    public Apex.AI.IAIContext ctx;
+    public Apex.AI.IAIContext GetContext(System.Guid id) { return ctx; }
+
 
     public void Start()
     {
@@ -46,8 +50,8 @@ public class ActorWithNeeds : Actor
         while (true)
         {
             yield return new WaitForSeconds(1);
-            BasicNeeds.Hunger -= needDecreaseRate;
-            BasicNeeds.Thirst -= needDecreaseRate;
+            basicNeeds.Hunger -= needDecreaseRate;
+            basicNeeds.Thirst -= needDecreaseRate;
             // Emotion-=needDecreaseRate;
         }
     }
@@ -56,9 +60,18 @@ public class ActorWithNeeds : Actor
     {
         if (other.tag == "Weapon" || other.tag == "Attack")
         {
-            lastAttacker = other.GetComponentInParent<Actor>();
-            ApplyDamage(lastAttacker.Damage);
+            referenceActor = other.GetComponentInParent<Actor>();
+            ApplyDamage(referenceActor.Damage);
         }
+    }
+
+    public override void Consume(ItemInfo item, bool useItem = true)
+    {
+        if (item == null) return;
+        Health += (int)(item.effectiveAmount / 4);
+        if (item.itemType == ItemType.Food) basicNeeds.Hunger += item.effectiveAmount;
+        if (item.itemType == ItemType.Water) basicNeeds.Thirst += item.effectiveAmount;
+        if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
     }
 
 }

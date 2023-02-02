@@ -2,9 +2,8 @@ using System.Linq;
 using UnityEngine;
 using ExtEvents;
 using System.Collections.Generic;
-using System.Collections.Generic;
 using System;
-    
+
 [RequireComponent(typeof(Collider))]
 public class Interactable : MonoBehaviour
 {
@@ -16,7 +15,7 @@ public class Interactable : MonoBehaviour
     /// </summary>
     /// <param name="name">event name</param>
     /// <param name="actor">actor in question, usually "this"</param>
-    public void RequestByActor(Actor actor, string name = "default")
+    public void RequestByActor(Actor actor, string name = "")
     {
         activeActor = actor;
         requestEvent(name);
@@ -36,10 +35,5 @@ public class Interactable : MonoBehaviour
         }
         if (events.ContainsKey(name)) events[name].Invoke();
 
-    }
-
-    private object KeyValuePair<T1, T2>()
-    {
-        throw new NotImplementedException();
     }
 }

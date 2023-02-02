@@ -13,8 +13,8 @@ public sealed class HungerLevel : ContextualScorerBase
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        if (sated && ctx.baseParent.BasicNeeds.Hunger >= refVal) return raw ? ctx.baseParent.BasicNeeds.Hunger * .1f : score;
-        if (!sated && ctx.baseParent.BasicNeeds.Hunger <= refVal) return raw ? -ctx.baseParent.BasicNeeds.Hunger * .1f : score;
+        if (sated && ctx.baseParent.basicNeeds.Hunger >= refVal) return raw ? ctx.baseParent.basicNeeds.Hunger * .1f : score;
+        if (!sated && ctx.baseParent.basicNeeds.Hunger <= refVal) return raw ? -ctx.baseParent.basicNeeds.Hunger * .1f : score;
         return 0;
     }
 }
@@ -27,8 +27,8 @@ public sealed class ThirstLevel : ContextualScorerBase
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        if (sated && ctx.baseParent.BasicNeeds.Thirst >= refVal) return raw ? ctx.baseParent.BasicNeeds.Thirst * .1f : score;
-        if (!sated && ctx.baseParent.BasicNeeds.Thirst <= refVal) return raw ? -ctx.baseParent.BasicNeeds.Thirst * .1f : score;
+        if (sated && ctx.baseParent.basicNeeds.Thirst >= refVal) return raw ? ctx.baseParent.basicNeeds.Thirst * .1f : score;
+        if (!sated && ctx.baseParent.basicNeeds.Thirst <= refVal) return raw ? -ctx.baseParent.basicNeeds.Thirst * .1f : score;
         return 0;
     }
 }
@@ -41,8 +41,8 @@ public sealed class EmotionLevel : ContextualScorerBase
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        if (positive && ctx.baseParent.BasicNeeds.Emotion >= refVal) return raw ? ctx.baseParent.BasicNeeds.Emotion * .1f : score;
-        if (!positive && ctx.baseParent.BasicNeeds.Emotion <= refVal) return raw ? -ctx.baseParent.BasicNeeds.Emotion * .1f : score;
+        if (positive && ctx.baseParent.basicNeeds.Emotion >= refVal) return raw ? ctx.baseParent.basicNeeds.Emotion * .1f : score;
+        if (!positive && ctx.baseParent.basicNeeds.Emotion <= refVal) return raw ? -ctx.baseParent.basicNeeds.Emotion * .1f : score;
         return 0;
     }
 }
@@ -96,7 +96,7 @@ public sealed class EagerRatio : ContextualScorerBase
 public sealed class HasItemOfTypeNearBy : ContextualScorerBase
 {
     [ApexSerialization, FriendlyName("Layer Mask")] public LayerMask mask;
-    [ApexSerialization, FriendlyName("Max Distance")] public LayerMask radius;
+    [ApexSerialization, FriendlyName("Max Distance")] public float radius;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
@@ -136,7 +136,7 @@ public sealed class HasItemOfTypeInInventory : ContextualScorerBase
 
 public sealed class IsBored : ContextualScorerBase
 {
-    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.NormalBehaviour behaviour;
+    [ApexSerialization, FriendlyName("Behaviour")] public Utils.AIHelpers.NormalBehaviour behaviour;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
@@ -146,7 +146,7 @@ public sealed class IsBored : ContextualScorerBase
 
 public sealed class WhenHungry : ContextualScorerBase
 {
-    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.HungryBehaviour behaviour;
+    [ApexSerialization, FriendlyName("Behaviour")] public Utils.AIHelpers.HungryBehaviour behaviour;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
@@ -155,7 +155,7 @@ public sealed class WhenHungry : ContextualScorerBase
 }
 public sealed class WhenThirsty : ContextualScorerBase
 {
-    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.ThirstyBehaviour behaviour;
+    [ApexSerialization, FriendlyName("Behaviour")] public Utils.AIHelpers.ThirstyBehaviour behaviour;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
@@ -164,7 +164,7 @@ public sealed class WhenThirsty : ContextualScorerBase
 }
 public sealed class HealthCrtical : ContextualScorerBase
 {
-    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.LowHealthBehavior behaviour;
+    [ApexSerialization, FriendlyName("Behaviour")] public Utils.AIHelpers.LowHealthBehavior behaviour;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
@@ -173,7 +173,7 @@ public sealed class HealthCrtical : ContextualScorerBase
 }
 public sealed class SpottedAnOppenent : ContextualScorerBase
 {
-    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.OpponentSpotted behaviour;
+    [ApexSerialization, FriendlyName("Behaviour")] public Utils.AIHelpers.OpponentSpotted behaviour;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
@@ -200,3 +200,22 @@ public sealed class OpponentWeak : ContextualScorerBase
 }
 
 #endregion
+
+public sealed class HasTarget : ContextualScorerBase
+{
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        if (ctx.baseParent.target != null) return score;
+        else { ctx.baseParent.target = ctx.baseParent.lastTarget; return 0; }
+    }
+}
+
+public sealed class ActorHasAttacker : ContextualScorerBase
+{
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return ctx.baseParent.referenceActor != null ? score : 0;
+    }
+}

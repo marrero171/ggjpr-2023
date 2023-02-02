@@ -14,12 +14,12 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Food
+  - Water
+  - Soil
+  - ItemResource
+  - Throwable
+  - Town
   - 
   - 
   - 

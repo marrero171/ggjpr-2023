@@ -17,6 +17,7 @@ public class DroppedItem : Interactable
         collider = GetComponent<Collider>();
     }
 
+    private void LateUpdate() => transform.LookAt(Camera.main.transform);
     void OnEnable()
     {
         renderer.sprite = item.itemSprite;
