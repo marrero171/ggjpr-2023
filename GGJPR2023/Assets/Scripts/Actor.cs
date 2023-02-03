@@ -54,7 +54,7 @@ public abstract class Actor : MonoBehaviour
     int changeHealth
     {
         set
-        { 
+        {
             Health = Mathf.Clamp(value, 0, MaxHealth);
             Debug.Log(gameObject.name + " health changed");
             if (isPlayer) HUDAndMenu.instance.UpdateHealth();
@@ -63,8 +63,8 @@ public abstract class Actor : MonoBehaviour
         get { return Health; }
     }
     public void ApplyDamage(int dmg) => changeHealth -= dmg;
-    public void Heal(int amount) 
-    { 
+    public void Heal(int amount)
+    {
         changeHealth += amount;
         // Do pretty things or smth
     }
@@ -100,7 +100,7 @@ public abstract class Actor : MonoBehaviour
         }
         if (other.tag == "Soil") activeIntractable = other.GetComponent<Interactable>();
         if (other.name.StartsWith("DroppedItem")) activeIntractable = other.GetComponent<Interactable>();
-        if (AttackCollider.gameObject.activeInHierarchy) AttackCollider?.gameObject.SetActive(false);
+        if (AttackCollider.gameObject.activeInHierarchy) AttackOff();
     }
 
     protected Interactable FindClosestInteraction()
@@ -210,13 +210,13 @@ public abstract class Actor : MonoBehaviour
             newItem.transform.position = transform.position + new Vector3(Random.Range(-3, 3), 4, Random.Range(-3, 3));
             newItem.item = item;
             newItem.gameObject.SetActive(true);
-            
+
             RemoveItem(item, 1);
             if (!Inventory.ContainsKey(item)) return;
         }
     }
 
-    public void DropInventory() { while (Inventory.Count > 0) { DropItem(Inventory.ElementAt(0).Key, Inventory.ElementAt(0).Value); }}
+    public void DropInventory() { while (Inventory.Count > 0) { DropItem(Inventory.ElementAt(0).Key, Inventory.ElementAt(0).Value); } }
 
     public bool RemoveItem(ItemInfo item, int ammount = 1)
     {
@@ -243,12 +243,12 @@ public abstract class Actor : MonoBehaviour
     public void ScrollSelectItem(int byAmmount, bool specify = false)
     {
         if (!specify) selectedItemIndex += byAmmount;
-        else selectedItemIndex = byAmmount;
+        else if (byAmmount != -10) selectedItemIndex = byAmmount;
         print(selectedItemIndex);
         if (selectedItemIndex > 10 || selectedItemIndex > Inventory.Count - 1) selectedItemIndex = 0;
         if (selectedItemIndex == -1) selectedItemIndex = Inventory.Count - 1;
-        if (selectedItemIndex == -10) { selectedItem = null; selectedItemIndex = 0; }
-        else if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
+        if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
+        if (byAmmount == -10 && specify) { selectedItem = null; }
         else selectedItem = null;
         if (isPlayer) HUDAndMenu.instance.UpdateIcon();
     }

@@ -86,11 +86,11 @@ public class ActorWithNeeds : Actor, IContextProvider
     public void ChargeTowardsTarget() => StartCoroutine(ChargeTowardsTargetCoroutine());
     IEnumerator ChargeTowardsTargetCoroutine()
     {
-        if (AttackCollider != null && target != null)
+        if (AttackCollider != null && lastAttacker != null)
         {
-            AttackCollider.gameObject.SetActive(true);
+            AttackOn();
             navMeshAgent.speed = RunSpeed * 2;
-            navMeshAgent.SetDestination(target.position);
+            navMeshAgent.SetDestination(lastAttacker.transform.position);
             yield return new WaitUntil(() => !AttackCollider.gameObject.activeInHierarchy);
         }
         yield return null;
