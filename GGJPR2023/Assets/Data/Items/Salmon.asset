@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3861351d717fbaa47be36d20f295f5d6, type: 3}
   m_Name: Salmon
   m_EditorClassIdentifier: 
-  <itemSprite>k__BackingField: {fileID: -1155015879, guid: 0a8659abf7ac5f2a5b7f05c6538b484c, type: 3}
+  <itemSprite>k__BackingField: {fileID: 21300000, guid: 8f4957a5ea9bedf2b9c250836dd352ae, type: 3}
   <itemType>k__BackingField: 0
   <itemName>k__BackingField: Salmon
   <isEdible>k__BackingField: 1

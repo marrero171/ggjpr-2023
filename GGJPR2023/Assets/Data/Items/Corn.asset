@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3861351d717fbaa47be36d20f295f5d6, type: 3}
-  m_Name: Bannana
+  m_Name: Corn
   m_EditorClassIdentifier: 
-  <itemSprite>k__BackingField: {fileID: 21300000, guid: 6c65389d674ea8f8493a883398e10ff2, type: 3}
-  <itemType>k__BackingField: 0
-  <itemName>k__BackingField: Bannana
+  <itemSprite>k__BackingField: {fileID: 21300000, guid: 1eac4a330e8f91ab29ccca1792ca39f4, type: 3}
+  <itemType>k__BackingField: 2
+  <itemName>k__BackingField: Corn
   <isEdible>k__BackingField: 1
-  description: A Delicious Guineo. Plantable.
-  effectiveAmount: 5
-  externalReference: {fileID: 0}
+  description: 
+  effectiveAmount: 20
+  externalReference: {fileID: 11400000, guid: 4d1e34cd8e2be804ab54b947fc8019af, type: 2}

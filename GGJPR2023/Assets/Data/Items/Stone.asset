@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3861351d717fbaa47be36d20f295f5d6, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  <itemSprite>k__BackingField: {fileID: 21300000, guid: a67b58d6cddcd4345b1e001340de5a76, type: 3}
+  <itemSprite>k__BackingField: {fileID: 21300000, guid: 38236a82ff44aaa4b972248479d5f970, type: 3}
   <itemType>k__BackingField: 4
   <itemName>k__BackingField: Stone
   <isEdible>k__BackingField: 1
   description: An amazing vianda that can be turned to other things. Plantable.
-  effectiveAmount: 20
+  effectiveAmount: 1
   externalReference: {fileID: 11400000, guid: 4d1e34cd8e2be804ab54b947fc8019af, type: 2}
