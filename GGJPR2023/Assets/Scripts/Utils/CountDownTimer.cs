@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using ExtEvents;
+using UnityEngine.Events;
 
 public class CountDownTimer : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class CountDownTimer : MonoBehaviour
     {
         if (!isStopped)
         {
+
             if (timeLeft > 0 && !paused)
             {
                 timeLeft -= Time.deltaTime * timeMultiplier;

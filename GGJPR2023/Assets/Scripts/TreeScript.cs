@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEditor.Progress;
+using Utils;
 [RequireComponent(typeof(CountDownTimer))]
 [RequireComponent(typeof(BoxCollider))]
 public class TreeScript : Interactable
@@ -75,7 +76,6 @@ public class TreeScript : Interactable
     public void Harvest()
     {
         //This will drop an item and reset timers
-
     }
 
     public void TryPlanting()
@@ -105,7 +105,6 @@ public class TreeScript : Interactable
         }
     }
 
-    
     public void UpdateStage(int num = -1)
     {
         Debug.Log(num);
@@ -165,6 +164,8 @@ public class TreeScript : Interactable
 
     public void DropItem()
     {
-        //TODO
+        DroppedItem newItem = PoolingSystem.instance.GetObject(ReferenceMaster.instance.DroppedItem.gameObject).GetComponent<DroppedItem>();
+        newItem.item = plantInfo.harvestable;
+        newItem.gameObject.SetActive(true);
     }
 }
