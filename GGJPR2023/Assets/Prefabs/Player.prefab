@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988553318793754191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 95.45, y: 1.79, z: 96.8}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb64dee945deb641b5f2985948e47ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 10
   MaxHealth: 10
   Damage: 1
   interactionRadius: 3
@@ -61,8 +62,11 @@ MonoBehaviour:
   referenceActor: {fileID: 0}
   lastAttacker: {fileID: 0}
   moveDir: {x: 0, y: 0, z: 0}
+  faceDir: {x: 0, y: 0, z: 0}
   renderer: {fileID: 0}
   animator: {fileID: 0}
+  isDead: 0
+  isPlayer: 0
   speed: 10
   gravity: 9.81
   smoothInputSpeed: 0.15
