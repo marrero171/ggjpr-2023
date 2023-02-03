@@ -51,6 +51,11 @@ public class ActorWithNeeds : Actor, IContextProvider
         if (needDecreaseRate > 0) StartCoroutine(UpdateNeeds());
     }
 
+    void LateUpdate()
+    {
+        moveDir = navMeshAgent.velocity;
+        base.LateUpdate();
+    }
 
     /// <summary>
     /// Should be used at start up
@@ -77,6 +82,19 @@ public class ActorWithNeeds : Actor, IContextProvider
     }
 
     public void ChangeSpeed(bool Running = false) => navMeshAgent.speed = Running ? RunSpeed : NormalSpeed;
+
+    public void ChargeTowardsTarget() => StartCoroutine(ChargeTowardsTargetCoroutine());
+    IEnumerator ChargeTowardsTargetCoroutine()
+    {
+        if (AttackCollider != null && target != null)
+        {
+            AttackCollider.gameObject.SetActive(true);
+            navMeshAgent.speed = RunSpeed * 2;
+            navMeshAgent.SetDestination(target.position);
+            yield return new WaitUntil(() => !AttackCollider.gameObject.activeInHierarchy);
+        }
+        yield return null;
+    }
 }
 
 [System.Serializable]

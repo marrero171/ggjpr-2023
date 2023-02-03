@@ -61,9 +61,10 @@ public class PlayerController : Actor
         TryInteract();
     }
 
-    //public void OnScrollUp() => ScrollSelectItem(1);
-    //public void OnScrollDown() => ScrollSelectItem(-1);
-
+    //For Touch and/or Controlller support.
+    public void OnScrollUp() => ScrollSelectItem(1);
+    public void OnScrollDown() => ScrollSelectItem(-1);
+    //Does the same but with Mouse~
     public void OnScrollInventory(InputValue val)
     {
         if (val.Get<Vector2>().y != 0)
@@ -80,25 +81,4 @@ public class PlayerController : Actor
         if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
     }
 
-
-
-
-
-    // void TDPMovement()
-    // {
-    //     Transform Cam = Camera.main.transform;
-    //     Vector3 CamForward = Cam.forward, moveDir = Vector3.zero; //Camera Forawrd and Move Direction
-    //     Vector2 JoyDir = Vector2.zero; //Joystick Direction;
-    //     if (Cam != null) { CamForward = Vector3.Scale(Cam.forward, new Vector3(1, 0, 1)).normalized; }
-    //     //Annoying move hack
-    //     if (JoyDir.magnitude > 0) moveDir = JoyDir.y * CamForward + JoyDir.x * Cam.right;
-    //     else if (moveDir.magnitude > 0) moveDir = Vector3.zero;
-
-    //     if (moveDir.magnitude > 0)
-    //     {
-    //         // agent.Move(moveDir * Time.deltaTime * Speed); //If Using NavMeshAgent
-    //         // if (moveDir != Vector3.zero)
-    //         // transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDir, transform.up), Time.deltaTime * Speed);
-    //     }
-    // }
 }

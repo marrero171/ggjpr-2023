@@ -70,3 +70,12 @@ public sealed class ActorChangeSpeed : ActionBase
         ctx.baseParent.ChangeSpeed(Run);
     }
 }
+
+public sealed class ActorBargeAttack : ActionBase
+{
+    public override void Execute(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        ctx.baseParent.ChargeTowardsTarget();
+    }
+}

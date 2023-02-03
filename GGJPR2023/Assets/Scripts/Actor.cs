@@ -30,11 +30,11 @@ public abstract class Actor : MonoBehaviour
 
     public void Start()
     {
-        Inventory = new GenericDictionary<ItemInfo, int>();
+        if (Inventory == null) Inventory = new GenericDictionary<ItemInfo, int>();
         animator = GetComponent<Animator>();
         renderer = GetComponent<SpriteRenderer>();
     }
-    private void LateUpdate()
+    public void LateUpdate()
     {
         transform.LookAt(Camera.main.transform);
 
@@ -87,6 +87,7 @@ public abstract class Actor : MonoBehaviour
         }
         if (other.tag == "Soil") activeIntractable = other.GetComponent<Interactable>();
         if (other.name.StartsWith("DroppedItem")) activeIntractable = other.GetComponent<Interactable>();
+        if (AttackCollider.gameObject.activeInHierarchy) AttackCollider.gameObject.SetActive(false);
     }
 
     protected Interactable FindClosestInteraction()
@@ -153,11 +154,16 @@ public abstract class Actor : MonoBehaviour
         }
         if (selectedItem == null && activeIntractable != null) activeIntractable.RequestByActor(this);
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position + (faceDir * 1.5f), 1);
+    }
+
     public void ThrowProjectile()
     {
         if (selectedItem == null) return;
         AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
-        projectile.transform.position = transform.position + new Vector3(0, 2.75f, 0) + (faceDir * 1.5f);
+        projectile.transform.position = transform.position + (faceDir * 1.5f);
         projectile.refSprite = selectedItem.itemSprite;
         projectile.direction = faceDir;
         projectile.DamageAmmount = selectedItem.effectiveAmount;

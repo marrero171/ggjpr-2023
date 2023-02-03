@@ -19,13 +19,11 @@ public class HUDAndMenu : MonoBehaviour
         healthBar = doc.rootVisualElement.Q<ProgressBar>("HealthBar");
         healthBar.highValue = player.MaxHealth;
 
-
-
         itemIcon = doc.rootVisualElement.Q<VisualElement>("ActiveItemIcon");
         itemLabel = doc.rootVisualElement.Q<Label>("ActiveItemLabel");
         itemCount = doc.rootVisualElement.Q<Label>("ActiveItemCount");
-        UpdateHealth();
 
+        UpdateHealth();
         UpdateIcon();
     }
 
