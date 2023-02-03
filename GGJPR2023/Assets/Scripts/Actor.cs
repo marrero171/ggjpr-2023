@@ -122,7 +122,6 @@ public abstract class Actor : MonoBehaviour
     //Refactored
     public void TryInteract()
     {
-        if (selectedItem == null && activeIntractable != null) activeIntractable.RequestByActor(this);
         if (selectedItem != null)
         {
             switch (selectedItem.itemType)
@@ -151,6 +150,7 @@ public abstract class Actor : MonoBehaviour
                     break;
             }
         }
+        if (selectedItem == null && activeIntractable != null) activeIntractable.RequestByActor(this);
     }
     //Old For Reference
     /*
@@ -209,8 +209,13 @@ public abstract class Actor : MonoBehaviour
     }
     public void AddItem(ItemInfo item, int ammount = 1)
     {
+        print("Adding " + item.itemName);
         if (Inventory.ContainsKey(item)) Inventory[item] += ammount;
-        else Inventory.Add(item, ammount);
+        else
+        {
+            Inventory.Add(item, ammount);
+            if (!selectedItem && Inventory.Count == 1) ScrollSelectItem(1);
+        }
         if (isPlayer) HUDAndMenu.instance.UpdateIcon();
     }
 
@@ -252,12 +257,11 @@ public abstract class Actor : MonoBehaviour
     {
         if (!specify) selectedItemIndex += byAmmount;
         else selectedItemIndex = byAmmount;
+        print(selectedItemIndex);
         if (selectedItemIndex > 10 || selectedItemIndex > Inventory.Count - 1) selectedItemIndex = 0;
         if (selectedItemIndex == -1) selectedItemIndex = Inventory.Count - 1;
-        if (selectedItemIndex == -10) selectedItem = null;
-        // print(selectedItemIndex);
-        //Lazy Check, rework later?
-        if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
+        if (selectedItemIndex == -10) { selectedItem = null; selectedItemIndex = 0; }
+        else if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
         else selectedItem = null;
         if (isPlayer) HUDAndMenu.instance.UpdateIcon();
     }

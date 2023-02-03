@@ -18,6 +18,7 @@ namespace Utils
         // Start is called before the first frame update
         public PoolingSystem()
         {
+            PoolingSystem.instance = this;
             objectParent = new GameObject("Object Parent").transform;
             MasterPool = new Dictionary<GameObject, List<GameObject>>();
             EnemyPool = new List<Enemy>();

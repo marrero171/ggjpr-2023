@@ -59,8 +59,6 @@ public class PlayerController : Actor
         Debug.Log("Interacted");
         activeIntractable = FindClosestInteraction();
         TryInteract();
-        if (!selectedItem && Inventory.Count == 1)
-            ScrollSelectItem(1);
     }
 
     //public void OnScrollUp() => ScrollSelectItem(1);

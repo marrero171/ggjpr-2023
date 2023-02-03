@@ -18,14 +18,17 @@ public class DroppedItem : Interactable
     }
 
     private void LateUpdate() => transform.LookAt(Camera.main.transform);
-    void OnEnable()
+    void OnEnable() => StartCoroutine(SetDropDetails());
+    IEnumerator SetDropDetails()
     {
+        yield return new WaitUntil(() => item != null);
+        print(item.itemName);
         renderer.sprite = item.itemSprite;
         rigidbody.isKinematic = false;
         collider.isTrigger = false;
         rigidbody.AddForce(new Vector3(Random.Range(-2, 2), 8, Random.Range(-1, -5)), ForceMode.Impulse);
-    }
 
+    }
     void OnCollisionEnter(Collision other)
     {
         rigidbody.isKinematic = true;

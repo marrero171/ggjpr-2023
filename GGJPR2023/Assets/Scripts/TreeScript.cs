@@ -120,7 +120,7 @@ public class TreeScript : Interactable
             meshRenderer.material = plantInfo.stages.ElementAt(num).Value;
         }
     }
-    
+
     public void Plant()
     {
         if (isPlanted)
@@ -165,7 +165,9 @@ public class TreeScript : Interactable
     public void DropItem()
     {
         DroppedItem newItem = PoolingSystem.instance.GetObject(ReferenceMaster.instance.DroppedItem.gameObject).GetComponent<DroppedItem>();
-        newItem.item = plantInfo.harvestable;
+        newItem.transform.position = transform.position + (Vector3.up * 7.5f);
         newItem.gameObject.SetActive(true);
+        newItem.item = plantInfo.harvestable;
+
     }
 }
