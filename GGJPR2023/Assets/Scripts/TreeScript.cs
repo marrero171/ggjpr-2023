@@ -123,11 +123,12 @@ public class TreeScript : Interactable
 
     public void Plant()
     {
-        if (isPlanted)
-            return;
+        if (isPlanted) return;
 
         ItemInfo actorItem = activeActor.selectedItem;
         plantInfo = (PlantInfo)actorItem.externalReference;
+
+        if (plantInfo == null) return;
         activeActor.UseItem(actorItem);
         // Use plis
         // Debug.Log("Planting go brr");
@@ -164,10 +165,10 @@ public class TreeScript : Interactable
 
     public void DropItem()
     {
+        if (!plantInfo.harvestable) return;
         DroppedItem newItem = PoolingSystem.instance.GetObject(ReferenceMaster.instance.DroppedItem.gameObject).GetComponent<DroppedItem>();
         newItem.transform.position = transform.position + (Vector3.up * 7.5f);
         newItem.gameObject.SetActive(true);
         newItem.item = plantInfo.harvestable;
-
     }
 }

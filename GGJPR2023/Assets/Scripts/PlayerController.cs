@@ -77,8 +77,7 @@ public class PlayerController : Actor
     public override void Consume(ItemInfo item, bool useItem = true)
     {
         if (item == null) return;
-        Health += item.effectiveAmount;
+        Heal(item.effectiveAmount);
         if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
     }
-
 }

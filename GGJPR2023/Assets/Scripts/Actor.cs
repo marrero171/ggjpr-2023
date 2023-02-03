@@ -51,15 +51,28 @@ public abstract class Actor : MonoBehaviour
         Health = MaxHealth;
     }
 
-    public void ApplyDamage(int dmg)
+    int changeHealth
     {
-        Health -= dmg;
-        if (isPlayer) HUDAndMenu.instance.UpdateHealth();
+        set
+        { 
+            Health = Mathf.Clamp(value, 0, MaxHealth);
+            Debug.Log(gameObject.name + " health changed");
+            if (isPlayer) HUDAndMenu.instance.UpdateHealth();
+            if (Health == 0) { Die(); }
+        }
+        get { return Health; }
+    }
+    public void ApplyDamage(int dmg) => changeHealth -= dmg;
+    public void Heal(int amount) 
+    { 
+        changeHealth += amount;
+        // Do pretty things or smth
     }
 
-    public void Die()
+    public virtual void Die()
     {
         isDead = true;
+        DropInventory();
         gameObject.SetActive(false);
     }
 
@@ -87,7 +100,7 @@ public abstract class Actor : MonoBehaviour
         }
         if (other.tag == "Soil") activeIntractable = other.GetComponent<Interactable>();
         if (other.name.StartsWith("DroppedItem")) activeIntractable = other.GetComponent<Interactable>();
-        if (AttackCollider.gameObject.activeInHierarchy) AttackCollider.gameObject.SetActive(false);
+        if (AttackCollider.gameObject.activeInHierarchy) AttackCollider?.gameObject.SetActive(false);
     }
 
     protected Interactable FindClosestInteraction()
@@ -191,9 +204,19 @@ public abstract class Actor : MonoBehaviour
 
     public void DropItem(ItemInfo item, int amount = 1)
     {
-        RemoveItem(item, amount);
-        //TODO: Request DroppedItem from PoolManager
+        for (int i = 0; i < amount; i++)
+        {
+            DroppedItem newItem = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.DroppedItem.gameObject).GetComponent<DroppedItem>();
+            newItem.transform.position = transform.position + new Vector3(Random.Range(-3, 3), 4, Random.Range(-3, 3));
+            newItem.item = item;
+            newItem.gameObject.SetActive(true);
+            
+            RemoveItem(item, 1);
+            if (!Inventory.ContainsKey(item)) return;
+        }
     }
+
+    public void DropInventory() { while (Inventory.Count > 0) { DropItem(Inventory.ElementAt(0).Key, Inventory.ElementAt(0).Value); }}
 
     public bool RemoveItem(ItemInfo item, int ammount = 1)
     {

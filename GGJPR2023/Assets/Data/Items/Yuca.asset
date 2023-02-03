@@ -18,4 +18,4 @@ MonoBehaviour:
   <isEdible>k__BackingField: 1
   description: An amazing vianda that can be turned to other things. Plantable.
   effectiveAmount: 20
-  externalReference: {fileID: 11400000, guid: 4d1e34cd8e2be804ab54b947fc8019af, type: 2}
+  externalReference: {fileID: 11400000, guid: 81589b5cd9ae3074aba0a53e8e116d91, type: 2}
