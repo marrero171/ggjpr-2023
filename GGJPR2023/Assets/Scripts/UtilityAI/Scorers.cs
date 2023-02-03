@@ -27,7 +27,7 @@ public sealed class ThirstLevel : ContextualScorerBase
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        MonoBehaviour.print(ctx.baseParent.basicNeeds.Hunger);
+        // MonoBehaviour.print(ctx.baseParent.basicNeeds.Hunger);
         if (sated && ctx.baseParent.basicNeeds.Thirst >= refVal) return raw ? ctx.baseParent.basicNeeds.Thirst * .1f : score;
         if (!sated && ctx.baseParent.basicNeeds.Thirst <= refVal) return raw ? -ctx.baseParent.basicNeeds.Thirst * .1f : score;
         return 0;

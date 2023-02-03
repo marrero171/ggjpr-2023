@@ -15,6 +15,7 @@ MonoBehaviour:
   <itemSprite>k__BackingField: {fileID: 172298862, guid: 0a8659abf7ac5f2a5b7f05c6538b484c, type: 3}
   <itemType>k__BackingField: 1
   <itemName>k__BackingField: Water
+  <isEdible>k__BackingField: 1
   description: Water, can be dranked as well as planted.
   effectiveAmount: 5
   externalReference: {fileID: 0}
