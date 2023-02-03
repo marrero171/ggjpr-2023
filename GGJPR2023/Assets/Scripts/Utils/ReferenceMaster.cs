@@ -17,5 +17,6 @@ public class ReferenceMaster : MonoBehaviour
     {
         if (ReferenceMaster.instance != null) Destroy(gameObject);
         ReferenceMaster.instance = this;
+        if (Utils.PoolingSystem.instance == null) new Utils.PoolingSystem();
     }
 }
