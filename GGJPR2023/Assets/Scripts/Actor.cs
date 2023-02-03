@@ -100,7 +100,7 @@ public abstract class Actor : MonoBehaviour
         }
         if (other.tag == "Soil") activeIntractable = other.GetComponent<Interactable>();
         if (other.name.StartsWith("DroppedItem")) activeIntractable = other.GetComponent<Interactable>();
-        if (AttackCollider.gameObject.activeInHierarchy) AttackOff();
+        if (AttackCollider != null) AttackOff();
     }
 
     protected Interactable FindClosestInteraction()

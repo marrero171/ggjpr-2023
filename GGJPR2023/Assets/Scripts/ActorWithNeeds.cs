@@ -69,6 +69,10 @@ public class ActorWithNeeds : Actor, IContextProvider
             basicNeeds.Hunger -= needDecreaseRate;
             basicNeeds.Thirst -= needDecreaseRate;
             if (basicNeeds.Hunger < -20 || basicNeeds.Thirst < -20) basicNeeds.Emotion -= needDecreaseRate;
+            if (basicNeeds.Hunger > 50 || basicNeeds.Thirst > 80) basicNeeds.Emotion += needDecreaseRate;
+            //Is this like, Consumtion Need Nirvana?
+            if (basicNeeds.Hunger > 50 && basicNeeds.Thirst > 80 && basicNeeds.Emotion > 80 && Random.Range(0, 75) > 50) Health++;
+
         }
     }
 
@@ -78,6 +82,7 @@ public class ActorWithNeeds : Actor, IContextProvider
         Health += (int)(item.effectiveAmount / 4);
         if (item.itemType == ItemType.Food) basicNeeds.Hunger += item.effectiveAmount;
         if (item.itemType == ItemType.Water) basicNeeds.Thirst += item.effectiveAmount;
+        if (Random.Range(0, 10) > 4) Health++;
         if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
     }
 
