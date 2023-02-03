@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -319,7 +319,8 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: GrabItem
+          _persistentArguments: []
           _target: {fileID: 510261508}
           _isStatic: 0
           CallState: 2
@@ -328,12 +329,12 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: GrabItem
         Expanded: 1
     - Key: default
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: GrabItem
+          _persistentArguments: []
           _target: {fileID: 510261508}
           _isStatic: 0
           CallState: 2
@@ -342,7 +343,6 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -673,7 +673,8 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: GrabItem
+          _persistentArguments: []
           _target: {fileID: 780453183}
           _isStatic: 0
           CallState: 2
@@ -682,7 +683,6 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -818,12 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f824fc2b72b55a3a907e27354ad55f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onIsDead:
-    _persistentListeners: []
-    Expanded: 1
-  OnHealthUpdated:
-    _persistentListeners: []
-    Expanded: 1
+  Health: 10
   MaxHealth: 10
   Damage: 1
   interactionRadius: 3
@@ -840,7 +835,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   isDead: 0
   isPlayer: 0
-  health: 0
   basicNeeds:
     Hunger: 0
     Thirst: 0
@@ -1469,7 +1463,8 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: GrabItem
+          _persistentArguments: []
           _target: {fileID: 1423120862}
           _isStatic: 0
           CallState: 2
@@ -1478,7 +1473,6 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -1616,7 +1610,8 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: GrabItem
+          _persistentArguments: []
           _target: {fileID: 1465142730}
           _isStatic: 0
           CallState: 2
@@ -1625,7 +1620,6 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -1763,7 +1757,8 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: GrabItem
+          _persistentArguments: []
           _target: {fileID: 1551272781}
           _isStatic: 0
           CallState: 2
@@ -1772,7 +1767,6 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -2175,7 +2169,8 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: GrabItem
+          _persistentArguments: []
           _target: {fileID: 1748576786}
           _isStatic: 0
           CallState: 2
@@ -2184,7 +2179,6 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -2383,6 +2377,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1823812008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1823812012}
+  - component: {fileID: 1823812011}
+  - component: {fileID: 1823812010}
+  - component: {fileID: 1823812009}
+  m_Layer: 5
+  m_Name: HUDAndMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1823812009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823812008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &1823812010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823812008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c515b2c1b5549c98b2d95e3e5233763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1913493364}
+  doc: {fileID: 1823812011}
+--- !u!114 &1823812011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823812008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 26de47bc80274c723b033eebd4c9d22a, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: b16d9141a01b95728964bbe52e2c97ac, type: 3}
+  m_SortingOrder: 0
+--- !u!4 &1823812012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823812008}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839501344
 GameObject:
   m_ObjectHideFlags: 3
@@ -2542,12 +2615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb64dee945deb641b5f2985948e47ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onIsDead:
-    _persistentListeners: []
-    Expanded: 1
-  OnHealthUpdated:
-    _persistentListeners: []
-    Expanded: 1
+  Health: 10
   MaxHealth: 10
   Damage: 1
   interactionRadius: 3
@@ -2564,7 +2632,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   isDead: 0
   isPlayer: 0
-  health: 0
   speed: 10
   gravity: 9.81
   smoothInputSpeed: 0.15
@@ -2707,7 +2774,8 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: GrabItem
+          _persistentArguments: []
           _target: {fileID: 1989706785}
           _isStatic: 0
           CallState: 2
@@ -2716,7 +2784,6 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -2854,7 +2921,8 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: GrabItem
+          _persistentArguments: []
           _target: {fileID: 2109623154}
           _isStatic: 0
           CallState: 2
@@ -2863,7 +2931,6 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}

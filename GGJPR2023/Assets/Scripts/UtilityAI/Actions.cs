@@ -18,7 +18,7 @@ public sealed class ActorGetItem : ActionBase
     public override void Execute(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        ctx.baseParent.selectedItem = null;
+        ctx.baseParent.ScrollSelectItem(-10, true);
         MonoBehaviour.print("Attempting Grab");
         ctx.baseParent.TryInteract();
     }

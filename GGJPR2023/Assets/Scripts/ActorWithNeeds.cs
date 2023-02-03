@@ -46,6 +46,7 @@ public class ActorWithNeeds : Actor, IContextProvider
     {
         base.Start();
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent.updateRotation = false;
         if (needDecreaseRate > 0) StartCoroutine(UpdateNeeds());
     }
 

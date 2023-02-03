@@ -5,26 +5,39 @@ using UnityEngine.UIElements;
 
 public class HUDAndMenu : MonoBehaviour
 {
-    public Actor player;
+    public static HUDAndMenu instance;
+    public PlayerController player;
     public UIDocument doc;
 
     ProgressBar healthBar;
-    VisualElement icon;
+    VisualElement itemIcon;
+    Label itemLabel, itemCount;
 
-    IEnumerator Start()
+    void Start()
     {
-        yield return new WaitUntil(() => ReferenceMaster.instance != null);
+        HUDAndMenu.instance = this;
         healthBar = doc.rootVisualElement.Q<ProgressBar>("HealthBar");
-        icon = doc.rootVisualElement.Q<ProgressBar>("ActiveItemIcon");
+        healthBar.highValue = player.MaxHealth;
+
+
+
+        itemIcon = doc.rootVisualElement.Q<VisualElement>("ActiveItemIcon");
+        itemLabel = doc.rootVisualElement.Q<Label>("ActiveItemLabel");
+        itemCount = doc.rootVisualElement.Q<Label>("ActiveItemCount");
+        UpdateHealth();
+
+        UpdateIcon();
     }
 
-    public void UpdateHealth()
-    {
-        healthBar.value = player.Health;
-    }
+    public void UpdateHealth() { healthBar.value = player.Health; healthBar.title = player.Health + "/" + player.MaxHealth; }
 
     public void UpdateIcon()
     {
-        icon.style.backgroundImage = new StyleBackground(player.selectedItem.itemSprite);
+        itemIcon.style.backgroundImage = new StyleBackground(player.selectedItem != null ? player.selectedItem.itemSprite : null);
+        itemLabel.text = player.selectedItem != null ? player.selectedItem.itemName : string.Empty;
+        //     itemCount.text = (player.selectedItem != null) ? player.Inventory[player.selectedItem].ToString() : string.Empty;
+        if (player.selectedItem != null)
+            itemCount.text = player.Inventory[player.selectedItem].ToString();
+        else itemCount.text = string.Empty;
     }
 }

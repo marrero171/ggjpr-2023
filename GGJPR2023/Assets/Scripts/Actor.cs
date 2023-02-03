@@ -7,12 +7,10 @@ using System.Collections;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Animator))]
-public abstract class Actor : MonoBehaviour, IDamageable
+public abstract class Actor : MonoBehaviour
 {
-    public ExtEvent<bool> onIsDead;
-    public ExtEvent<int> OnHealthUpdated;
 
-    public int MaxHealth = 10, Damage = 1;
+    public int Health = 10, MaxHealth = 10, Damage = 1;
     public float interactionRadius = 3;
     public Collider AttackCollider;
     //TODO: Inventory
@@ -27,27 +25,8 @@ public abstract class Actor : MonoBehaviour, IDamageable
     [HideInInspector] public Animator animator;
     Coroutine lastAttackerCooldown;
 
-    public bool isDead = false;
-    public bool isPlayer = false;
-    [SerializeField] private int health = 0;
-    public int Health
-    {
-        get { return health; }
-        set
-        {
-            int oldHealth = health;
-            health = Mathf.Clamp(value, 0, MaxHealth);
-            if (health != oldHealth)
-            {
-                OnHealthUpdated?.Invoke(health);
-            }
-            if (health <= 0)
-            {
-                Die();
-                onIsDead?.Invoke(isPlayer);
-            }
-        }
-    }
+    [HideInInspector] public bool isDead = false;
+    [HideInInspector] public bool isPlayer = false;
 
     public void Start()
     {
@@ -74,6 +53,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
     public void ApplyDamage(int dmg)
     {
         Health -= dmg;
+        if (isPlayer) HUDAndMenu.instance.UpdateHealth();
     }
 
     public void Die()
@@ -138,90 +118,6 @@ public abstract class Actor : MonoBehaviour, IDamageable
         }
     }
 
-    // public void TryInteractV2()
-    // {
-    //     //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
-    //     if (activeIntractable && selectedItem)
-    //     {
-    //         if (activeIntractable.name.StartsWith("DroppedItem"))
-    //         {
-    //             activeIntractable.RequestByActor(this, "Grab");
-    //             return;
-    //         }
-    //         switch (selectedItem.itemType)
-    //         {
-    //             case ItemType.Food: Consume(selectedItem, true); break;
-
-    //             //Plant tree if is not planted
-    //             case ItemType.Plantable:
-    //                 if (selectedItem.isEdible)
-    //                 {
-    //                     if (activeIntractable?.tag == "Soil")
-    //                         activeIntractable?.RequestByActor(this, "Plant");
-    //                     else Consume(selectedItem, true);
-    //                 }
-    //                 else
-    //                 {
-    //                     activeIntractable?.RequestByActor(this, "Plant");
-    //                 }
-    //                 break;
-
-    //             case ItemType.Water:
-    //                 if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
-    //                 else Consume(selectedItem, true);
-    //                 break;
-
-    //             case ItemType.Resource:
-    //                 break;
-
-    //             case ItemType.Throwable: //Attack
-    //                 AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
-    //                 projectile.refSprite = selectedItem.itemSprite;
-    //                 projectile.direction = transform.forward;
-    //                 projectile.DamageAmmount = selectedItem.effectiveAmount;
-    //                 projectile.Speed = 8;
-    //                 projectile.gameObject.SetActive(true);
-    //                 break;
-
-    //             default:
-    //                 break;
-    //         }
-    //     }
-    //     else if (activeIntractable)
-    //     {
-    //         if (activeIntractable.name.StartsWith("DroppedItem"))
-    //         {
-    //             activeIntractable.RequestByActor(this, "Grab");
-    //         }
-    //         else
-    //         {
-    //             activeIntractable.RequestByActor(this);
-    //         }
-    //     }
-    //     else if (selectedItem)
-    //     {
-    //         switch (selectedItem.itemType)
-    //         {
-    //             case ItemType.Food:
-    //                 Consume(selectedItem, true);
-    //                 break;
-
-    //             case ItemType.Water:
-    //                 Consume(selectedItem, true);
-    //                 break;
-
-    //             case ItemType.Plantable:
-    //                 if (selectedItem.isEdible)
-    //                     Consume(selectedItem, true);
-    //                 break;
-
-    //             default:
-    //                 break;
-    //         }
-    //     }
-    // }
-
-
 
     //Refactored
     public void TryInteract()
@@ -238,11 +134,13 @@ public abstract class Actor : MonoBehaviour, IDamageable
                 case ItemType.Water:
                     if (activeIntractable != null)
                         if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
-                        else Consume(selectedItem, true);
+                        else activeIntractable.RequestByActor(this);
+                    else Consume(selectedItem, true);
                     break;
                 case ItemType.Plantable:
                     if (activeIntractable != null)
                         if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Plant");
+                        else activeIntractable.RequestByActor(this); //Whatever this is.
                     break;
                 case ItemType.Throwable: //Combat System Much?
                     ThrowProjectile(); //Isolated to Function as per Marrero's suggesiton.
@@ -313,6 +211,7 @@ public abstract class Actor : MonoBehaviour, IDamageable
     {
         if (Inventory.ContainsKey(item)) Inventory[item] += ammount;
         else Inventory.Add(item, ammount);
+        if (isPlayer) HUDAndMenu.instance.UpdateIcon();
     }
 
     // Uses up item (without dropping)
@@ -336,8 +235,9 @@ public abstract class Actor : MonoBehaviour, IDamageable
                 Inventory[item] -= ammount;
                 if (Inventory[item] <= 0)
                 {
-                    if (selectedItem == item) selectedItem = null;
+                    if (selectedItem == item) ScrollSelectItem(-10, true);
                     Inventory.Remove(item);
+                    if (isPlayer) HUDAndMenu.instance.UpdateIcon();
                 }
                 return true;
             }
@@ -352,10 +252,12 @@ public abstract class Actor : MonoBehaviour, IDamageable
         else selectedItemIndex = byAmmount;
         if (selectedItemIndex > 10 || selectedItemIndex > Inventory.Count - 1) selectedItemIndex = 0;
         if (selectedItemIndex < 0) selectedItemIndex = Inventory.Count - 1;
+        if (selectedItemIndex == -10) selectedItem = null;
         // print(selectedItemIndex);
         //Lazy Check, rework later?
         if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
         else selectedItem = null;
+        if (isPlayer) HUDAndMenu.instance.UpdateIcon();
     }
 
     IEnumerator SetLastAttacker(Actor attacker)

@@ -67,12 +67,13 @@ public class PlayerController : Actor
     //public void OnScrollDown() => ScrollSelectItem(-1);
 
     public void OnScrollInventory(InputValue val)
-    {if (val.Get<Vector2>().y != 0)
+    {
+        if (val.Get<Vector2>().y != 0)
         {
             ScrollSelectItem((int)Mathf.Clamp(val.Get<Vector2>().y, -1, 1));
         }
     }
-    public void OnPutAway() => selectedItem = null;
+    public void OnPutAway() => ScrollSelectItem(-10, true);
 
     public override void Consume(ItemInfo item, bool useItem = true)
     {
