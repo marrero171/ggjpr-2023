@@ -231,7 +231,10 @@ public abstract class Actor : MonoBehaviour, IDamageable
         {
             switch (selectedItem.itemType)
             {
-                case ItemType.Food: Consume(selectedItem, true); break;
+                case ItemType.Food:
+                    if (activeIntractable != null) activeIntractable.RequestByActor(this); //Whatever this is.
+                    else Consume(selectedItem, true);
+                    break;
                 case ItemType.Water:
                     if (activeIntractable != null)
                         if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");

@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class HUDAndMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Actor player;
+    public UIDocument doc;
+
+    ProgressBar healthBar;
+    VisualElement icon;
+
+    IEnumerator Start()
     {
-        
+        yield return new WaitUntil(() => ReferenceMaster.instance != null);
+        healthBar = doc.rootVisualElement.Q<ProgressBar>("HealthBar");
+        icon = doc.rootVisualElement.Q<ProgressBar>("ActiveItemIcon");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateHealth()
     {
-        
+        healthBar.value = player.Health;
+    }
+
+    public void UpdateIcon()
+    {
+        icon.style.backgroundImage = new StyleBackground(player.selectedItem.itemSprite);
     }
 }
