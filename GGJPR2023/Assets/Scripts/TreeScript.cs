@@ -1,6 +1,7 @@
 using ExtEvents;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +11,7 @@ using static UnityEditor.Progress;
 public class TreeScript : Interactable
 {
     CountDownTimer timer;
-    public SpriteRenderer treeSprite;
+    //public SpriteRenderer treeSprite;
     int growthCycles;
     int currentCycle = 0;
     [SerializeField] int waterLevel = 5;
@@ -18,6 +19,12 @@ public class TreeScript : Interactable
     bool healthy = true;
 
     public PlantInfo plantInfo;
+
+    public Mesh soilMesh;
+    public Material soilMaterial;
+
+    private MeshFilter meshFilter;
+    private MeshRenderer meshRenderer;
 
     int WaterLevel
     {
@@ -51,13 +58,18 @@ public class TreeScript : Interactable
     {
         //Grow once and start the timer
         timer = GetComponent<CountDownTimer>();
+        meshFilter = GetComponent<MeshFilter>();
+        meshRenderer = GetComponent<MeshRenderer>();
+
+        soilMesh = meshFilter.mesh;
+        soilMaterial = meshRenderer.material;
+
         timer.SetTimerProcessMode(CountDownTimer.TimerProcessMode.TIMER_PROCESS_PHYSICS);
     }
 
     void LateUpdate()
     {
-        treeSprite.transform.LookAt(Camera.main.transform);
-
+        //treeSprite.transform.LookAt(Camera.main.transform);
     }
 
     public void Harvest()
@@ -78,12 +90,12 @@ public class TreeScript : Interactable
         if (!isPlanted)
             return;
 
-        timer.StartTimer(plantInfo.cycleInfo.cycleInterval);
+        timer.StartTimer(plantInfo.cycleInterval);
         if (currentCycle < growthCycles - 1)
         {
             Debug.Log("Growing tree");
             currentCycle++;
-            UpdateSprite(currentCycle);
+            UpdateStage(currentCycle);
             Debug.Log(currentCycle);
         }
         else
@@ -93,19 +105,23 @@ public class TreeScript : Interactable
         }
     }
 
-    public void UpdateSprite(int num = -1)
+    
+    public void UpdateStage(int num = -1)
     {
+        Debug.Log(num);
         if (num < 0)
         {
-            treeSprite.sprite = null;
+            meshFilter.mesh = soilMesh;
+            meshRenderer.material = soilMaterial;
             return;
         }
-        else if (num < plantInfo.cycleInfo.plantStageSprites.Count)
+        else if (num < plantInfo.stages.Count)
         {
-            treeSprite.sprite = plantInfo.cycleInfo.plantStageSprites[currentCycle];
+            meshFilter.mesh = plantInfo.stages.ElementAt(num).Key;
+            meshRenderer.material = plantInfo.stages.ElementAt(num).Value;
         }
     }
-
+    
     public void Plant()
     {
         if (isPlanted)
@@ -115,19 +131,22 @@ public class TreeScript : Interactable
         plantInfo = (PlantInfo)actorItem.externalReference;
         activeActor.UseItem(actorItem);
         // Use plis
-        Debug.Log("Planting go brr");
+        // Debug.Log("Planting go brr");
 
-        growthCycles = plantInfo.cycleInfo.plantStageSprites.Count;
-        timer.StartTimer(plantInfo.cycleInfo.cycleInterval);
+        growthCycles = plantInfo.stages.Count;
+        timer.StartTimer(plantInfo.cycleInterval);
         currentCycle = 0;
 
-        UpdateSprite(currentCycle);
+        WaterLevel = 0;
+        waterThreshold = plantInfo.waterRequired;
+
+        UpdateStage(currentCycle);
         isPlanted = true;
     }
 
     public void KillPlant()
     {
-        UpdateSprite(-1);
+        UpdateStage(-1);
         plantInfo = null;
         isPlanted = false;
         timer.Stop();

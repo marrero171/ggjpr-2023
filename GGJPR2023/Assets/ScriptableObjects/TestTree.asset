@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4651d5761f5b9146b0857e210ea2633, type: 3}
   m_Name: TestTree
   m_EditorClassIdentifier: 
-  plantName: Yuca
-  cycleInfo:
-    plantStageSprites:
-    - {fileID: -766686204, guid: 0a8659abf7ac5f2a5b7f05c6538b484c, type: 3}
-    - {fileID: -677694105, guid: 0a8659abf7ac5f2a5b7f05c6538b484c, type: 3}
-    waterRequired: 1
-    cycleInterval: 5
-    canHarvest: 1
+  waterRequired: 3
+  cycleInterval: 3
+  stages:
+    list:
+    - Key: {fileID: -2432090755550338912, guid: 3ffa4cf287b028d409836261552dc8e5, type: 3}
+      Value: {fileID: 2100000, guid: 6f801206c0838a847b2c005812b707ef, type: 2}
+    - Key: {fileID: -2432090755550338912, guid: bd2db880e97d38b43a2d63f1575c9321, type: 3}
+      Value: {fileID: 2100000, guid: d9a04768458ea854b9c690612222e7f4, type: 2}
+    keyCollision: 0
   harvestable: {fileID: 11400000, guid: 1a080636684f8d440bebf6d244bda54c, type: 2}
