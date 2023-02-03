@@ -36,7 +36,7 @@ public class HUDAndMenu : MonoBehaviour
         itemIcon.style.backgroundImage = new StyleBackground(player.selectedItem != null ? player.selectedItem.itemSprite : null);
         itemLabel.text = player.selectedItem != null ? player.selectedItem.itemName : string.Empty;
         //     itemCount.text = (player.selectedItem != null) ? player.Inventory[player.selectedItem].ToString() : string.Empty;
-        if (player.selectedItem != null)
+        if (player.selectedItem != null && player.Inventory.ContainsKey(player.selectedItem))
             itemCount.text = player.Inventory[player.selectedItem].ToString();
         else itemCount.text = string.Empty;
     }

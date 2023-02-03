@@ -235,12 +235,14 @@ public abstract class Actor : MonoBehaviour
                 Inventory[item] -= ammount;
                 if (Inventory[item] <= 0)
                 {
-                    if (selectedItem == item) ScrollSelectItem(-10, true);
+                    print(item.name);
                     Inventory.Remove(item);
-                    if (isPlayer) HUDAndMenu.instance.UpdateIcon();
+                    if (selectedItem == item) ScrollSelectItem(-10, true);
                 }
+                if (isPlayer) HUDAndMenu.instance.UpdateIcon();
                 return true;
             }
+            if (isPlayer) HUDAndMenu.instance.UpdateIcon();
             return false;
         }
         return false;
@@ -251,7 +253,7 @@ public abstract class Actor : MonoBehaviour
         if (!specify) selectedItemIndex += byAmmount;
         else selectedItemIndex = byAmmount;
         if (selectedItemIndex > 10 || selectedItemIndex > Inventory.Count - 1) selectedItemIndex = 0;
-        if (selectedItemIndex < 0) selectedItemIndex = Inventory.Count - 1;
+        if (selectedItemIndex == -1) selectedItemIndex = Inventory.Count - 1;
         if (selectedItemIndex == -10) selectedItem = null;
         // print(selectedItemIndex);
         //Lazy Check, rework later?
