@@ -20,7 +20,7 @@ public abstract class Actor : MonoBehaviour
     public ItemInfo selectedItem = null;
     int selectedItemIndex = 0;
     [HideInInspector] public Actor referenceActor, lastAttacker;
-    [HideInInspector] public Vector3 moveDir = Vector3.zero;
+    [HideInInspector] public Vector3 moveDir = Vector3.zero, faceDir = Vector3.zero;
     [HideInInspector] public SpriteRenderer renderer;
     [HideInInspector] public Animator animator;
     Coroutine lastAttackerCooldown;
@@ -40,6 +40,7 @@ public abstract class Actor : MonoBehaviour
 
         if (Mathf.Abs(moveDir.x) >= 0.1f)
             renderer.flipX = moveDir.x > 0;
+        if (moveDir.magnitude > .9f) faceDir = moveDir;
         // animator.SetFloat("DirX", moveDir.x);
         // animator.SetFloat("DirZ", moveDir.z);
     }
@@ -152,58 +153,15 @@ public abstract class Actor : MonoBehaviour
         }
         if (selectedItem == null && activeIntractable != null) activeIntractable.RequestByActor(this);
     }
-    //Old For Reference
-    /*
-    public void aTryInteract()
-    {
-        //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
-        if (activeIntractable && selectedItem)
-        {
-            switch (selectedItem.itemType)
-            {
-                case ItemType.Food: Consume(selectedItem, true); break;
-
-                //Plant tree if is not planted
-                case ItemType.Plantable:
-                    if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Plant");
-                    break;
-
-                case ItemType.Water:
-                    if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
-                    else Consume(selectedItem, true);
-                    break;
-
-                case ItemType.Resource:
-                    break;
-                case ItemType.Throwable: //Attack
-                    AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
-                    projectile.refSprite = selectedItem.itemSprite;
-                    projectile.direction = transform.forward;
-                    projectile.DamageAmmount = selectedItem.effectiveAmount;
-                    projectile.Speed = 8;
-                    projectile.gameObject.SetActive(true);
-                    break;
-
-                default:
-                    activeIntractable.RequestByActor(this);
-                    break;
-            }
-        }
-        else
-        {
-            activeIntractable?.RequestByActor(this);
-        }
-
-    }
-    */
     public void ThrowProjectile()
     {
         if (selectedItem == null) return;
         AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
+        projectile.transform.position = transform.position + new Vector3(0, 2.75f, 0) + (faceDir * 1.5f);
         projectile.refSprite = selectedItem.itemSprite;
-        projectile.direction = transform.forward;
+        projectile.direction = faceDir;
         projectile.DamageAmmount = selectedItem.effectiveAmount;
-        projectile.Speed = 8; //TODO: Look for speed.
+        projectile.Speed = 70; //TODO: Look for speed.
         projectile.gameObject.SetActive(true);
 
     }

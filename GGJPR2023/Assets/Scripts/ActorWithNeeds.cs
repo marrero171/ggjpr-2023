@@ -9,6 +9,7 @@ using Apex.AI.Components;
 [RequireComponent(typeof(UtilityAIComponent))]
 public class ActorWithNeeds : Actor, IContextProvider
 {
+    public float NormalSpeed = 4, RunSpeed = 8;
     [Header("Needs")]
     public BaseNeeds basicNeeds;
 
@@ -39,7 +40,7 @@ public class ActorWithNeeds : Actor, IContextProvider
     public void OnEnable()
     {
         ctx = new NeedyActorContext(this);
-        print(ctx);
+        // print(ctx);
     }
 
     public new void Start()
@@ -49,6 +50,7 @@ public class ActorWithNeeds : Actor, IContextProvider
         navMeshAgent.updateRotation = false;
         if (needDecreaseRate > 0) StartCoroutine(UpdateNeeds());
     }
+
 
     /// <summary>
     /// Should be used at start up
@@ -61,10 +63,9 @@ public class ActorWithNeeds : Actor, IContextProvider
             yield return new WaitForSeconds(1);
             basicNeeds.Hunger -= needDecreaseRate;
             basicNeeds.Thirst -= needDecreaseRate;
-            // Emotion-=needDecreaseRate;
+            if (basicNeeds.Hunger < -20 || basicNeeds.Thirst < -20) basicNeeds.Emotion -= needDecreaseRate;
         }
     }
-
 
     public override void Consume(ItemInfo item, bool useItem = true)
     {
@@ -75,6 +76,7 @@ public class ActorWithNeeds : Actor, IContextProvider
         if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
     }
 
+    public void ChangeSpeed(bool Running = false) => navMeshAgent.speed = Running ? RunSpeed : NormalSpeed;
 }
 
 [System.Serializable]

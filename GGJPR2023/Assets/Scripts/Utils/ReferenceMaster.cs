@@ -10,9 +10,6 @@ public class ReferenceMaster : MonoBehaviour
     public AttackProjectile Projectile;
     public PlayerController player;
 
-
-
-
     void Start()
     {
         if (ReferenceMaster.instance != null) Destroy(gameObject);

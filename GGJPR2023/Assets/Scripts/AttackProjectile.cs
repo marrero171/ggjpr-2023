@@ -22,6 +22,8 @@ public class AttackProjectile : MonoBehaviour
     private void LateUpdate() => transform.LookAt(Camera.main.transform);
     void OnEnable()
     {
+        if (renderer == null) renderer = GetComponent<SpriteRenderer>();
+        if (rigidbody == null) rigidbody = GetComponent<Rigidbody>();
         renderer.sprite = refSprite;
         renderer.flipX = direction.x > 0 ? true : false;
         renderer.flipY = direction.z > 0 ? true : false;

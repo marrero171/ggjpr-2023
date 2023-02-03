@@ -7,14 +7,18 @@ public class HomeArea : MonoBehaviour
 {
     Collider collider;
     public Actor spawnableActor;
-    public int maxCount;
+    public int maxCount = 20;
+    // public int StartingCount = 10;
     public bool isVillage = false;
+    [HideInInspector] public Vector3 min, max;
     public List<Actor> actors;
     void Start()
     {
         collider = GetComponent<Collider>();
         actors = new List<Actor>();
-        for (int i = 0; i < Random.Range(1, maxCount / 2); i++) RequestNewActor();
+        min = new Vector3(-collider.bounds.extents.x, -collider.bounds.extents.y, -collider.bounds.extents.z);
+        max = new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, collider.bounds.extents.z);
+        for (int i = 0; i < Random.Range(1, maxCount / 4); i++) RequestNewActor();
     }
 
     public void RequestNewActor()
@@ -27,9 +31,10 @@ public class HomeArea : MonoBehaviour
         }
         Vector3 pos = transform.position;
         Vector3 bounds = collider.bounds.extents;
-        actor.transform.position = new Vector3(pos.x + Random.Range(-bounds.x, bounds.x),
-                                             pos.y + 3,
-                                             pos.z + Random.Range(-bounds.z, bounds.z));
+        actor.transform.position = GetPointWithintBounds();
+        // actor.transform.position = new Vector3(pos.x + Random.Range(-bounds.x, bounds.x),
+        //                                      pos.y + 3,
+        //                                      pos.z + Random.Range(-bounds.z, bounds.z));
         if (isVillage)
         {
             var villager = (Villager)actor;
@@ -38,7 +43,23 @@ public class HomeArea : MonoBehaviour
         }
     }
 
+    public Vector3 GetPointWithintBounds()
+    {
+        Vector3 pos = transform.position;
+        return new Vector3(pos.x + Random.Range(min.x, max.x),
+                            pos.y + 3,
+                            pos.z + Random.Range(min.z, max.z));
+    }
 
-
+    public Vector3 GetOverallCulture()
+    {
+        Vector3 BehaviourVector = Vector3.zero;
+        if (!isVillage) return BehaviourVector;
+        actors.ForEach(actor =>
+        {
+            BehaviourVector += ((Villager)actor).BehaviorVector;
+        });
+        return BehaviourVector;
+    }
 
 }
