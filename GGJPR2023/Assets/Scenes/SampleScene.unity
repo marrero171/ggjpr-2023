@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 85c3f17275a638fa1bbaef9f66627bb8, type: 2}
+--- !u!1 &167928518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2315637760806357467, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+  m_PrefabInstance: {fileID: 2315637760459342196}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &211841672
 GameObject:
   m_ObjectHideFlags: 3
@@ -255,12 +260,28 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2315637760806357441, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
   m_PrefabInstance: {fileID: 2315637760459342196}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 167928518}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f5ca276004491499aa45154b83827d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &456768603
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167928518}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.5330001, y: 0.28100002, z: 1.5330001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: -0.011000001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &510261507
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,8 +673,7 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 780453183}
           _isStatic: 0
           CallState: 2
@@ -662,6 +682,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -760,7 +781,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1 &847165606
 GameObject:
@@ -784,7 +805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &847165607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1073,7 +1094,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.2989194, y: 0.00000003283936, z: -0.0000000102866435, w: 0.95427835}
+  m_LocalRotation: {x: 0.2989194, y: -0.00000003283936, z: 0.0000000102866435, w: 0.95427835}
   m_LocalPosition: {x: 0, y: 16.79, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1448,8 +1469,7 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 1423120862}
           _isStatic: 0
           CallState: 2
@@ -1458,6 +1478,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -1556,7 +1577,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1 &1465142729
 GameObject:
@@ -1595,8 +1616,7 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 1465142730}
           _isStatic: 0
           CallState: 2
@@ -1605,6 +1625,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -1703,7 +1724,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1 &1551272780
 GameObject:
@@ -1742,8 +1763,7 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 1551272781}
           _isStatic: 0
           CallState: 2
@@ -1752,6 +1772,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -1850,7 +1871,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1 &1696933387
 GameObject:
@@ -2108,7 +2129,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714356935}
-  m_LocalRotation: {x: -0.17978515, y: 0.000000012136416, z: -0.000000012197006, w: 0.9837059}
+  m_LocalRotation: {x: -0.17978515, y: -0.000000012136416, z: 0.000000012197006, w: 0.9837059}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2154,8 +2175,7 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 1748576786}
           _isStatic: 0
           CallState: 2
@@ -2164,6 +2184,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -2262,7 +2283,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1 &1789232854
 GameObject:
@@ -2686,8 +2707,7 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 1989706785}
           _isStatic: 0
           CallState: 2
@@ -2696,6 +2716,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -2833,8 +2854,7 @@ MonoBehaviour:
     - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 2109623154}
           _isStatic: 0
           CallState: 2
@@ -2843,6 +2863,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -2941,7 +2962,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1001 &2315637760459342196
 PrefabInstance:
@@ -2955,12 +2976,24 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2315637760806357440, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357440, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357440, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357440, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.95
       objectReference: {fileID: 0}
     - target: {fileID: 2315637760806357440, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2315637760806357440, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3042,6 +3075,30 @@ PrefabInstance:
       propertyPath: events.list.Array.data[2].Value._persistentListeners.Array.data[0]._methodName
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357445, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: m_Size.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357445, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: m_Size.y
+      value: 3.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357445, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: m_Size.z
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357445, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2315637760806357446, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e3d34bd9547b604db623f95eea455b2, type: 2}
+    - target: {fileID: 2315637760806357447, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: 7a750de1a3aca4145965c970ab1afcac, type: 3}
     - target: {fileID: 2315637760806357467, guid: bb15ab688ee93a04dbef71a245a840e3, type: 3}
       propertyPath: m_Name
       value: TreeHolder

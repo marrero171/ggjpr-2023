@@ -5,17 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlantInfo", menuName = "General/Plant Info")]
 public class PlantInfo : ScriptableObject
 {
-    public string plantName;
-    public PlantLifeCycle cycleInfo;
+    public int waterRequired = 5;
+    public float cycleInterval = 300;
+    [Tooltip("Add Meshes for each stage")]
+    public GenericDictionary<Mesh, Material> stages;
+
     public ItemInfo harvestable;
 }
 
-[System.Serializable]
-public class PlantLifeCycle
-{
-    [Tooltip("Add sprites for each stage")]
-    public List<Sprite> plantStageSprites;
-    public int waterRequired = 1;
-    public float cycleInterval = 300;
-    public bool canHarvest = false;
-}
