@@ -138,85 +138,119 @@ public abstract class Actor : MonoBehaviour, IDamageable
         }
     }
 
+    // public void TryInteractV2()
+    // {
+    //     //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
+    //     if (activeIntractable && selectedItem)
+    //     {
+    //         if (activeIntractable.name.StartsWith("DroppedItem"))
+    //         {
+    //             activeIntractable.RequestByActor(this, "Grab");
+    //             return;
+    //         }
+    //         switch (selectedItem.itemType)
+    //         {
+    //             case ItemType.Food: Consume(selectedItem, true); break;
+
+    //             //Plant tree if is not planted
+    //             case ItemType.Plantable:
+    //                 if (selectedItem.isEdible)
+    //                 {
+    //                     if (activeIntractable?.tag == "Soil")
+    //                         activeIntractable?.RequestByActor(this, "Plant");
+    //                     else Consume(selectedItem, true);
+    //                 }
+    //                 else
+    //                 {
+    //                     activeIntractable?.RequestByActor(this, "Plant");
+    //                 }
+    //                 break;
+
+    //             case ItemType.Water:
+    //                 if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
+    //                 else Consume(selectedItem, true);
+    //                 break;
+
+    //             case ItemType.Resource:
+    //                 break;
+
+    //             case ItemType.Throwable: //Attack
+    //                 AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
+    //                 projectile.refSprite = selectedItem.itemSprite;
+    //                 projectile.direction = transform.forward;
+    //                 projectile.DamageAmmount = selectedItem.effectiveAmount;
+    //                 projectile.Speed = 8;
+    //                 projectile.gameObject.SetActive(true);
+    //                 break;
+
+    //             default:
+    //                 break;
+    //         }
+    //     }
+    //     else if (activeIntractable)
+    //     {
+    //         if (activeIntractable.name.StartsWith("DroppedItem"))
+    //         {
+    //             activeIntractable.RequestByActor(this, "Grab");
+    //         }
+    //         else
+    //         {
+    //             activeIntractable.RequestByActor(this);
+    //         }
+    //     }
+    //     else if (selectedItem)
+    //     {
+    //         switch (selectedItem.itemType)
+    //         {
+    //             case ItemType.Food:
+    //                 Consume(selectedItem, true);
+    //                 break;
+
+    //             case ItemType.Water:
+    //                 Consume(selectedItem, true);
+    //                 break;
+
+    //             case ItemType.Plantable:
+    //                 if (selectedItem.isEdible)
+    //                     Consume(selectedItem, true);
+    //                 break;
+
+    //             default:
+    //                 break;
+    //         }
+    //     }
+    // }
+
+
+
+    //Refactored
     public void TryInteract()
     {
-        //if (activeIntractable != null) activeIntractable.RequestByActor(ev, this);
-        if (activeIntractable && selectedItem)
+        if (selectedItem == null && activeIntractable != null) activeIntractable.RequestByActor(this);
+        if (selectedItem != null)
         {
-            if (activeIntractable.name.StartsWith("DroppedItem"))
-            {
-                activeIntractable.RequestByActor(this, "Grab");
-                return;
-            }
             switch (selectedItem.itemType)
             {
                 case ItemType.Food: Consume(selectedItem, true); break;
-
-                //Plant tree if is not planted
-                case ItemType.Plantable:
-                    if (selectedItem.isEdible)
-                    {
-                        if (activeIntractable?.tag == "Soil")
-                            activeIntractable?.RequestByActor(this, "Plant");
+                case ItemType.Water:
+                    if (activeIntractable != null)
+                        if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
                         else Consume(selectedItem, true);
-                    } else
-                    {
-                        activeIntractable?.RequestByActor(this, "Plant");
-                    }
                     break;
-
-                case ItemType.Water:
-                    if (activeIntractable?.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
-                    else Consume(selectedItem, true);
+                case ItemType.Plantable:
+                    if (activeIntractable != null)
+                        if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Plant");
                     break;
-
-                case ItemType.Resource:
+                case ItemType.Throwable: //Combat System Much?
+                    ThrowProjectile(); //Isolated to Function as per Marrero's suggesiton.
                     break;
-
-                case ItemType.Throwable: //Attack
-                    AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
-                    projectile.refSprite = selectedItem.itemSprite;
-                    projectile.direction = transform.forward;
-                    projectile.DamageAmmount = selectedItem.effectiveAmount;
-                    projectile.Speed = 8;
-                    projectile.gameObject.SetActive(true);
-                    break;
-
-                default:
-                    break;
-            }
-        } else if (activeIntractable)
-        {
-            if (activeIntractable.name.StartsWith("DroppedItem"))
-            {
-                activeIntractable.RequestByActor(this, "Grab");
-            } else
-            {
-                activeIntractable.RequestByActor(this);
-            }
-        } else if (selectedItem)
-        {
-            switch (selectedItem.itemType)
-            {
-                case ItemType.Food:
-                    Consume(selectedItem, true);
-                    break;
-
-                case ItemType.Water:
-                    Consume(selectedItem, true);
-                    break;
-
-                case ItemType.Plantable: 
-                    if (selectedItem.isEdible)
-                        Consume(selectedItem, true);
-                    break;
-
-                default:
+                case ItemType.Resource: //What do?
+                default: //Ignore everything and just grab.
+                    if (activeIntractable != null) activeIntractable.RequestByActor(this);
                     break;
             }
         }
     }
-
     //Old For Reference
     /*
     public void aTryInteract()
@@ -261,6 +295,17 @@ public abstract class Actor : MonoBehaviour, IDamageable
 
     }
     */
+    public void ThrowProjectile()
+    {
+        if (selectedItem == null) return;
+        AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
+        projectile.refSprite = selectedItem.itemSprite;
+        projectile.direction = transform.forward;
+        projectile.DamageAmmount = selectedItem.effectiveAmount;
+        projectile.Speed = 8; //TODO: Look for speed.
+        projectile.gameObject.SetActive(true);
+
+    }
     public void AddItem(ItemInfo item, int ammount = 1)
     {
         if (Inventory.ContainsKey(item)) Inventory[item] += ammount;
