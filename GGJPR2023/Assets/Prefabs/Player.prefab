@@ -67,9 +67,14 @@ MonoBehaviour:
   animator: {fileID: 0}
   isDead: 0
   isPlayer: 0
+  defaultDrop: {fileID: 0}
+  maxDrops: 1
   speed: 10
   gravity: 9.81
   smoothInputSpeed: 0.15
+  layersToDetect:
+    serializedVersion: 2
+    m_Bits: 49408
 --- !u!143 &988553318793754184
 CharacterController:
   m_ObjectHideFlags: 0

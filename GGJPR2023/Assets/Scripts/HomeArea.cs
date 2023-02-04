@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class HomeArea : MonoBehaviour
 {
-    Collider collider;
+    public Collider bounds;
     public Actor spawnableActor;
     public int maxCount = 20;
     // public int StartingCount = 10;
@@ -14,10 +14,10 @@ public class HomeArea : MonoBehaviour
     public List<Actor> actors;
     void Start()
     {
-        collider = GetComponent<Collider>();
+        bounds = GetComponent<Collider>();
         actors = new List<Actor>();
-        min = new Vector3(-collider.bounds.extents.x, -collider.bounds.extents.y, -collider.bounds.extents.z);
-        max = new Vector3(collider.bounds.extents.x, collider.bounds.extents.y, collider.bounds.extents.z);
+        min = new Vector3(-bounds.bounds.extents.x, -bounds.bounds.extents.y, -bounds.bounds.extents.z);
+        max = new Vector3(bounds.bounds.extents.x, bounds.bounds.extents.y, bounds.bounds.extents.z);
         for (int i = 0; i < Random.Range(1, maxCount / 4); i++) RequestNewActor();
     }
 
@@ -30,7 +30,7 @@ public class HomeArea : MonoBehaviour
             actor = Instantiate(spawnableActor);
         }
         Vector3 pos = transform.position;
-        Vector3 bounds = collider.bounds.extents;
+        Vector3 boundary = bounds.bounds.extents;
         actor.transform.position = GetPointWithintBounds();
         // actor.transform.position = new Vector3(pos.x + Random.Range(-bounds.x, bounds.x),
         //                                      pos.y + 3,

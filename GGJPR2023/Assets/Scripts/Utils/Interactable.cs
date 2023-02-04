@@ -25,7 +25,7 @@ public class Interactable : MonoBehaviour
     /// Will look for an event and fire it up
     /// </summary>
     /// <param name="name">name of event</param>
-    public void requestEvent(string name = "")
+    public void requestEvent(string name = "default")
     {
         print("Requesting " + name);
         if (System.String.IsNullOrEmpty(name))
