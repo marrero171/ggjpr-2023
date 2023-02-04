@@ -22,17 +22,27 @@ public class DroppedItem : Interactable
     IEnumerator SetDropDetails()
     {
         yield return new WaitUntil(() => item != null);
-        print(item.itemName);
         renderer.sprite = item.itemSprite;
+        switch (item.itemType)
+        {
+            case ItemType.Food: gameObject.layer = LayerMask.NameToLayer("Food"); break;
+            case ItemType.Throwable: gameObject.layer = LayerMask.NameToLayer("Throwable"); break;
+            case ItemType.Plantable: gameObject.layer = LayerMask.NameToLayer("Plants"); break;
+            case ItemType.Water: gameObject.layer = LayerMask.NameToLayer("Water"); break;
+            case ItemType.Resource: gameObject.layer = LayerMask.NameToLayer("Resources"); break;
+        }
         rigidbody.isKinematic = false;
         collider.isTrigger = false;
-        rigidbody.AddForce(new Vector3(Random.Range(-2, 2), 8, Random.Range(-1, -5)), ForceMode.Impulse);
+        rigidbody.AddForce(new Vector3(Random.Range(-2, 2), 8, Random.Range(-2, 2)), ForceMode.VelocityChange);
 
     }
     void OnCollisionEnter(Collision other)
     {
-        rigidbody.isKinematic = true;
-        collider.isTrigger = true;
+        if (other.gameObject.layer == LayerMask.NameToLayer("Floor"))
+        {
+            rigidbody.isKinematic = true;
+            collider.isTrigger = true;
+        }
     }
 
     public void GrabItem()

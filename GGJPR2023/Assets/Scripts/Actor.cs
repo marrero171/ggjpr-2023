@@ -218,7 +218,7 @@ public abstract class Actor : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             DroppedItem newItem = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.DroppedItem.gameObject).GetComponent<DroppedItem>();
-            newItem.transform.position = transform.position + new Vector3(Random.Range(-3, 3), 4, Random.Range(-3, 3));
+            newItem.transform.position = transform.position + new Vector3(Random.Range(-1, 1), 1, Random.Range(-1, 1));
             newItem.item = item;
             newItem.gameObject.SetActive(true);
         }
@@ -256,8 +256,8 @@ public abstract class Actor : MonoBehaviour
         if (selectedItemIndex > 10 || selectedItemIndex > Inventory.Count - 1) selectedItemIndex = 0;
         if (selectedItemIndex == -1) selectedItemIndex = Inventory.Count - 1;
         if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
-        if (byAmmount == -10 && specify) { selectedItem = null; }
         else selectedItem = null;
+        if (byAmmount == -10 && specify) { selectedItem = null; }
         if (isPlayer) HUDAndMenu.instance.UpdateIcon();
     }
 

@@ -8,6 +8,9 @@ TagManager:
   - Water
   - Soil
   - HitCollider
+  - Plants
+  - Resources
+  - Throwables
   layers:
   - Default
   - TransparentFX
@@ -18,13 +21,13 @@ TagManager:
   - Food
   - Water
   - Soil
-  - ItemResource
+  - Resources
   - Throwable
   - Town
-  - 
-  - 
-  - 
-  - 
+  - Plantable
+  - ModSpawnArea
+  - Floor
+  - Plants
   - 
   - 
   - 

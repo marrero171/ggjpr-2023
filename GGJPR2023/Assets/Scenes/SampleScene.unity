@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 127824688}
   - component: {fileID: 127824687}
   m_Layer: 0
-  m_Name: My Only Purpose is to Hurt you. Why?
+  m_Name: The Void
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
               SerializationNodes:
               - Name: 
                 Entry: 3
-                Data: 2
+                Data: 10
               Bytes: 
             _canBeDynamic: 0
             _serializedArg: 
@@ -913,7 +913,7 @@ GameObject:
   - component: {fileID: 1789232857}
   - component: {fileID: 1789232856}
   - component: {fileID: 1789232855}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
