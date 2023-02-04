@@ -72,6 +72,13 @@ public class PlayerController : Actor
         // UseItem(selectedItem); //No need to remove item
     }
 
+    public void OnDrop()
+    {
+        if (!selectedItem) return;
+        DropItem(selectedItem);
+    }
+
+
     //For Touch and/or Controller support. (Not needed hopefully)
     //public void OnScrollUp() => ScrollSelectItem(1);
     //public void OnScrollDown() => ScrollSelectItem(-1);

@@ -11,6 +11,8 @@ using Utils;
 [RequireComponent(typeof(BoxCollider))]
 public class TreeScript : Interactable
 {
+    [Tooltip("Can be used for decor trees or smth")]
+    public bool canDie = true;
     CountDownTimer timer;
     //public SpriteRenderer treeSprite;
     int growthCycles;
