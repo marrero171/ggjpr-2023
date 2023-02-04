@@ -100,3 +100,29 @@ public sealed class VillagerCallForAid : ActionBase
         ctx.villager.RequestHelp(type);
     }
 }
+
+public sealed class VillagerGoHome : ActionBase
+{
+    public override void Execute(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        ctx.baseParent.navMeshAgent.SetDestination(ctx.villager.home.transform.position);
+    }
+}
+
+public sealed class VillagerGoToPlayer : ActionBase
+{
+    public override void Execute(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        ctx.baseParent.navMeshAgent.SetDestination(ReferenceMaster.instance.player.transform.position);
+    }
+}
+public sealed class VillagerGoToRequester : ActionBase
+{
+    public override void Execute(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        ctx.baseParent.navMeshAgent.SetDestination(ctx.villager.referenceActor.transform.position);
+    }
+}

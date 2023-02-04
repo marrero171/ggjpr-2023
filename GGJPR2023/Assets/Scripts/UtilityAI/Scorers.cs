@@ -122,12 +122,13 @@ public sealed class HasItemOfTypeNearBy : ContextualScorerBase
 public sealed class HasItemOfTypeInInventory : ContextualScorerBase
 {
     [ApexSerialization, FriendlyName("Item Type")] public ItemType type;
+    [ApexSerialization, FriendlyName("Reversable")] public bool reversable;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
         ItemInfo item = ctx.baseParent.Inventory.Where(it => it.Key.itemType == type).FirstOrDefault().Key;
         ctx.baseParent.selectedItem = item;
-        return item == null ? 0 : score;
+        return item == null ? (reversable ? score : 0) : (reversable ? 0 : score);
     }
 
 }
@@ -237,12 +238,14 @@ public sealed class ActorHasReferenceActor : ContextualScorerBase
 
 public sealed class ActorIsInHomeArea : ContextualScorerBase
 {
+    [ApexSerialization, FriendlyName("Invert")] public bool reversable;
     public override float Score(IAIContext context)
     {
+
         NeedyActorContext ctx = (NeedyActorContext)context;
         if (ctx.baseParent.home != null)
         {
-            return ctx.baseParent.home.bounds.bounds.Contains(ctx.baseParent.transform.position) ? score : 0;
+            return ctx.baseParent.home.bounds.bounds.Contains(ctx.baseParent.transform.position) ? (reversable ? 0 : score) : (reversable ? score : 0);
         }
         return 0;
     }
@@ -305,6 +308,50 @@ public sealed class VillagerHasRequestItemNearBy : ContextualScorerBase
         {
             ctx.baseParent.lastTarget = ctx.baseParent.target;
             ctx.baseParent.target = curr;
+            return score;
+        }
+        return 0;
+    }
+}
+public sealed class VillagerCloseToRequester : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Distance")] public int dist = 50;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return Vector3.Distance(ctx.baseParent.transform.position, ctx.villager.referenceActor.transform.position) <= dist ? score : 0;
+    }
+}
+
+public sealed class ActorCanSeeAttacker : ContextualScorerBase
+{
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return Physics.Linecast(ctx.baseParent.transform.position, ctx.baseParent.target.position) ? 0 : score;
+
+    }
+}
+
+public sealed class ActorCanSeeActorOfType : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Layer Mask")] public LayerMask mask;
+    [ApexSerialization, FriendlyName("Max Distance")] public float radius;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        Collider[] hits = Physics.OverlapSphere(ctx.baseParent.transform.position, radius, mask);
+        Transform curr = null;
+        float lastDist = radius * 2, dist = lastDist;
+        hits.ToList().ForEach(hit =>
+        {
+            dist = Vector3.Distance(ctx.baseParent.transform.position, hit.transform.position);
+            if (dist < lastDist) { lastDist = dist; curr = hit.transform; }
+        });
+        if (curr != null)
+        {
+            try { ctx.baseParent.lastAttacker = curr.GetComponent<Actor>(); }
+            catch { return 0; }
             return score;
         }
         return 0;

@@ -103,7 +103,7 @@ public abstract class Actor : MonoBehaviour
                 AttackProjectile projectile = other.GetComponent<AttackProjectile>();
                 if (projectile.attacker == this) return;
                 ApplyDamage(projectile.DamageAmmount);
-                lastAttackerCooldown = StartCoroutine(SetLastAttacker(projectile.attacker));
+                if (Health > 0) lastAttackerCooldown = StartCoroutine(SetLastAttacker(projectile.attacker));
             }
         }
         if (other.tag == "Soil") activeIntractable = other.GetComponent<Interactable>();
