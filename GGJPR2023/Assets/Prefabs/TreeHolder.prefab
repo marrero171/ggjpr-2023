@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2315637760806357447}
   - component: {fileID: 2315637760806357446}
   - component: {fileID: 2315637760806357445}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TreeHolder
   m_TagString: Soil
   m_Icon: {fileID: 0}
@@ -58,7 +58,8 @@ MonoBehaviour:
     - Key: Plant
       Value:
         _persistentListeners:
-        - _persistentArguments: []
+        - _methodName: Plant
+          _persistentArguments: []
           _target: {fileID: 2315637760806357441}
           _isStatic: 0
           CallState: 2
@@ -67,7 +68,6 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: Plant
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
@@ -91,7 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onTimeout:
     _persistentListeners:
-    - _persistentArguments: []
+    - _methodName: Grow
+      _persistentArguments: []
       _target: {fileID: 2315637760806357441}
       _isStatic: 0
       CallState: 2
@@ -100,7 +101,6 @@ MonoBehaviour:
         GUID: 
         _typeNameAndAssembly: 
         _suppressLogs: 0
-      _methodName: Grow
     Expanded: 1
   waitTime: 1
   autostart: 0
@@ -181,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2315637761009645246}
   - component: {fileID: 2315637761009645247}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TreeRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
