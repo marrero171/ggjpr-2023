@@ -76,7 +76,7 @@ public abstract class Actor : MonoBehaviour
     {
         isDead = true;
         DropInventory();
-        if (defaultDrop) SpawnItem(defaultDrop, Random.Range(0, maxDrops));
+        if (defaultDrop) SpawnItem(defaultDrop, Random.Range(0, maxDrops + 1));
         if (!isPlayer) gameObject.SetActive(false);
     }
 
