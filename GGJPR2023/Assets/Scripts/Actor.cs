@@ -250,6 +250,7 @@ public abstract class Actor : MonoBehaviour
 
     public void ScrollSelectItem(int byAmmount, bool specify = false)
     {
+        if (Inventory == null && Inventory.Count == 0) return;
         if (!specify) selectedItemIndex += byAmmount;
         else if (byAmmount != -10) selectedItemIndex = byAmmount;
         print(selectedItemIndex);
