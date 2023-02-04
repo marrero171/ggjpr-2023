@@ -16,7 +16,7 @@ public class Villager : ActorWithNeeds
     [Tooltip("Rude/Kind | Rush/Steady | Lazy/Eager")]
     public Vector3 BehaviorVector = Vector3.zero;
     public int Age = 0, maxAge = 50;
-    public new VillagerContext ctx;
+    // public new VillagerContext ctx;
     public VillagerRequest request = null;
 
     Coroutine reqExp;
@@ -24,7 +24,7 @@ public class Villager : ActorWithNeeds
 
     public new void OnEnable()
     {
-        ctx = new VillagerContext(this);
+        ctx = new NeedyActorContext(this, this);
         Age = 0;
         StartCoroutine(AgingCoroutine());
     }

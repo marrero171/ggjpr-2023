@@ -22,7 +22,8 @@ MonoBehaviour:
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":1dcbd4a8c606440ca9b86dfe2f02cf73},"_scorers":[{"@type":"ThirstLevel,
     Assembly-CSharp","refVal":15,"sated":false,"raw":false,"score":8}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":e0ae7b50b1744e04a55fd23b6289ad96},"_scorers":[{"@type":"ActorHasAttacker,
-    Assembly-CSharp","score":20}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","score":20}]},{"@type":"Apex.AI.CompositeScoreQualifier, Assembly-CSharp","_scorers":[{"@type":"ActorIsInHomeArea,
+    Assembly-CSharp","score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.CompositeAction, Assembly-CSharp","_actions":[{"@type":"ActorChangeSpeed,
     Assembly-CSharp","Run":false}],"_connectorAction":{"@type":"Apex.AI.SelectorAction,
     Assembly-CSharp","_selectorId":9f8573fab1054e96815684ea1ce89188}}}},{"@type":"Apex.AI.ScoreSelector,
@@ -77,27 +78,27 @@ MonoBehaviour:
     Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":300,"maxDist":50},"_scorers":[{"@type":"IsBored,
     Assembly-CSharp","behaviour":GoToSomethngInteresting,"score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp"}}]}'
-  editorConfiguration: '{"offset":{"@x":41,"@y":-28},"zoom":1,"SelectorView":{"ViewArea":{"@left":489,"@top":378,"@width":170,"@height":280},"Name":"Main
+  editorConfiguration: '{"offset":{"@x":460,"@y":47},"zoom":1,"SelectorView":{"ViewArea":{"@left":380,"@top":407,"@width":160,"@height":340},"Name":"Main
     Selector","QualifierView":{"Name":"Father, I seek substenance","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"I
-    have THIRST.","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Attacked!?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Bruh
-    lets just chill","ActionView":{"@connectorType":"Composite","Name":"First, We
-    Relax."}}},"SelectorView":{"ViewArea":{"@left":741,"@top":72,"@width":160,"@height":280},"Name":"Mano
+    have THIRST.","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Attacked!?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Are
+    we home yet?"},"DefaultQualifier":{"Name":"Bruh lets just chill","ActionView":{"@connectorType":"Composite","Name":"First,
+    We Relax."}}},"SelectorView":{"ViewArea":{"@left":660,"@top":207,"@width":160,"@height":280},"Name":"Mano
     tengo hambre.","QualifierView":{"Name":"Pocket Lechon?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Thou may eat, muh child"}},"QualifierView":{"Name":"Where
     can I get food?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgently
-    Need food!","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":941,"@top":232,"@width":160,"@height":160},"Name":"Grab
+    Need food!","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":860,"@top":367,"@width":160,"@height":160},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Am I next to food?","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1121,"@top":72,"@width":160,"@height":280},"Name":"Thristy
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1040,"@top":207,"@width":160,"@height":280},"Name":"Thristy
     people problems.","QualifierView":{"Name":"Pocket Water?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Drink. --Tyrion''s GF"}},"QualifierView":{"Name":"Where
     can I get woughtur?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"The
-    Thirst.","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":1361,"@top":112,"@width":160,"@height":160},"Name":"Grab
+    Thirst.","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":1280,"@top":247,"@width":160,"@height":160},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Can I at least get some ","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":741,"@top":512,"@width":220,"@height":280},"Name":"Ugh,
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":660,"@top":547,"@width":220,"@height":280},"Name":"Ugh,
     I can''t belive you''ve done this.","QualifierView":{"Name":"Dude, Where''s my
     Healthcare?","ActionView":{"@connectorType":"Composite","Name":"Y e e t ."}},"QualifierView":{"Name":"Havin''
     a giggle ''ere mate?","ActionView":{"@connectorType":"Composite","Name":"C''mon,
     I''ll fite ye."}},"QualifierView":{"Name":"-Taunts- Ahhh Ajaa? ","ActionView":{"@connectorType":"Composite","Name":"I
-    suggest you run, player."}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":981,"@top":532,"@width":160,"@height":220},"QualifierView":{"Name":"Barge
+    suggest you run, player."}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":940,"@top":607,"@width":160,"@height":220},"QualifierView":{"Name":"Barge
     Only?","ActionView":{}},"QualifierView":{"Name":"Throw?","ActionView":{"Name":"Attempt
-    Chancletazo"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":1237,"@top":531,"@width":170,"@height":220},"Name":"Namaste","QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}}}'
+    Chancletazo"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":1160,"@top":647,"@width":160,"@height":220},"Name":"Namaste","QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}}}'

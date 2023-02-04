@@ -56,6 +56,7 @@ public sealed class ActorGiveItem : ActionBase
     }
 }
 
+
 public sealed class ActorWalkAround : ActionBase
 {
     [ApexSerialization, FriendlyName("Minimm Distance if no Home?")] public float minDist = 5;
@@ -86,5 +87,16 @@ public sealed class ActorBargeAttack : ActionBase
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
         ctx.baseParent.ChargeTowardsAttacker();
+    }
+}
+
+public sealed class VillagerCallForAid : ActionBase
+{
+    [ApexSerialization, FriendlyName("Need Type")] public ItemType type;
+
+    public override void Execute(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        ctx.villager.RequestHelp(type);
     }
 }
