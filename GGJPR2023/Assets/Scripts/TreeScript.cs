@@ -24,8 +24,9 @@ public class TreeScript : Interactable
     public Mesh soilMesh;
     public Material soilMaterial;
 
-    private MeshFilter meshFilter;
-    private MeshRenderer meshRenderer;
+    public MeshFilter meshFilter;
+    public MeshRenderer meshRenderer;
+    public GameObject treeObject;
 
     int WaterLevel
     {
@@ -59,8 +60,6 @@ public class TreeScript : Interactable
     {
         //Grow once and start the timer
         timer = GetComponent<CountDownTimer>();
-        meshFilter = GetComponent<MeshFilter>();
-        meshRenderer = GetComponent<MeshRenderer>();
 
         soilMesh = meshFilter.mesh;
         soilMaterial = meshRenderer.material;
@@ -68,9 +67,14 @@ public class TreeScript : Interactable
         timer.SetTimerProcessMode(CountDownTimer.TimerProcessMode.TIMER_PROCESS_PHYSICS);
     }
 
-    void LateUpdate()
+    private void FixedUpdate()
     {
-        //treeSprite.transform.LookAt(Camera.main.transform);
+        if (!isPlanted || fullyGrown) return;
+
+        float newSize = Mathf.InverseLerp(0, timer.GetWaitTime() * growthCycles, timer.GetTimeLeft());
+        newSize = Mathf.Abs(1 - newSize);
+        print(newSize);
+        treeObject.transform.localScale = Vector3.one * newSize;
     }
 
     public void Harvest()
@@ -95,11 +99,13 @@ public class TreeScript : Interactable
         {
             Debug.Log("Growing tree");
             currentCycle++;
+            print(currentCycle - growthCycles);
             UpdateStage(currentCycle);
             Debug.Log(currentCycle);
         }
         else
         {
+            fullyGrown = true;
             Debug.Log("Grew, lol dropping item");
             DropItem();
         }
@@ -130,6 +136,7 @@ public class TreeScript : Interactable
 
         if (plantInfo == null) return;
         activeActor.UseItem(actorItem);
+        
         // Use plis
         // Debug.Log("Planting go brr");
 
@@ -140,6 +147,7 @@ public class TreeScript : Interactable
         WaterLevel = 0;
         waterThreshold = plantInfo.waterRequired;
 
+        treeObject.transform.localScale = Vector3.zero;
         UpdateStage(currentCycle);
         isPlanted = true;
     }
@@ -150,6 +158,7 @@ public class TreeScript : Interactable
         plantInfo = null;
         isPlanted = false;
         timer.Stop();
+        treeObject.transform.localScale = Vector3.one;
         Debug.Log("Plant died");
     }
 
