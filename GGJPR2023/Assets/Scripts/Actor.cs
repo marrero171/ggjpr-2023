@@ -28,6 +28,9 @@ public abstract class Actor : MonoBehaviour
     [HideInInspector] public bool isDead = false;
     [HideInInspector] public bool isPlayer = false;
 
+    public ItemInfo defaultDrop;
+    public int maxDrops = 1;
+
     public void Start()
     {
         if (Inventory == null) Inventory = new GenericDictionary<ItemInfo, int>();
@@ -73,7 +76,8 @@ public abstract class Actor : MonoBehaviour
     {
         isDead = true;
         DropInventory();
-        gameObject.SetActive(false);
+        if (defaultDrop) SpawnItem(defaultDrop, Random.Range(0, maxDrops));
+        if (!isPlayer) gameObject.SetActive(false);
     }
 
     public void AttackOn() => AttackCollider?.gameObject.SetActive(true);
@@ -197,12 +201,19 @@ public abstract class Actor : MonoBehaviour
     }
 
     // Uses up item (without dropping)
-    public void UseItem(ItemInfo item, int amount = 1)
-    {
-        RemoveItem(item, amount);
-    }
+    public void UseItem(ItemInfo item, int amount = 1) => RemoveItem(item, amount);
 
     public void DropItem(ItemInfo item, int amount = 1)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            SpawnItem(item);
+            RemoveItem(item, 1);
+            if (!Inventory.ContainsKey(item)) return;
+        }
+    }
+
+    public void SpawnItem(ItemInfo item, int amount = 1)
     {
         for (int i = 0; i < amount; i++)
         {
@@ -210,9 +221,6 @@ public abstract class Actor : MonoBehaviour
             newItem.transform.position = transform.position + new Vector3(Random.Range(-3, 3), 4, Random.Range(-3, 3));
             newItem.item = item;
             newItem.gameObject.SetActive(true);
-
-            RemoveItem(item, 1);
-            if (!Inventory.ContainsKey(item)) return;
         }
     }
 
