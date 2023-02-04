@@ -130,11 +130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
     list:
-    - Key: 
+    - Key: Grab
       Value:
         _persistentListeners:
-        - _methodName: GrabItem
-          _persistentArguments: []
+        - _persistentArguments: []
           _target: {fileID: 3664644152605173652}
           _isStatic: 0
           CallState: 2
@@ -143,6 +142,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
+          _methodName: GrabItem
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
