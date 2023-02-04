@@ -52,7 +52,7 @@ MonoBehaviour:
   Health: 10
   MaxHealth: 10
   Damage: 1
-  interactionRadius: 3
+  interactionRadius: 2
   AttackCollider: {fileID: 0}
   Inventory:
     list: []
