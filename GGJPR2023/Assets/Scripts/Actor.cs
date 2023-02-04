@@ -160,9 +160,6 @@ public abstract class Actor : MonoBehaviour
                         if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Plant");
                         else activeIntractable.RequestByActor(this); //Whatever this is.
                     break;
-                case ItemType.Throwable: //Combat System Much?
-                    ThrowProjectile(); //Isolated to Function as per Marrero's suggesiton.
-                    break;
                 case ItemType.Resource: //What do?
                 default: //Ignore everything and just grab.
                     if (activeIntractable != null) activeIntractable.RequestByActor(this);
@@ -176,15 +173,18 @@ public abstract class Actor : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position + (faceDir * 1.5f), 1);
     }
 
-    public void ThrowProjectile()
+    public void ThrowProjectile(ItemInfo projectileInfo, Vector3 direction)
     {
-        if (selectedItem == null) return;
+        print(direction);
+        if (projectileInfo == null) return;
+        ThrowableInfo throwInfo = (ThrowableInfo)projectileInfo.externalReference;
         AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
-        projectile.transform.position = transform.position + (faceDir * 1.5f);
-        projectile.refSprite = selectedItem.itemSprite;
-        projectile.direction = faceDir;
-        projectile.DamageAmmount = selectedItem.effectiveAmount;
-        projectile.Speed = 70; //TODO: Look for speed.
+        
+        projectile.transform.position = transform.position + (direction * 1.5f);
+        projectile.refSprite = projectileInfo.itemSprite;
+        projectile.direction = direction;
+        projectile.DamageAmmount = throwInfo.damage;
+        projectile.Speed = throwInfo.speed;
         projectile.gameObject.SetActive(true);
 
     }
@@ -250,7 +250,7 @@ public abstract class Actor : MonoBehaviour
 
     public void ScrollSelectItem(int byAmmount, bool specify = false)
     {
-        if (Inventory == null && Inventory.Count == 0) return;
+        if (Inventory == null || Inventory.Count == 0) return;
         if (!specify) selectedItemIndex += byAmmount;
         else if (byAmmount != -10) selectedItemIndex = byAmmount;
         print(selectedItemIndex);

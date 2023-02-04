@@ -16,6 +16,6 @@ MonoBehaviour:
   <itemType>k__BackingField: 4
   <itemName>k__BackingField: Stone
   <isEdible>k__BackingField: 1
-  description: An amazing vianda that can be turned to other things. Plantable.
+  description: A rock.
   effectiveAmount: 1
-  externalReference: {fileID: 11400000, guid: 4d1e34cd8e2be804ab54b947fc8019af, type: 2}
+  externalReference: {fileID: 11400000, guid: d7636b5385b73b041807063be723e37e, type: 2}

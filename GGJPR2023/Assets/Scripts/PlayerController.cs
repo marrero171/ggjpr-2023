@@ -19,6 +19,10 @@ public class PlayerController : Actor
     private Vector3 lastDirection = Vector3.zero;
     [SerializeField] float smoothInputSpeed = 0.15f;
 
+    // Mouse stuff
+    [Tooltip("What layers the mouse will detect.")]
+    [Header("Mouse Detection Attributes")]
+    [SerializeField] LayerMask layersToDetect;
 
     private void OnEnable()
     {
@@ -61,10 +65,16 @@ public class PlayerController : Actor
         TryInteract();
     }
 
-    //For Touch and/or Controlller support.
-    public void OnScrollUp() => ScrollSelectItem(1);
-    public void OnScrollDown() => ScrollSelectItem(-1);
-    //Does the same but with Mouse~
+    public void OnFire()
+    {
+        if (!selectedItem) return;
+        if (selectedItem.itemType == ItemType.Throwable) ThrowProjectile(selectedItem, (GetMousePosition() - transform.position).normalized);
+        RemoveItem(selectedItem);
+    }
+
+    //For Touch and/or Controller support. (Not needed hopefully)
+    //public void OnScrollUp() => ScrollSelectItem(1);
+    //public void OnScrollDown() => ScrollSelectItem(-1);
     public void OnScrollInventory(InputValue val)
     {
         if (val.Get<Vector2>().y != 0)
@@ -79,5 +89,17 @@ public class PlayerController : Actor
         if (item == null) return;
         Heal(item.effectiveAmount);
         if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
+    }
+
+    // Gets world space of mouse
+    private Vector3 GetMousePosition()
+    {
+        Vector3 screenPosition = Input.mousePosition;
+        Vector3 worldPosition;
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hitData, 100, layersToDetect)) worldPosition = hitData.point;
+        else return transform.position + Vector3.forward;
+        return new Vector3(worldPosition.x, transform.position.y, worldPosition.z);
     }
 }
