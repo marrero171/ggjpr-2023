@@ -42,7 +42,7 @@ public class TreeScript : Interactable
                 healthy = true;
                 timer.timeMultiplier = 1.30f;
             }
-            else if (waterLevel <= -waterThreshold) KillPlant();
+            else if (waterLevel <= -waterThreshold && canDie) KillPlant();
             else if (waterLevel <= -waterThreshold / 2)
             {
                 healthy = false;
