@@ -53,7 +53,7 @@ public class ActorWithNeeds : Actor, IContextProvider
 
     void LateUpdate()
     {
-        moveDir = navMeshAgent.velocity;
+        moveDir = navMeshAgent.velocity.normalized;
         base.LateUpdate();
     }
 
@@ -88,12 +88,13 @@ public class ActorWithNeeds : Actor, IContextProvider
 
     public void ChangeSpeed(bool Running = false) => navMeshAgent.speed = Running ? RunSpeed : NormalSpeed;
 
-    public void ChargeTowardsTarget() => StartCoroutine(ChargeTowardsTargetCoroutine());
-    IEnumerator ChargeTowardsTargetCoroutine()
+    public void ChargeTowardsAttacker() => StartCoroutine(ChargeTowardsAttackerCoroutine());
+    IEnumerator ChargeTowardsAttackerCoroutine()
     {
         if (AttackCollider != null && lastAttacker != null)
         {
             AttackOn();
+            AttackCollider.transform.position = transform.position + (faceDir * 1.5f);
             navMeshAgent.speed = RunSpeed * 2;
             navMeshAgent.SetDestination(lastAttacker.transform.position);
             yield return new WaitUntil(() => !AttackCollider.gameObject.activeInHierarchy);

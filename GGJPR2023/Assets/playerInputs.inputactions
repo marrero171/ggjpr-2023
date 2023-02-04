@@ -51,24 +51,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ScrollUp",
-                    "type": "Button",
-                    "id": "01b365f3-1b7b-4b82-ba61-b61d01493e8e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ScrollDown",
-                    "type": "Button",
-                    "id": "a763abdd-ddca-4bec-b39b-c19d53cbd244",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "PutAway",
                     "type": "Button",
                     "id": "4b3cdc1e-431a-4487-8cc1-2d7cda7ac33c",
@@ -437,7 +419,7 @@
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "PutAway",
                     "isComposite": false,
                     "isPartOfComposite": false

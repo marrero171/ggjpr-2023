@@ -9,7 +9,16 @@ public sealed class ActorGoToTarget : ActionBase
     public override void Execute(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        ctx.baseParent.navMeshAgent.SetDestination(ctx.baseParent.target.position);
+        if (ctx.baseParent.target != null) ctx.baseParent.navMeshAgent.SetDestination(ctx.baseParent.target.position);
+    }
+}
+
+public sealed class ActorGoToAttacker : ActionBase
+{
+    public override void Execute(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        if (ctx.baseParent.lastAttacker != null) ctx.baseParent.navMeshAgent.SetDestination(ctx.baseParent.lastAttacker.transform.position);
     }
 }
 
@@ -19,8 +28,8 @@ public sealed class ActorGetItem : ActionBase
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
         ctx.baseParent.ScrollSelectItem(-10, true);
-        MonoBehaviour.print("Attempting Grab");
-        ctx.baseParent.
+        // MonoBehaviour.print("Attempting Grab");
+        // ctx.baseParent.
         ctx.baseParent.TryInteract();
     }
 }
@@ -76,6 +85,6 @@ public sealed class ActorBargeAttack : ActionBase
     public override void Execute(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        ctx.baseParent.ChargeTowardsTarget();
+        ctx.baseParent.ChargeTowardsAttacker();
     }
 }
