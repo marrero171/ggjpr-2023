@@ -240,9 +240,9 @@ public abstract class Actor : MonoBehaviour
                 Inventory[item] -= ammount;
                 if (Inventory[item] <= 0)
                 {
-                    print(item.name);
                     Inventory.Remove(item);
-                    if (selectedItem == item) ScrollSelectItem(-10, true);
+                    if (selectedItem.Equals(item))
+                        ScrollSelectItem(-10, true);
                 }
                 if (isPlayer) HUDAndMenu.instance.UpdateIcon();
                 return true;
@@ -255,14 +255,17 @@ public abstract class Actor : MonoBehaviour
 
     public void ScrollSelectItem(int byAmmount, bool specify = false)
     {
-        if (Inventory == null || Inventory.Count == 0) return;
-        if (!specify) selectedItemIndex += byAmmount;
-        else if (byAmmount != -10) selectedItemIndex = byAmmount;
-        if (selectedItemIndex > 10 || selectedItemIndex > Inventory.Count - 1) selectedItemIndex = 0;
-        if (selectedItemIndex == -1) selectedItemIndex = Inventory.Count - 1;
-        if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
-        else selectedItem = null;
         if (byAmmount == -10 && specify) { selectedItem = null; }
+        else
+        {
+            if (Inventory == null || Inventory.Count == 0) return;
+            if (!specify) selectedItemIndex += byAmmount;
+            else if (byAmmount != -10) selectedItemIndex = byAmmount;
+            if (selectedItemIndex > 10 || selectedItemIndex > Inventory.Count - 1) selectedItemIndex = 0;
+            if (selectedItemIndex == -1) selectedItemIndex = Inventory.Count - 1;
+            if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
+            else selectedItem = null;
+        }
         if (isPlayer) HUDAndMenu.instance.UpdateIcon();
     }
 
