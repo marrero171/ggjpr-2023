@@ -19,7 +19,8 @@ public abstract class Actor : MonoBehaviour
     public Interactable activeIntractable = null;
     public ItemInfo selectedItem = null;
     int selectedItemIndex = 0;
-    [HideInInspector] public Actor referenceActor, lastAttacker;
+    // [HideInInspector] 
+    public Actor referenceActor, lastAttacker;
     [HideInInspector] public Vector3 moveDir = Vector3.zero, faceDir = Vector3.zero;
     [HideInInspector] public SpriteRenderer renderer;
     [HideInInspector] public Animator animator;
@@ -85,12 +86,14 @@ public abstract class Actor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print(other.tag);
         if (other.tag == "HitCollider")
         {
             print("I poop on your mother and I poop on you.");
             try //If its an animal, like a Lechon.
             {
                 Actor parent = other.transform.parent.GetComponent<Actor>();
+                if (parent.transform == transform) return;
                 ApplyDamage(parent.Damage);
                 lastAttackerCooldown = StartCoroutine(SetLastAttacker(parent));
             }
@@ -98,6 +101,7 @@ public abstract class Actor : MonoBehaviour
             {
                 print("Ese Pobre Lechon 2, lessgo");
                 AttackProjectile projectile = other.GetComponent<AttackProjectile>();
+                if (projectile.attacker == this) return;
                 ApplyDamage(projectile.DamageAmmount);
                 lastAttackerCooldown = StartCoroutine(SetLastAttacker(projectile.attacker));
             }
@@ -179,9 +183,10 @@ public abstract class Actor : MonoBehaviour
         if (projectileInfo == null) return;
         ThrowableInfo throwInfo = (ThrowableInfo)projectileInfo.externalReference;
         AttackProjectile projectile = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.Projectile.gameObject).GetComponent<AttackProjectile>();
-        
+
         projectile.transform.position = transform.position + (direction * 1.5f);
         projectile.refSprite = projectileInfo.itemSprite;
+        projectile.attacker = this;
         projectile.direction = direction;
         projectile.DamageAmmount = throwInfo.damage;
         projectile.Speed = throwInfo.speed;
@@ -253,7 +258,6 @@ public abstract class Actor : MonoBehaviour
         if (Inventory == null || Inventory.Count == 0) return;
         if (!specify) selectedItemIndex += byAmmount;
         else if (byAmmount != -10) selectedItemIndex = byAmmount;
-        print(selectedItemIndex);
         if (selectedItemIndex > 10 || selectedItemIndex > Inventory.Count - 1) selectedItemIndex = 0;
         if (selectedItemIndex == -1) selectedItemIndex = Inventory.Count - 1;
         if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;

@@ -15,7 +15,7 @@ public sealed class HungerLevel : ContextualScorerBase
         NeedyActorContext ctx = (NeedyActorContext)context;
         if (sated && ctx.baseParent.basicNeeds.Hunger >= refVal) return raw ? ctx.baseParent.basicNeeds.Hunger * .1f : score;
         if (!sated && ctx.baseParent.basicNeeds.Hunger <= refVal) return raw ? -ctx.baseParent.basicNeeds.Hunger * .1f : score;
-        return 2;
+        return 0;
     }
 }
 
@@ -126,7 +126,7 @@ public sealed class HasItemOfTypeInInventory : ContextualScorerBase
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
         ItemInfo item = ctx.baseParent.Inventory.Where(it => it.Key.itemType == type).FirstOrDefault().Key;
-        // ctx.baseParent.
+        ctx.baseParent.selectedItem = item;
         return item == null ? 0 : score;
     }
 
@@ -183,10 +183,16 @@ public sealed class SpottedAnOppenent : ContextualScorerBase
 }
 public sealed class CloseEnoughToOpponent : ContextualScorerBase
 {
-    [ApexSerialization, FriendlyName("Layer Mask")] public Utils.AIHelpers.OpponentCloseEnough behaviour;
+
+    [ApexSerialization, FriendlyName("Behaviour")] public Utils.AIHelpers.OpponentCloseEnough behaviour;
+    [ApexSerialization, FriendlyName("Distance")] public float Distance = 50;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
+        Vector3 distTarget = ctx.baseParent.transform.position;
+        if (ctx.baseParent.lastAttacker != null) distTarget = ctx.baseParent.lastAttacker.transform.position;
+        else if (ctx.baseParent.lastAttacker != null) distTarget = ctx.baseParent.target.position;
+        bool closeEnough = Vector3.Distance(ctx.baseParent.transform.position, distTarget) < Distance;
         return (ctx.baseParent.WhenCloseEnough == behaviour) ? score : 0;
     }
 }
@@ -213,6 +219,14 @@ public sealed class HasTarget : ContextualScorerBase
 }
 
 public sealed class ActorHasAttacker : ContextualScorerBase
+{
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return ctx.baseParent.lastAttacker != null ? score : 0;
+    }
+}
+public sealed class ActorHasReferenceActor : ContextualScorerBase
 {
     public override float Score(IAIContext context)
     {

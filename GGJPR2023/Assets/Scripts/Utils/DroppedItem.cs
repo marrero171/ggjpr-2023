@@ -49,6 +49,7 @@ public class DroppedItem : Interactable
     {
         print("Giving an item");
         activeActor.AddItem(item);
+        activeActor.activeIntractable = null;
         gameObject.SetActive(false);
     }
 }
