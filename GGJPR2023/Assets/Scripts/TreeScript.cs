@@ -85,7 +85,7 @@ public class TreeScript : Interactable
 
         float newSize = Mathf.InverseLerp(0, timer.GetWaitTime() * growthCycles, timer.GetTimeLeft());
         newSize = Mathf.Abs(1 - newSize);
-        print(newSize);
+        //print(newSize);
         treeObject.transform.localScale = Vector3.one * newSize;
     }
 
@@ -154,6 +154,7 @@ public class TreeScript : Interactable
     public void Plant()
     {
         ItemInfo actorItem = activeActor.selectedItem;
+        if (actorItem == null) return;
         plantInfo = (PlantInfo)actorItem.externalReference;
         if (PlantTree(plantInfo)) activeActor.UseItem(actorItem);
     }
