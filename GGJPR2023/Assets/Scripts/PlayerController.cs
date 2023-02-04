@@ -69,7 +69,7 @@ public class PlayerController : Actor
     {
         if (!selectedItem) return;
         if (selectedItem.itemType == ItemType.Throwable) ThrowProjectile(selectedItem, (GetMousePosition() - transform.position).normalized);
-        RemoveItem(selectedItem);
+        UseItem(selectedItem);
     }
 
     //For Touch and/or Controller support. (Not needed hopefully)

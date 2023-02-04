@@ -73,7 +73,6 @@ public class TreeScript : Interactable
 
         float newSize = Mathf.InverseLerp(0, timer.GetWaitTime() * growthCycles, timer.GetTimeLeft());
         newSize = Mathf.Abs(1 - newSize);
-        print(newSize);
         treeObject.transform.localScale = Vector3.one * newSize;
     }
 
