@@ -35,20 +35,20 @@ public class TreeScript : Interactable
         {
             waterLevel = Mathf.Clamp(value, -waterThreshold, waterThreshold);
 
-            if (waterLevel > 0)
+            if (waterLevel > waterThreshold / 2)
+            {
+                healthy = true;
+                timer.timeMultiplier = 1.30f;
+            }
+            else if (waterLevel < -waterThreshold / 2)
+            {
+                healthy = false;
+                timer.timeMultiplier = 0.60f;
+            } else if (waterLevel <= -waterThreshold) KillPlant();
+            else
             {
                 healthy = true;
                 timer.timeMultiplier = 1;
-            }
-            else
-            {
-                healthy = false;
-                timer.timeMultiplier = 0.75f;
-            }
-
-            if (waterLevel <= -waterThreshold)
-            {
-                KillPlant();
             }
         }
     }
@@ -69,22 +69,17 @@ public class TreeScript : Interactable
 
     private void FixedUpdate()
     {
+        UpdateSize();
+    }
+
+    public void UpdateSize()
+    {
         if (!isPlanted || fullyGrown) return;
 
         float newSize = Mathf.InverseLerp(0, timer.GetWaitTime() * growthCycles, timer.GetTimeLeft());
         newSize = Mathf.Abs(1 - newSize);
+        print(newSize);
         treeObject.transform.localScale = Vector3.one * newSize;
-    }
-
-    public void Harvest()
-    {
-        //This will drop an item and reset timers
-    }
-
-    public void TryPlanting()
-    {
-        if (isPlanted) return;
-        Grow();
     }
 
     public void Grow()
@@ -98,15 +93,15 @@ public class TreeScript : Interactable
         {
             Debug.Log("Growing tree");
             currentCycle++;
-            print(currentCycle - growthCycles);
+            UpdateSize();
             UpdateStage(currentCycle);
-            Debug.Log(currentCycle);
+            // Debug.Log(currentCycle);
         }
         else
         {
             fullyGrown = true;
             Debug.Log("Grew, lol dropping item");
-            DropItem();
+            Harvest();
         }
     }
 
@@ -156,6 +151,7 @@ public class TreeScript : Interactable
         UpdateStage(-1);
         plantInfo = null;
         isPlanted = false;
+        fullyGrown = false;
         timer.Stop();
         treeObject.transform.localScale = Vector3.one;
         Debug.Log("Plant died");
@@ -171,7 +167,7 @@ public class TreeScript : Interactable
         activeActor.UseItem(actorItem);
     }
 
-    public void DropItem()
+    public void Harvest()
     {
         if (!plantInfo.harvestable) return;
         DroppedItem newItem = PoolingSystem.instance.GetObject(ReferenceMaster.instance.DroppedItem.gameObject).GetComponent<DroppedItem>();
