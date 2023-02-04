@@ -45,8 +45,12 @@ public abstract class Actor : MonoBehaviour
         if (Mathf.Abs(moveDir.x) >= 0.1f)
             renderer.flipX = moveDir.x > 0;
         if (moveDir.magnitude > .9f) faceDir = moveDir;
-        // animator.SetFloat("DirX", moveDir.x);
-        // animator.SetFloat("DirZ", moveDir.z);
+        if (animator != null)
+        {
+            animator.SetFloat("speed", moveDir.magnitude);
+            animator.SetFloat("dirX", faceDir.x);
+            animator.SetFloat("dirY", faceDir.z);
+        }
     }
 
 
