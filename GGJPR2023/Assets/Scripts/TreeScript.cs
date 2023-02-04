@@ -13,6 +13,8 @@ public class TreeScript : Interactable
 {
     [Tooltip("Can be used for decor trees or smth")]
     public bool canDie = true;
+    [Tooltip("Skip growning process")]
+    public bool preGrown = false;
     CountDownTimer timer;
     //public SpriteRenderer treeSprite;
     int growthCycles;
@@ -140,7 +142,10 @@ public class TreeScript : Interactable
         WaterLevel = 0;
         waterThreshold = plantInfo.waterRequired;
 
+
         treeObject.transform.localScale = Vector3.zero;
+
+        if (preGrown) currentCycle = growthCycles - 1;
         UpdateStage(currentCycle);
         isPlanted = true;
         return true;
