@@ -35,16 +35,17 @@ public class TreeScript : Interactable
         {
             waterLevel = Mathf.Clamp(value, -waterThreshold, waterThreshold);
 
-            if (waterLevel > waterThreshold / 2)
+            if (waterLevel >= waterThreshold / 2)
             {
                 healthy = true;
                 timer.timeMultiplier = 1.30f;
             }
-            else if (waterLevel < -waterThreshold / 2)
+            else if (waterLevel <= -waterThreshold) KillPlant();
+            else if (waterLevel <= -waterThreshold / 2)
             {
                 healthy = false;
                 timer.timeMultiplier = 0.60f;
-            } else if (waterLevel <= -waterThreshold) KillPlant();
+            } 
             else
             {
                 healthy = true;
