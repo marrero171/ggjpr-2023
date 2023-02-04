@@ -67,6 +67,8 @@ public class TreeScript : Interactable
         soilMesh = meshFilter.mesh;
         soilMaterial = meshRenderer.material;
 
+        if (plantInfo) PlantTree(plantInfo);
+
         timer.SetTimerProcessMode(CountDownTimer.TimerProcessMode.TIMER_PROCESS_PHYSICS);
     }
 
@@ -124,16 +126,10 @@ public class TreeScript : Interactable
         }
     }
 
-    public void Plant()
+    public bool PlantTree(PlantInfo newPlant)
     {
-        if (isPlanted) return;
+        if (isPlanted || newPlant == null) return false;
 
-        ItemInfo actorItem = activeActor.selectedItem;
-        plantInfo = (PlantInfo)actorItem.externalReference;
-
-        if (plantInfo == null) return;
-        activeActor.UseItem(actorItem);
-        
         // Use plis
         // Debug.Log("Planting go brr");
 
@@ -147,6 +143,14 @@ public class TreeScript : Interactable
         treeObject.transform.localScale = Vector3.zero;
         UpdateStage(currentCycle);
         isPlanted = true;
+        return true;
+    }
+
+    public void Plant()
+    {
+        ItemInfo actorItem = activeActor.selectedItem;
+        plantInfo = (PlantInfo)actorItem.externalReference;
+        if (PlantTree(plantInfo)) activeActor.UseItem(actorItem);
     }
 
     public void KillPlant()
