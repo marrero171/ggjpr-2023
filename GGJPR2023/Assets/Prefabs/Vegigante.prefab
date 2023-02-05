@@ -318,15 +318,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f824fc2b72b55a3a907e27354ad55f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  MaxHealth: 10
-  Damage: 1
+  Health: 40
+  MaxHealth: 40
+  Damage: 5
   interactionRadius: 3
   AttackCollider: {fileID: 5211041509254958200}
   Inventory:
-    list:
-    - Key: {fileID: 11400000, guid: 1d337aefb9ca53fe7a7dec65e48915ee, type: 2}
-      Value: 1
+    list: []
     keyCollision: 0
   activeIntractable: {fileID: 0}
   selectedItem: {fileID: 0}
