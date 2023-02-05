@@ -171,6 +171,7 @@ public class TreeScript : Interactable
         isPlanted = false;
         plantInfo = null;
         fullyGrown = false;
+        WaterLevel = 0;
         timer.Stop();
         treeObject.transform.localScale = Vector3.one;
         Debug.Log("Plant died");

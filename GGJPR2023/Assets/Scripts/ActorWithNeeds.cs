@@ -30,8 +30,9 @@ public class ActorWithNeeds : Actor, IContextProvider
 
     [HideInInspector] public UnityEngine.AI.NavMeshAgent navMeshAgent;
     [HideInInspector] public Collider collider;
-    [HideInInspector] public Transform target;
-    [HideInInspector] public Transform lastTarget;
+    [Tooltip("Debugging of targets")]
+    public Transform target;
+    public Transform lastTarget;
     public HomeArea home;
 
     public NeedyActorContext ctx;

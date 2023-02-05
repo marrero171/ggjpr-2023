@@ -136,8 +136,9 @@ public sealed class ActorUseItem : ActionBase
         NeedyActorContext ctx = (NeedyActorContext)context;
         // ctx.baseParent.ScrollSelectItem(-10, true);
         MonoBehaviour.print("Attempting Plant");
-        // ctx.baseParent.
+        // ctx.baseParent
         ctx.baseParent.FindClosestInteraction();
         ctx.baseParent.TryInteract();
+        ctx.baseParent.target = ctx.baseParent.target;
     }
 }
