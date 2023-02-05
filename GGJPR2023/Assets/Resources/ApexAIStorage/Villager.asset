@@ -25,7 +25,7 @@ MonoBehaviour:
     Assembly-CSharp","score":20}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":82c54bc4fe494ba195f20af52a18612e}}},{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":9d4e3153822642f297bfee0cd88c4733,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"ActorInteractOrUse, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeInInventory,
+    Assembly-CSharp","action":{"@type":"ActorConsumeItem, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeInInventory,
     Assembly-CSharp","type":Food,"reversable":false,"score":50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":b38a9e6ae0564521a5ac1e407225ad9f},"_scorers":[{"@type":"HasItemOfTypeNearBy,
     Assembly-CSharp","mask":64,"radius":100,"score":20},{"@type":"WhenHungry, Assembly-CSharp","behaviour":SeekClosestMeal,"score":10},{"@type":"WhenHungry,
@@ -40,7 +40,7 @@ MonoBehaviour:
     Assembly-CSharp","mask":64,"radius":2,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":1dcbd4a8c606440ca9b86dfe2f02cf73,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"ActorInteractOrUse, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeInInventory,
+    Assembly-CSharp","action":{"@type":"ActorConsumeItem, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeInInventory,
     Assembly-CSharp","type":Water,"reversable":false,"score":50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":8d52efd8e1c5432fa4d1abe0919d7f7d},"_scorers":[{"@type":"HasItemOfTypeNearBy,
     Assembly-CSharp","mask":16,"radius":100,"score":20},{"@type":"WhenThirsty, Assembly-CSharp","behaviour":SeekClosestMeal,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
@@ -143,49 +143,49 @@ MonoBehaviour:
     Assembly-CSharp","action":{"@type":"ActorGetItem, Assembly-CSharp"},"_scorers":[{"@type":"VillagerHasRequestItemNearBy,
     Assembly-CSharp","radius":2,"score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}}]}'
-  editorConfiguration: '{"offset":{"@x":126,"@y":-417},"zoom":0.64999998,"SelectorView":{"ViewArea":{"@left":-56,"@top":-196,"@width":104,"@height":182},"Name":"Main
+  editorConfiguration: '{"offset":{"@x":125,"@y":-18},"zoom":0.94999999,"SelectorView":{"ViewArea":{"@left":-141,"@top":305,"@width":152,"@height":266},"Name":"Main
     Selector","QualifierView":{"Name":"Father, I seek substenance","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"I
     have THIRST.","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Attacked!?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Home
-    or Explroe","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":74,"@top":-352,"@width":130,"@height":221},"Name":"Mano
+    or Explroe","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":49,"@top":77,"@width":190,"@height":323},"Name":"Mano
     tengo hambre.","QualifierView":{"Name":"Pocket Lechon?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Thou may eat, muh child"}},"QualifierView":{"Name":"Where
     can I get food?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgently
     Need food!","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Someone
-    have food plis?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":243,"@top":-352,"@width":104,"@height":104},"Name":"Grab
+    have food plis?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":296,"@top":77,"@width":152,"@height":152},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Am I next to food?","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":438,"@top":-313,"@width":117,"@height":221},"Name":"Thristy
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":581,"@top":134,"@width":171,"@height":323},"Name":"Thristy
     people problems.","QualifierView":{"Name":"Pocket Water?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Drink. --Tyrion''s GF"}},"QualifierView":{"Name":"Where
     can I get woughtur?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"The
     Thirst.","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Someone
-    have water plis?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":633,"@top":-326,"@width":104,"@height":104},"Name":"Grab
+    have water plis?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":866,"@top":115,"@width":152,"@height":152},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Can I at least get some ","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":191,"@top":-118,"@width":143,"@height":182},"Name":"Ugh,
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":220,"@top":419,"@width":209,"@height":266},"Name":"Ugh,
     I can''t belive you''ve done this.","QualifierView":{"Name":"Dude, Where''s my
     Healthcare?","ActionView":{"@connectorType":"Composite","Name":"Y e e t ."}},"QualifierView":{"Name":"Havin''
     a giggle ''ere mate?","ActionView":{"@connectorType":"Composite","Name":"C''mon,
     I''ll fite ye."}},"QualifierView":{"Name":"-Taunts- Ahhh Ajaa? ","ActionView":{"@connectorType":"Composite","Name":"I
-    suggest you run, player."}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":438,"@top":-79,"@width":130,"@height":143},"QualifierView":{"Name":"Throw?","ActionView":{"Name":"Attempt
-    Chancletazo"}},"QualifierView":{"Name":"No weapon?","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":841,"@top":-157,"@width":104,"@height":182},"Name":"Namaste","QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"QualifierView":{"Name":"Oooh
-    shiny","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":74,"@top":77,"@width":130,"@height":182},"Name":"Are
+    suggest you run, player."}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":581,"@top":476,"@width":190,"@height":209},"QualifierView":{"Name":"Throw?","ActionView":{"Name":"Attempt
+    Chancletazo"}},"QualifierView":{"Name":"No weapon?","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":1170,"@top":362,"@width":152,"@height":266},"Name":"Namaste","QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"QualifierView":{"Name":"Oooh
+    shiny","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":49,"@top":704,"@width":190,"@height":266},"Name":"Are
     we Home or ","QualifierView":{"Name":"Am I home?","ActionView":{"@connectorType":"Composite"}},"QualifierView":{"Name":"Y
-    este monte?","ActionView":{}},"QualifierView":{"Name":"Following Player?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":230,"@top":155,"@width":130,"@height":143},"Name":"We
+    este monte?","ActionView":{}},"QualifierView":{"Name":"Following Player?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":277,"@top":818,"@width":190,"@height":209},"Name":"We
     Adventurin''?","QualifierView":{"Name":"Has Enemy or Mob Nearyby","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Has
-    Resources Near By","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":412,"@top":77,"@width":130,"@height":104},"Name":"(Mob)
-    looms close.","QualifierView":{"Name":"You are not ready.","ActionView":{"@connectorType":"Composite"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":425,"@top":194,"@width":104,"@height":104},"Name":"Grab
+    Resources Near By","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":543,"@top":704,"@width":190,"@height":152},"Name":"(Mob)
+    looms close.","QualifierView":{"Name":"You are not ready.","ActionView":{"@connectorType":"Composite"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":562,"@top":875,"@width":152,"@height":152},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Am I next to it?","ActionView":{"Name":"I''ll
-    take that tyvm"}},"DefaultQualifier":{"Name":"Go to them","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":581,"@top":90,"@width":130,"@height":143},"Name":"Chilltown?","QualifierView":{"Name":"Did
+    take that tyvm"}},"DefaultQualifier":{"Name":"Go to them","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":790,"@top":723,"@width":190,"@height":209},"Name":"Chilltown?","QualifierView":{"Name":"Did
     someone call for help?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Plant
-    needs tending?","ActionView":{"@connectorType":"AILink"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":737,"@top":64,"@width":104,"@height":221},"Name":"Request
+    needs tending?","ActionView":{"@connectorType":"AILink"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":1018,"@top":685,"@width":152,"@height":323},"Name":"Request
     Item Processing","QualifierView":{"Name":"Got the goods?","ActionView":{"Name":"I
     will go to you"}},"QualifierView":{"Name":"Is it around?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Am
     I next to it?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Can
-    hand over?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":594,"@top":-196,"@width":143,"@height":104},"Name":"Ask
+    hand over?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":809,"@top":305,"@width":209,"@height":152},"Name":"Ask
     for water","QualifierView":{"Name":"Am I home?","ActionView":{}},"DefaultQualifier":{"Name":"Ask
-    for food","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":256,"@top":-235,"@width":156,"@height":104},"Name":"Ask
+    for food","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":315,"@top":248,"@width":228,"@height":152},"Name":"Ask
     for food","QualifierView":{"Name":"Am I home?","ActionView":{}},"DefaultQualifier":{"Name":"Ask
-    for food","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1036,"@top":-118,"@width":104,"@height":104},"Name":"Grab
+    for food","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1455,"@top":419,"@width":152,"@height":152},"Name":"Grab
     or Walk.","QualifierView":{"Name":"me grab shiny","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":997,"@top":51,"@width":143,"@height":104},"Name":"Grab
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1398,"@top":666,"@width":209,"@height":152},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Lemme get that for ya","ActionView":{}},"DefaultQualifier":{"Name":"Go
-    to where food is","ActionView":{}}},"AILinkView":{"@id":587eb834e2104b09a613e41acdc4a148,"ViewArea":{"@left":724,"@top":311,"@width":130,"@height":49}}}'
+    to where food is","ActionView":{}}},"AILinkView":{"@id":587eb834e2104b09a613e41acdc4a148,"ViewArea":{"@left":999,"@top":1046,"@width":190,"@height":71}}}'
