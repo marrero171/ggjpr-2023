@@ -95,7 +95,7 @@ public abstract class Actor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // print(other.tag);
+        print(other.tag);
         if (other.tag == "HitCollider")
         {
             print("I poop on your mother and I poop on you.");

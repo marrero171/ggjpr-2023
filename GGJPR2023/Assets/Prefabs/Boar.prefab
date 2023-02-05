@@ -43,7 +43,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7772303887036585136
 GameObject:
@@ -318,15 +318,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f824fc2b72b55a3a907e27354ad55f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
+  Health: 5
   MaxHealth: 5
   Damage: 1
   interactionRadius: 3
   AttackCollider: {fileID: 6657870489160471885}
   Inventory:
-    list:
-    - Key: {fileID: 11400000, guid: adb4af110274aa3519685696231ef392, type: 2}
-      Value: 3
+    list: []
     keyCollision: 0
   activeIntractable: {fileID: 0}
   selectedItem: {fileID: 0}
@@ -342,7 +340,7 @@ MonoBehaviour:
   isDead: 0
   isPlayer: 0
   defaultDrop: {fileID: 11400000, guid: adb4af110274aa3519685696231ef392, type: 2}
-  maxDrops: 2
+  maxDrops: 4
   NormalSpeed: 4
   RunSpeed: 8
   basicNeeds:
@@ -356,7 +354,7 @@ MonoBehaviour:
   WhenHealthCritical: 1
   WhenSpotted: 1
   WhenCloseEnough: 0
-  WhenEnemyLowHealth: 2
+  WhenEnemyLowHealth: 0
   navMeshAgent: {fileID: 0}
   collider: {fileID: 0}
   target: {fileID: 0}

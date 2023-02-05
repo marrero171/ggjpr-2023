@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3774584033658965237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3715942871520090442}
+  - component: {fileID: 5211041509254958200}
+  m_Layer: 17
+  m_Name: AttackCollider
+  m_TagString: HitCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3715942871520090442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3774584033658965237}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5919483997273666455}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5211041509254958200
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3774584033658965237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5919483997273666463
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,7 +61,7 @@ GameObject:
   - component: {fileID: 5919483997273666456}
   - component: {fileID: 5919483997273666457}
   - component: {fileID: 5919483997273666462}
-  m_Layer: 18
+  m_Layer: 17
   m_Name: Vegigante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +79,8 @@ Transform:
   m_LocalPosition: {x: 604.8541, y: 15, z: 467.23923}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3715942871520090442}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -276,13 +322,11 @@ MonoBehaviour:
   MaxHealth: 10
   Damage: 1
   interactionRadius: 3
-  AttackCollider: {fileID: 0}
+  AttackCollider: {fileID: 5211041509254958200}
   Inventory:
     list:
     - Key: {fileID: 11400000, guid: 1d337aefb9ca53fe7a7dec65e48915ee, type: 2}
       Value: 1
-    - Key: {fileID: 11400000, guid: adb4af110274aa3519685696231ef392, type: 2}
-      Value: 2
     keyCollision: 0
   activeIntractable: {fileID: 0}
   selectedItem: {fileID: 0}
@@ -298,7 +342,7 @@ MonoBehaviour:
   isDead: 0
   isPlayer: 0
   defaultDrop: {fileID: 11400000, guid: adb4af110274aa3519685696231ef392, type: 2}
-  maxDrops: 1
+  maxDrops: 5
   NormalSpeed: 4
   RunSpeed: 8
   basicNeeds:
