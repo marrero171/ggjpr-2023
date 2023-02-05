@@ -95,7 +95,7 @@ public abstract class Actor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print(other.tag);
+        // print(other.tag);
         if (other.tag == "HitCollider")
         {
             print("I poop on your mother and I poop on you.");
@@ -154,20 +154,19 @@ public abstract class Actor : MonoBehaviour
     //Refactored
     public void TryInteract()
     {
-        print("Attempting to interact");
         if (selectedItem != null)
         {
             switch (selectedItem.itemType)
             {
                 case ItemType.Food:
                     if (activeIntractable != null) activeIntractable.RequestByActor(this); //Whatever this is.
-                    else Consume(selectedItem, true); audioSource?.PlayOneShot(selectedItem?.useSound);
+                    else Consume(selectedItem, true); audioSource?.PlayOneShot(selectedItem.useSound);
                     break;
                 case ItemType.Water:
                     if (activeIntractable != null)
                         if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
                         else activeIntractable.RequestByActor(this);
-                    else Consume(selectedItem, true); audioSource?.PlayOneShot(selectedItem?.useSound);
+                    else Consume(selectedItem, true); audioSource?.PlayOneShot(selectedItem.useSound);
                     break;
                 case ItemType.Plantable:
                     if (activeIntractable != null)

@@ -285,6 +285,7 @@ public sealed class VillagerRespondToRequest : ContextualScorerBase
 {
     public override float Score(IAIContext context)
     {
+        Debug.Log("It has been requested");
         NeedyActorContext ctx = (NeedyActorContext)context;
         return ctx.villager.request != null ? score : 0;
     }

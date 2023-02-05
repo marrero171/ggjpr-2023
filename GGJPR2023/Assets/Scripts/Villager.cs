@@ -49,6 +49,7 @@ public class Villager : ActorWithNeeds
     {
         var villagers = Physics.OverlapSphere(transform.position, 50, villagerMask);
         VillagerRequest nRequest = new VillagerRequest(this, type);
+        print(gameObject.name + " is requesting help of type " + type);
         villagers.ToList().ForEach(v => v.SendMessage("HearOutcry", nRequest));
     }
     public void HearOutcry(VillagerRequest req)
@@ -60,6 +61,7 @@ public class Villager : ActorWithNeeds
         reqExp = StartCoroutine(expireRequest());
     }
 }
+[System.Serializable]
 public class VillagerRequest
 {
     public VillagerRequest(Villager who, ItemType requestType)
