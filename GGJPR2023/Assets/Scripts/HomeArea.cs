@@ -19,7 +19,7 @@ public class HomeArea : MonoBehaviour
         actors = new List<ActorWithNeeds>();
         min = new Vector3(-bounds.bounds.extents.x, -bounds.bounds.extents.y, -bounds.bounds.extents.z);
         max = new Vector3(bounds.bounds.extents.x, bounds.bounds.extents.y, bounds.bounds.extents.z);
-        if (spawnAtStart) for (int i = 0; i < Random.Range(1, maxCount / 4); i++) RequestNewActor();
+        if (spawnAtStart) for (int i = 0; i < (isVillage ? maxCount / 4 : (Random.Range(1, (maxCount / maxCount / 2)))); i++) RequestNewActor();
     }
 
     public void RequestNewActor()
@@ -32,7 +32,8 @@ public class HomeArea : MonoBehaviour
         }
         Vector3 pos = transform.position;
         Vector3 boundary = bounds.bounds.extents;
-        actor.transform.position = GetPointWithintBounds();
+        actor.transform.position = transform.position;
+        // actor.transform.position = GetPointWithintBounds();
         // actor.transform.position = new Vector3(pos.x + Random.Range(-bounds.x, bounds.x),
         //                                      pos.y + 3,
         //                                      pos.z + Random.Range(-bounds.z, bounds.z));

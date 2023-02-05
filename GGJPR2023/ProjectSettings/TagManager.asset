@@ -12,6 +12,7 @@ TagManager:
   - Resources
   - Throwables
   - FxTemporaire
+  - Home
   layers:
   - Default
   - TransparentFX
