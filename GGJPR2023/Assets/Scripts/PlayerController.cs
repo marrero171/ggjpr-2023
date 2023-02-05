@@ -11,6 +11,7 @@ public class PlayerController : Actor
     [Header("Player Attributes")]
     [SerializeField] float speed = 10;
     [SerializeField] float gravity = 9.81f;
+    public bool isInTown = false;
     // Vertical speed
     private float vSpeed = 0;
 
