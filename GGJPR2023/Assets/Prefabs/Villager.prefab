@@ -180,7 +180,7 @@ MonoBehaviour:
   Health: 10
   MaxHealth: 10
   Damage: 1
-  interactionRadius: 3
+  interactionRadius: 2
   AttackCollider: {fileID: 0}
   Inventory:
     list:
@@ -209,7 +209,7 @@ MonoBehaviour:
     Thirst: 0
     Emotion: 0
   needDecreaseRate: 0.15
-  WhenBored: 0
+  WhenBored: 1
   WhenHungry: 0
   WhenThirsty: 0
   WhenHealthCritical: 0

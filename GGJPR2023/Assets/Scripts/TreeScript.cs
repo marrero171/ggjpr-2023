@@ -143,8 +143,6 @@ public class TreeScript : Interactable
         growthCycles = plantInfo.stages.Count;
         timer.StartTimer(plantInfo.cycleInterval);
         currentCycle = 0;
-
-        WaterLevel = 0;
         waterThreshold = plantInfo.waterRequired;
 
 
@@ -179,9 +177,6 @@ public class TreeScript : Interactable
 
     public void Water()
     {
-        if (!isPlanted)
-            return;
-
         ItemInfo actorItem = activeActor.selectedItem;
         WaterLevel += actorItem.effectiveAmount;
         activeActor.UseItem(actorItem);
