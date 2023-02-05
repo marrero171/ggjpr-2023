@@ -9,6 +9,7 @@ using static UnityEditor.Progress;
 using Utils;
 [RequireComponent(typeof(CountDownTimer))]
 [RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(AudioSource))]
 public class TreeScript : Interactable
 {
     [Tooltip("Can be used for decor trees or smth")]
@@ -21,7 +22,7 @@ public class TreeScript : Interactable
     int currentCycle = 0;
     [SerializeField] int waterLevel = 5;
     int waterThreshold = 5;
-    bool healthy = true;
+    public bool healthy = true;
 
     public PlantInfo plantInfo;
 
@@ -31,8 +32,13 @@ public class TreeScript : Interactable
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
     public GameObject treeObject;
+    public AudioSource audioSource;
+    public AudioClip planted, watered;
 
-    int WaterLevel
+    public ParticleSystem waterSplash;
+    public ParticleSystem plantedParticles;
+
+    public int WaterLevel
     {
         get { return waterLevel; }
         set
@@ -49,7 +55,7 @@ public class TreeScript : Interactable
             {
                 healthy = false;
                 timer.timeMultiplier = 0.60f;
-            } 
+            }
             else
             {
                 healthy = true;
@@ -65,6 +71,7 @@ public class TreeScript : Interactable
     {
         //Grow once and start the timer
         timer = GetComponent<CountDownTimer>();
+        audioSource = GetComponent<AudioSource>();
 
         soilMesh = meshFilter.mesh;
         soilMaterial = meshRenderer.material;
@@ -130,7 +137,8 @@ public class TreeScript : Interactable
 
     public bool PlantTree(PlantInfo newPlant)
     {
-        if (isPlanted || newPlant == null) return false;
+        if (isPlanted) return false;
+        if (newPlant == null) return false;
 
         // Use plis
         // Debug.Log("Planting go brr");
@@ -138,8 +146,6 @@ public class TreeScript : Interactable
         growthCycles = plantInfo.stages.Count;
         timer.StartTimer(plantInfo.cycleInterval);
         currentCycle = 0;
-
-        WaterLevel = 0;
         waterThreshold = plantInfo.waterRequired;
 
 
@@ -148,23 +154,27 @@ public class TreeScript : Interactable
         if (preGrown) currentCycle = growthCycles - 1;
         UpdateStage(currentCycle);
         isPlanted = true;
+        audioSource?.PlayOneShot(planted);
         return true;
     }
 
     public void Plant()
     {
+        if (isPlanted) return;
         ItemInfo actorItem = activeActor.selectedItem;
         if (actorItem == null) return;
         plantInfo = (PlantInfo)actorItem.externalReference;
         if (PlantTree(plantInfo)) activeActor.UseItem(actorItem);
+        plantedParticles?.Play();
     }
 
     public void KillPlant()
     {
         UpdateStage(-1);
-        plantInfo = null;
         isPlanted = false;
+        plantInfo = null;
         fullyGrown = false;
+        WaterLevel = 0;
         timer.Stop();
         treeObject.transform.localScale = Vector3.one;
         Debug.Log("Plant died");
@@ -172,12 +182,12 @@ public class TreeScript : Interactable
 
     public void Water()
     {
-        if (!isPlanted)
-            return;
-
         ItemInfo actorItem = activeActor.selectedItem;
         WaterLevel += actorItem.effectiveAmount;
         activeActor.UseItem(actorItem);
+        waterSplash.Play();
+        audioSource?.PlayOneShot(watered);
+
     }
 
     public void Harvest()

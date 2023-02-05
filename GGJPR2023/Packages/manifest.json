@@ -45,7 +45,9 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
+    "com.unity.modules.xr": "1.0.0",
+    "com.pixelplacement.surge.tween": "1.0.2",
+    "net.roystan.toonwatershader": "1.0.1"
   },
   "scopedRegistries": [
     {
@@ -53,7 +55,9 @@
       "url": "https://package.openupm.com",
       "scopes": [
         "com.openupm",
+        "com.pixelplacement.surge.tween",
         "com.solidalloy",
+        "net.roystan.toonwatershader",
         "org.nuget"
       ]
     }

@@ -7,18 +7,19 @@ public class HomeArea : MonoBehaviour
 {
     public Collider bounds;
     public Actor spawnableActor;
+    public bool spawnAtStart = false;
     public int maxCount = 20;
     // public int StartingCount = 10;
     public bool isVillage = false;
     [HideInInspector] public Vector3 min, max;
-    public List<Actor> actors;
+    public List<ActorWithNeeds> actors;
     void Start()
     {
         bounds = GetComponent<Collider>();
-        actors = new List<Actor>();
+        actors = new List<ActorWithNeeds>();
         min = new Vector3(-bounds.bounds.extents.x, -bounds.bounds.extents.y, -bounds.bounds.extents.z);
         max = new Vector3(bounds.bounds.extents.x, bounds.bounds.extents.y, bounds.bounds.extents.z);
-        for (int i = 0; i < Random.Range(1, maxCount / 4); i++) RequestNewActor();
+        if (spawnAtStart) for (int i = 0; i < Random.Range(1, maxCount / 4); i++) RequestNewActor();
     }
 
     public void RequestNewActor()
@@ -27,7 +28,7 @@ public class HomeArea : MonoBehaviour
         var actor = actors.Find(a => !a.gameObject.activeInHierarchy);
         if (actor == null)
         {
-            actor = Instantiate(spawnableActor);
+            actor = (ActorWithNeeds)Instantiate(spawnableActor);
         }
         Vector3 pos = transform.position;
         Vector3 boundary = bounds.bounds.extents;
@@ -61,5 +62,25 @@ public class HomeArea : MonoBehaviour
         });
         return BehaviourVector;
     }
+
+    public Vector3 GetVillagerBehaviourAverage()
+    {
+        if (actors.Count == 0) return Vector3.zero;
+        Vector3 bVector = Vector3.zero;
+        actors.ForEach(actor => { bVector += ((Villager)actor).BehaviorVector; });
+        return (bVector / actors.Count);
+    }
+    public Vector3 GetActorNeedsAverage()
+    {
+        if (actors.Count == 0) return Vector3.zero;
+        Vector3 nVector = Vector3.zero;
+        actors.ForEach(actor =>
+        {
+            Vector3 needs = new Vector3(actor.basicNeeds.Hunger, actor.basicNeeds.Thirst, actor.basicNeeds.Emotion);
+            nVector += Vector3.zero;
+        });
+        return (nVector / actors.Count);
+    }
+
 
 }

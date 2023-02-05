@@ -11,6 +11,7 @@ public class PlayerController : Actor
     [Header("Player Attributes")]
     [SerializeField] float speed = 10;
     [SerializeField] float gravity = 9.81f;
+    public bool isInTown = false;
     // Vertical speed
     private float vSpeed = 0;
 
@@ -34,6 +35,7 @@ public class PlayerController : Actor
     {
         base.Start();
         controller = GetComponent<CharacterController>();
+        // HUDCanvas.instance.InitializeHUD();
     }
 
     // Update is called once per frame
@@ -61,7 +63,7 @@ public class PlayerController : Actor
     public void OnInteract()
     {
         // Debug.Log("Interacted");
-        activeIntractable = FindClosestInteraction();
+        FindClosestInteraction();
         TryInteract();
     }
 
@@ -90,6 +92,7 @@ public class PlayerController : Actor
         }
     }
     public void OnPutAway() => ScrollSelectItem(-10, true);
+    public void OnPause() => HUDCanvas.instance.TogglePause();
 
     public override void Consume(ItemInfo item, bool useItem = true)
     {

@@ -1,20 +1,28 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/UI/TainoGameTheme.uss?fileID=7433441132597879392&amp;guid=d3893a98f882883829e1eed520fa3e50&amp;type=3#TainoGameTheme" />
-    <ui:VisualElement name="Screen" style="height: 100%; width: 100%; align-items: stretch; justify-content: space-between; flex-direction: row;">
-        <ui:VisualElement name="Left" style="width: 40%; margin-left: 15px; margin-right: 15px; margin-top: 15px; margin-bottom: 15px;">
-            <ui:ProgressBar value="50" name="HealthBar" picking-mode="Ignore" title="0/0" style="justify-content: flex-start; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; -unity-text-align: upper-right;" />
-        </ui:VisualElement>
-        <ui:VisualElement name="Right" style="width: 25%; justify-content: flex-end; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-bottom: 20px; padding-right: 20px;">
-            <ui:VisualElement style="height: 33%; width: 100%; align-items: center; flex-direction: row; justify-content: center;">
-                <ui:Button display-tooltip-when-elided="true" name="ScrollDown" focusable="false" class="scrollBtn" style="background-image: url(&apos;project://database/Assets/Textures%20&amp;%20Arts/Sprites/GUI/OnScreenControls/transparentDark/transparentDark22.png?fileID=21300000&amp;guid=713a72a5d1f2af6ffafedc482081cc7c&amp;type=3#transparentDark22&apos;); margin-right: -10px;" />
-                <ui:Button display-tooltip-when-elided="true" name="ActiveItem" focusable="false" style="background-color: rgba(76, 76, 76, 0); width: 50%; height: 100%; flex-direction: column-reverse; justify-content: center; align-items: center; margin-top: 5%; margin-bottom: 0;">
-                    <ui:VisualElement name="ActiveItemIcon" picking-mode="Ignore" style="background-image: url(&apos;project://database/Assets/Textures%20&amp;%20Arts/Sprites/food-7soul1_1.png?fileID=1828471297&amp;guid=0a8659abf7ac5f2a5b7f05c6538b484c&amp;type=3#food-7soul1_1_24&apos;); background-color: rgba(255, 255, 255, 0); width: 75%; height: 60%; -unity-background-scale-mode: scale-to-fit; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: -3%; justify-content: space-between;">
-                        <ui:Label text="Label" display-tooltip-when-elided="true" name="ActiveItemLabel" style="margin-top: -35px; padding-bottom: 0; margin-bottom: 0; width: auto; margin-left: 0; margin-right: 0; height: 40%;" />
-                        <ui:Label text="0" display-tooltip-when-elided="true" name="ActiveItemCount" style="margin-top: 0; height: 20%; margin-bottom: -5px;" />
-                    </ui:VisualElement>
-                </ui:Button>
-                <ui:Button display-tooltip-when-elided="true" name="ScrollUp" focusable="false" class="scrollBtn" style="background-image: url(&apos;project://database/Assets/Textures%20&amp;%20Arts/Sprites/GUI/OnScreenControls/transparentDark/transparentDark23.png?fileID=21300000&amp;guid=7f42490af35713781a0486c662943cbc&amp;type=3#transparentDark23&apos;); margin-left: -10px;" />
+    <HUDAndMenu2 style="width: 100%; height: 100%; justify-content: flex-start; flex-wrap: wrap; flex-direction: column;">
+        <ui:VisualElement name="Screen" style="height: 100%; width: 100%; align-items: stretch; justify-content: space-between; flex-direction: row; display: flex;">
+            <ui:VisualElement name="Left" style="width: 40%; margin-left: 15px; margin-right: 15px; margin-top: 15px; margin-bottom: 15px;">
+                <ui:ProgressBar value="50" name="HealthBar" picking-mode="Ignore" title="0/0" style="justify-content: flex-start; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; -unity-text-align: upper-right;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Right" style="width: 25%; justify-content: flex-end; height: 100%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-bottom: 20px; padding-right: 20px;">
+                <ui:VisualElement style="height: 33%; width: 100%; align-items: center; flex-direction: row; justify-content: center;">
+                    <ui:Button display-tooltip-when-elided="true" name="ScrollDown" focusable="false" class="scrollBtn" style="background-image: url(&apos;project://database/Assets/Textures%20&amp;%20Arts/Sprites/GUI/OnScreenControls/transparentDark/transparentDark22.png?fileID=21300000&amp;guid=713a72a5d1f2af6ffafedc482081cc7c&amp;type=3#transparentDark22&apos;); margin-right: -10px;" />
+                    <ui:Button display-tooltip-when-elided="true" name="ActiveItem" focusable="false" style="background-color: rgba(76, 76, 76, 0); width: 50%; height: 100%; flex-direction: column-reverse; justify-content: center; align-items: center; margin-top: 5%; margin-bottom: 0;">
+                        <ui:VisualElement name="ActiveItemIcon" picking-mode="Ignore" style="background-image: url(&apos;project://database/Assets/Textures%20&amp;%20Arts/Sprites/food-7soul1_1.png?fileID=1828471297&amp;guid=0a8659abf7ac5f2a5b7f05c6538b484c&amp;type=3#food-7soul1_1_24&apos;); background-color: rgba(255, 255, 255, 0); width: 75%; height: 60%; -unity-background-scale-mode: scale-to-fit; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: -3%; justify-content: space-between;">
+                            <ui:Label text="Label" display-tooltip-when-elided="true" name="ActiveItemLabel" style="margin-top: -35px; padding-bottom: 0; margin-bottom: 0; width: auto; margin-left: 0; margin-right: 0; height: 40%;" />
+                            <ui:Label text="0" display-tooltip-when-elided="true" name="ActiveItemCount" style="margin-top: 0; height: 20%; margin-bottom: -5px;" />
+                        </ui:VisualElement>
+                    </ui:Button>
+                    <ui:Button display-tooltip-when-elided="true" name="ScrollUp" focusable="false" class="scrollBtn" style="background-image: url(&apos;project://database/Assets/Textures%20&amp;%20Arts/Sprites/GUI/OnScreenControls/transparentDark/transparentDark23.png?fileID=21300000&amp;guid=7f42490af35713781a0486c662943cbc&amp;type=3#transparentDark23&apos;); margin-left: -10px;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-    </ui:VisualElement>
+        <PauseMenu name="PauseMenu" style="width: 100%; height: 100%; position: absolute; background-color: rgba(0, 0, 0, 0.5); flex-direction: row; display: flex; opacity: 1; -unity-background-scale-mode: scale-to-fit;">
+            <ui:VisualElement style="width: 50%; padding-left: 15%; padding-right: 15%; padding-top: 15%; padding-bottom: 15%; flex-wrap: wrap; justify-content: space-between;">
+                <ui:Button text="Resume" display-tooltip-when-elided="true" name="ResumeButton" />
+                <ui:Button text="Restart" display-tooltip-when-elided="true" name="RestartButton" />
+            </ui:VisualElement>
+        </PauseMenu>
+    </HUDAndMenu2>
 </ui:UXML>

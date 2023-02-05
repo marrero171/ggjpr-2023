@@ -30,9 +30,10 @@ public class ActorWithNeeds : Actor, IContextProvider
 
     [HideInInspector] public UnityEngine.AI.NavMeshAgent navMeshAgent;
     [HideInInspector] public Collider collider;
-    [HideInInspector] public Transform target;
-    [HideInInspector] public Transform lastTarget;
-    [HideInInspector] public HomeArea home;
+    [Tooltip("Debugging of targets")]
+    public Transform target;
+    public Transform lastTarget;
+    public HomeArea home;
 
     public NeedyActorContext ctx;
     public IAIContext GetContext(System.Guid id) { return ctx; }
@@ -83,6 +84,7 @@ public class ActorWithNeeds : Actor, IContextProvider
         if (item.itemType == ItemType.Food) basicNeeds.Hunger += item.effectiveAmount;
         if (item.itemType == ItemType.Water) basicNeeds.Thirst += item.effectiveAmount;
         if (Random.Range(0, 10) > 4) Health++;
+        if (item.externalReference != null) DropItem((ItemInfo)item.externalReference, 0);
         if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
     }
 

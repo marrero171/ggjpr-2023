@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2ac3316c82562d184e11ce9cc8388d, type: 3}
+  m_Name: Farmer
+  m_EditorClassIdentifier: 
+  description: 
+  version: 0
+  aiId: 587eb834-e210-4b09-a613-e41acdc4a148
+  configuration: '{"@type":"Apex.AI.UtilityAI, Assembly-CSharp","_rootSelectorId":71d9f3894ae1402695f2dfddeb4780f8,"_id":587eb834e2104b09a613e41acdc4a148,"_selectors":[{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","_id":71d9f3894ae1402695f2dfddeb4780f8,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":f059ba2ab2ab48f5981b52323b656b39},"_scorers":[{"@type":"ActorUnPlantedNearMe,
+    Assembly-CSharp","radius":50,"layerMask":256,"score":5}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":5a714bf8ce724cddb00d5a7e4b613d19},"_scorers":[{"@type":"ActorUnhealthyPlantNearMe,
+    Assembly-CSharp","radius":50,"layerMask":256,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp"}},{"@type":"Apex.AI.ScoreSelector, Assembly-CSharp","_id":5a714bf8ce724cddb00d5a7e4b613d19,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":c4c784aa99fe4947984bc9f384969ccb},"_scorers":[{"@type":"HasItemOfTypeInInventory,
+    Assembly-CSharp","type":Water,"reversable":true,"score":50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":40c891beb4084e469c61b07553b689cb},"_scorers":[{"@type":"ActorUnPlantedNearMe,
+    Assembly-CSharp","radius":5,"layerMask":256,"score":7},{"@type":"VillagerCloseToTarget,
+    Assembly-CSharp","dist":5,"score":3}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":40c891beb4084e469c61b07553b689cb}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","_id":f059ba2ab2ab48f5981b52323b656b39,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":7eceeccaa79e4599a221845d0d181ff1},"_scorers":[{"@type":"HasItemOfTypeInInventory,
+    Assembly-CSharp","type":Plantable,"reversable":true,"score":50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":8be768aa9731492ab9f5c476f4a33391},"_scorers":[{"@type":"ActorUnPlantedNearMe,
+    Assembly-CSharp","radius":5,"layerMask":256,"score":7},{"@type":"VillagerCloseToTarget,
+    Assembly-CSharp","dist":15,"score":3}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":8be768aa9731492ab9f5c476f4a33391}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","_id":7eceeccaa79e4599a221845d0d181ff1,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGetItem, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeNearBy,
+    Assembly-CSharp","mask":4096,"radius":2,"score":5}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeNearBy,
+    Assembly-CSharp","mask":4096,"radius":20,"score":2}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":5,"maxDist":5}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","_id":8be768aa9731492ab9f5c476f4a33391,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    Assembly-CSharp","action":{"@type":"ActorUseItem, Assembly-CSharp"},"_scorers":[{"@type":"VillagerCloseToTarget,
+    Assembly-CSharp","dist":3,"score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","_id":40c891beb4084e469c61b07553b689cb,"_qualifiers":[{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    Assembly-CSharp","action":{"@type":"ActorUseItem, Assembly-CSharp"},"_scorers":[{"@type":"ActorUnhealthyPlantNearMe,
+    Assembly-CSharp","radius":50,"layerMask":256,"score":5},{"@type":"VillagerCloseToTarget,
+    Assembly-CSharp","dist":3,"score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","_id":c4c784aa99fe4947984bc9f384969ccb,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGetItem, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeNearBy,
+    Assembly-CSharp","mask":16,"radius":2,"score":5}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeNearBy,
+    Assembly-CSharp","mask":16,"radius":20,"score":2}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":5,"maxDist":5}}}]}'
+  editorConfiguration: '{"offset":{"@x":533,"@y":347},"zoom":0.75,"SelectorView":{"ViewArea":{"@left":578,"@top":182,"@width":150,"@height":165},"Name":"Planting
+    go brr","QualifierView":{"Name":"I want to plant","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Plant
+    need water!","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":803,"@top":332,"@width":120,"@height":165},"Name":"Water
+    da plant","QualifierView":{"Name":"Where get water?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Am
+    I next to plant?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Watering
+    go brr","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":773,"@top":122,"@width":120,"@height":165},"Name":"Plant
+    da plant","QualifierView":{"Name":"Where get seed?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Am
+    I next to plant?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Planting
+    go brr","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":953,"@top":-43,"@width":150,"@height":165},"Name":"Get
+    da seed","QualifierView":{"Name":"Am I next to plantable?","ActionView":{"Name":"Plantable
+    go grabby grabby"}},"QualifierView":{"Name":"Is plantable nearby?","ActionView":{}},"DefaultQualifier":{"ActionView":{"Name":"Wander"}}},"SelectorView":{"ViewArea":{"@left":1043,"@top":377,"@width":150,"@height":120},"Name":"Plant","QualifierView":{"Name":"Am
+    I next to plant?","ActionView":{}},"DefaultQualifier":{"Name":"Go to plant","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":1058,"@top":527,"@width":150,"@height":120},"Name":"Water","QualifierView":{"Name":"Am
+    I next to plant?","ActionView":{}},"DefaultQualifier":{"Name":"Go to plant","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":983,"@top":137,"@width":150,"@height":165},"Name":"Get
+    da water","QualifierView":{"Name":"Am I next to plantable?","ActionView":{"Name":"Plantable
+    go grabby grabby"}},"QualifierView":{"Name":"Is plantable nearby?","ActionView":{}},"DefaultQualifier":{"ActionView":{"Name":"Wander"}}}}'

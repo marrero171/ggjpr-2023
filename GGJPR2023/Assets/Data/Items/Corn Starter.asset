@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3861351d717fbaa47be36d20f295f5d6, type: 3}
+  m_Name: Corn Starter
+  m_EditorClassIdentifier: 
+  <itemSprite>k__BackingField: {fileID: 21300000, guid: 1eac4a330e8f91ab29ccca1792ca39f4, type: 3}
+  <itemType>k__BackingField: 2
+  <itemName>k__BackingField: Corn Starter
+  <isEdible>k__BackingField: 1
+  description: 
+  effectiveAmount: 20
+  externalReference: {fileID: 11400000, guid: e14dff2b96af27249af027d10a083224, type: 2}
+  useSound: {fileID: 0}

@@ -11,6 +11,7 @@ TagManager:
   - Plants
   - Resources
   - Throwables
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Water
   - UI
   - Food
-  - Water
+  - 
   - Soil
   - Resources
   - Throwable

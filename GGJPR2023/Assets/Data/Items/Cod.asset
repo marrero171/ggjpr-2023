@@ -19,3 +19,4 @@ MonoBehaviour:
   description: A common fish
   effectiveAmount: 15
   externalReference: {fileID: 0}
+  useSound: {fileID: 8300000, guid: 5cf9f1a50d2d616eab4a1749d4cc75cb, type: 3}
