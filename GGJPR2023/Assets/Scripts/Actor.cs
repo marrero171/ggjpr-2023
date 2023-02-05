@@ -69,7 +69,7 @@ public abstract class Actor : MonoBehaviour
         {
             Health = Mathf.Clamp(value, 0, MaxHealth);
             Debug.Log(gameObject.name + " health changed");
-            if (isPlayer) HUDAndMenu.instance.UpdateHealth();
+            if (isPlayer) HUDCanvas.instance.UpdateHealth();
             if (Health == 0) { Die(); } else { audioSource?.PlayOneShot(HurtSound); }
         }
         get { return Health; }
@@ -174,8 +174,11 @@ public abstract class Actor : MonoBehaviour
                         else activeIntractable.RequestByActor(this); //Whatever this is.
                     break;
                 case ItemType.Throwable:
-                    if (isPlayer) return;
-                    ThrowProjectile(selectedItem, moveDir);
+                    if (!isPlayer)
+                    {
+                        if (activeIntractable != null) activeIntractable.RequestByActor(this); //Whatever this is.
+                        else ThrowProjectile(selectedItem, moveDir);
+                    }
                     break;
                 case ItemType.Resource: //What do?
                 default: //Ignore everything and just grab.
@@ -216,7 +219,7 @@ public abstract class Actor : MonoBehaviour
             Inventory.Add(item, ammount);
             if (!selectedItem && Inventory.Count == 1) ScrollSelectItem(1);
         }
-        if (isPlayer) HUDAndMenu.instance.UpdateIcon();
+        if (isPlayer) HUDCanvas.instance.UpdateIcon();
     }
 
     // Uses up item (without dropping)
@@ -258,10 +261,10 @@ public abstract class Actor : MonoBehaviour
                     if (selectedItem.Equals(item))
                         ScrollSelectItem(-10, true);
                 }
-                if (isPlayer) HUDAndMenu.instance.UpdateIcon();
+                if (isPlayer) HUDCanvas.instance.UpdateIcon();
                 return true;
             }
-            if (isPlayer) HUDAndMenu.instance.UpdateIcon();
+            if (isPlayer) HUDCanvas.instance.UpdateIcon();
             return false;
         }
         return false;
@@ -280,7 +283,7 @@ public abstract class Actor : MonoBehaviour
             if (Inventory.Count > 0 && Inventory.Count >= selectedItemIndex) selectedItem = Inventory.ElementAt(selectedItemIndex).Key;
             else selectedItem = null;
         }
-        if (isPlayer) HUDAndMenu.instance.UpdateIcon();
+        if (isPlayer) HUDCanvas.instance.UpdateIcon();
     }
 
     IEnumerator SetLastAttacker(Actor attacker)

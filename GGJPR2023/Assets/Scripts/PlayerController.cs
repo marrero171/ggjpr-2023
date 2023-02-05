@@ -35,6 +35,7 @@ public class PlayerController : Actor
     {
         base.Start();
         controller = GetComponent<CharacterController>();
+        // HUDCanvas.instance.InitializeHUD();
     }
 
     // Update is called once per frame
@@ -91,6 +92,7 @@ public class PlayerController : Actor
         }
     }
     public void OnPutAway() => ScrollSelectItem(-10, true);
+    public void OnPause() => HUDCanvas.instance.TogglePause();
 
     public override void Consume(ItemInfo item, bool useItem = true)
     {

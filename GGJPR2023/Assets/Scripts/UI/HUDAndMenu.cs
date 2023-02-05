@@ -15,27 +15,35 @@ public class HUDAndMenu : MonoBehaviour
 
     void Start()
     {
-        HUDAndMenu.instance = this;
-        healthBar = doc.rootVisualElement.Q<ProgressBar>("HealthBar");
-        healthBar.highValue = player.MaxHealth;
+        // HUDAndMenu.instance = this;
+        // healthBar = doc.rootVisualElement.Q<ProgressBar>("HealthBar");
+        // healthBar.highValue = player.MaxHealth;
 
-        itemIcon = doc.rootVisualElement.Q<VisualElement>("ActiveItemIcon");
-        itemLabel = doc.rootVisualElement.Q<Label>("ActiveItemLabel");
-        itemCount = doc.rootVisualElement.Q<Label>("ActiveItemCount");
+        // itemIcon = doc.rootVisualElement.Q<VisualElement>("ActiveItemIcon");
+        // itemLabel = doc.rootVisualElement.Q<Label>("ActiveItemLabel");
+        // itemCount = doc.rootVisualElement.Q<Label>("ActiveItemCount");
 
-        UpdateHealth();
-        UpdateIcon();
+        // UpdateHealth();
+        // UpdateIcon();
+        // var root = doc.rootVisualElement.Q<HUDAndMenu2>("HUDAndMenu2");
+        HUDAndMenu2.instance.InitializeHUD();
+
+
+        // UpdateHealth();
+        // UpdateIcon();
+
     }
+    public void UpdateHealth() => HUDAndMenu2.instance.UpdateHealth();
+    public void UpdateIcon() => HUDAndMenu2.instance.UpdateIcon();
+    // public void UpdateHealth() { healthBar.value = player.Health; healthBar.title = player.Health + "/" + player.MaxHealth; }
 
-    public void UpdateHealth() { healthBar.value = player.Health; healthBar.title = player.Health + "/" + player.MaxHealth; }
-
-    public void UpdateIcon()
-    {
-        itemIcon.style.backgroundImage = new StyleBackground(player.selectedItem != null ? player.selectedItem.itemSprite : null);
-        itemLabel.text = player.selectedItem != null ? player.selectedItem.itemName : string.Empty;
-        //     itemCount.text = (player.selectedItem != null) ? player.Inventory[player.selectedItem].ToString() : string.Empty;
-        if (player.selectedItem != null && player.Inventory.ContainsKey(player.selectedItem))
-            itemCount.text = player.Inventory[player.selectedItem].ToString();
-        else itemCount.text = string.Empty;
-    }
+    // public void UpdateIcon()
+    // {
+    //     itemIcon.style.backgroundImage = new StyleBackground(player.selectedItem != null ? player.selectedItem.itemSprite : null);
+    //     itemLabel.text = player.selectedItem != null ? player.selectedItem.itemName : string.Empty;
+    //     //     itemCount.text = (player.selectedItem != null) ? player.Inventory[player.selectedItem].ToString() : string.Empty;
+    //     if (player.selectedItem != null && player.Inventory.ContainsKey(player.selectedItem))
+    //         itemCount.text = player.Inventory[player.selectedItem].ToString();
+    //     else itemCount.text = string.Empty;
+    // }
 }
