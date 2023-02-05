@@ -160,6 +160,7 @@ public class TreeScript : Interactable
 
     public void Plant()
     {
+        if (!isPlanted) return;
         ItemInfo actorItem = activeActor.selectedItem;
         if (actorItem == null) return;
         plantInfo = (PlantInfo)actorItem.externalReference;
