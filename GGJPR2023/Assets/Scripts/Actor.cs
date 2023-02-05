@@ -166,7 +166,7 @@ public abstract class Actor : MonoBehaviour
                     if (activeIntractable != null)
                         if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
                         else activeIntractable.RequestByActor(this);
-                    else Consume(selectedItem, true); audioSource?.PlayOneShot(selectedItem?.useSound);
+                    else audioSource?.PlayOneShot(selectedItem?.useSound); Consume(selectedItem, true); 
                     break;
                 case ItemType.Plantable:
                     if (activeIntractable != null)

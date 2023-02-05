@@ -23,7 +23,7 @@ MonoBehaviour:
     Assembly-CSharp","radius":50,"layerMask":256,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp"}},{"@type":"Apex.AI.ScoreSelector, Assembly-CSharp","_id":5a714bf8ce724cddb00d5a7e4b613d19,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":c4c784aa99fe4947984bc9f384969ccb},"_scorers":[{"@type":"HasItemOfTypeInInventory,
-    Assembly-CSharp","type":Water,"reversable":true,"score":5}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","type":Water,"reversable":true,"score":50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":40c891beb4084e469c61b07553b689cb},"_scorers":[{"@type":"ActorUnPlantedNearMe,
     Assembly-CSharp","radius":5,"layerMask":256,"score":7},{"@type":"VillagerCloseToTarget,
     Assembly-CSharp","dist":5,"score":3}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,

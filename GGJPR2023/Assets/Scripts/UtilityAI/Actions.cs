@@ -139,6 +139,7 @@ public sealed class VillagerGoToRequester : ActionBase
     public override void Execute(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
+        if (ctx.villager.referenceActor == null) return;
         ctx.baseParent.navMeshAgent.SetDestination(ctx.villager.referenceActor.transform.position);
     }
 }

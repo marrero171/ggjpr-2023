@@ -94,8 +94,8 @@ MonoBehaviour:
   meshRenderer: {fileID: 849145874574242521}
   treeObject: {fileID: 2315637761009645245}
   audioSource: {fileID: 553853550058678033}
-  planted: {fileID: 0}
-  watered: {fileID: 0}
+  planted: {fileID: 8300000, guid: 15b959d03726fb9f9a6e73696daa0b64, type: 3}
+  watered: {fileID: 8300000, guid: 5bd801a157c50ca43a77f835b3ce8b15, type: 3}
   waterSplash: {fileID: 1094759015476800331}
   plantedParticles: {fileID: 1062868857189896931}
   isPlanted: 0
@@ -171,10 +171,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 15b959d03726fb9f9a6e73696daa0b64, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

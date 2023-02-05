@@ -340,6 +340,7 @@ public sealed class VillagerCloseToRequester : ContextualScorerBase
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
+        if (ctx.villager.referenceActor == null) return 0;
         return Vector3.Distance(ctx.baseParent.transform.position, ctx.villager.referenceActor.transform.position) <= dist ? score : 0;
     }
 }
