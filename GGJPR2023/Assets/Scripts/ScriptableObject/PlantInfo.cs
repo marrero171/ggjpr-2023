@@ -11,5 +11,6 @@ public class PlantInfo : ScriptableObject
     public GenericDictionary<Mesh, Material> stages;
 
     public ItemInfo harvestable;
+    public List<ItemInfo> possibleDrops;
 }
 

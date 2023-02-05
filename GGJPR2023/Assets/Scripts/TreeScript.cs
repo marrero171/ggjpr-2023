@@ -197,5 +197,15 @@ public class TreeScript : Interactable
         newItem.transform.position = transform.position + (Vector3.up * 7.5f);
         newItem.gameObject.SetActive(true);
         newItem.item = plantInfo.harvestable;
+        if (Random.Range(0, 10) > 2)
+        {
+            for (int i = 0; i < Random.Range(1, 3); i++)
+            {
+                newItem = PoolingSystem.instance.GetObject(ReferenceMaster.instance.DroppedItem.gameObject).GetComponent<DroppedItem>();
+                newItem.transform.position = transform.position + (Vector3.up * 7.5f);
+                newItem.gameObject.SetActive(true);
+                newItem.item = plantInfo.possibleDrops[Random.Range(0, plantInfo.possibleDrops.Count)];
+            }
+        }
     }
 }

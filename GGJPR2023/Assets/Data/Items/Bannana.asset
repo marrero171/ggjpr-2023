@@ -18,4 +18,5 @@ MonoBehaviour:
   <isEdible>k__BackingField: 1
   description: A Delicious Guineo. Plantable.
   effectiveAmount: 5
-  externalReference: {fileID: 0}
+  externalReference: {fileID: 11400000, guid: 29e3ba498212b7448a95ab62f13bae7f, type: 2}
+  useSound: {fileID: 8300000, guid: 5cf9f1a50d2d616eab4a1749d4cc75cb, type: 3}

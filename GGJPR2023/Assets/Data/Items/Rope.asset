@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3861351d717fbaa47be36d20f295f5d6, type: 3}
-  m_Name: Yam
+  m_Name: Rope
   m_EditorClassIdentifier: 
-  <itemSprite>k__BackingField: {fileID: 21300000, guid: e9746f3b3877bf9d09255047807fbd94, type: 3}
-  <itemType>k__BackingField: 0
-  <itemName>k__BackingField: Yam
+  <itemSprite>k__BackingField: {fileID: 21300000, guid: 270591d8b0df6967dac7c8fd8a6813b9, type: 3}
+  <itemType>k__BackingField: 3
+  <itemName>k__BackingField: Rope
   <isEdible>k__BackingField: 1
-  description: An vianda that can be turned to other things. Plantable.
-  effectiveAmount: 18
-  externalReference: {fileID: 11400000, guid: 1aa6b0d2d146888ef845c8e413d8dcec, type: 2}
-  useSound: {fileID: 0}
+  description: A rock.
+  effectiveAmount: 1
+  externalReference: {fileID: 0}
+  useSound: {fileID: 8300000, guid: ac83ee6e0c650debfbd6d83a574fe830, type: 3}

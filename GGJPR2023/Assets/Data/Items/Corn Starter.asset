@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3861351d717fbaa47be36d20f295f5d6, type: 3}
-  m_Name: Yam
+  m_Name: Corn Starter
   m_EditorClassIdentifier: 
-  <itemSprite>k__BackingField: {fileID: 21300000, guid: e9746f3b3877bf9d09255047807fbd94, type: 3}
-  <itemType>k__BackingField: 0
-  <itemName>k__BackingField: Yam
+  <itemSprite>k__BackingField: {fileID: 21300000, guid: 1eac4a330e8f91ab29ccca1792ca39f4, type: 3}
+  <itemType>k__BackingField: 2
+  <itemName>k__BackingField: Corn Starter
   <isEdible>k__BackingField: 1
-  description: An vianda that can be turned to other things. Plantable.
-  effectiveAmount: 18
-  externalReference: {fileID: 11400000, guid: 1aa6b0d2d146888ef845c8e413d8dcec, type: 2}
+  description: 
+  effectiveAmount: 20
+  externalReference: {fileID: 11400000, guid: e14dff2b96af27249af027d10a083224, type: 2}
   useSound: {fileID: 0}

@@ -22,3 +22,6 @@ MonoBehaviour:
       Value: {fileID: 2100000, guid: 4cdd06516114686498a2b24d6c75dffd, type: 2}
     keyCollision: 0
   harvestable: {fileID: 11400000, guid: 926026d0fa920fd0c99aff280b8f0630, type: 2}
+  possibleDrops:
+  - {fileID: 11400000, guid: 1aa6b0d2d146888ef845c8e413d8dcec, type: 2}
+  - {fileID: 11400000, guid: 1087578dc30df4133921690829f60466, type: 2}

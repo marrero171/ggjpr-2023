@@ -19,3 +19,4 @@ MonoBehaviour:
   description: Water, can be dranked as well as planted.
   effectiveAmount: 35
   externalReference: {fileID: 0}
+  useSound: {fileID: 8300000, guid: efb9e36e5abd86af797c92c3d4c1ce84, type: 3}

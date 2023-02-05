@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Yuca
   m_EditorClassIdentifier: 
   <itemSprite>k__BackingField: {fileID: 21300000, guid: a13801844f2a55a4cbcee94105a3b628, type: 3}
-  <itemType>k__BackingField: 2
+  <itemType>k__BackingField: 0
   <itemName>k__BackingField: Yuca
   <isEdible>k__BackingField: 1
   description: An amazing vianda that can be turned to other things. Plantable.
   effectiveAmount: 20
-  externalReference: {fileID: 11400000, guid: 81589b5cd9ae3074aba0a53e8e116d91, type: 2}
+  externalReference: {fileID: 11400000, guid: 48356a5ec556d962b8c0978e0266e87f, type: 2}
+  useSound: {fileID: 0}
