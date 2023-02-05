@@ -25,9 +25,10 @@ public class AudioManager : MonoBehaviour
         if (!isFighting) { TransitionLayer.Play(); FightingLayer.clip = Battlefield; FightingLayer.Play(); }
 
         if (isFighting != battle) isFighting = battle;
-        if (intensified != intense) intensified = intense && battle;
+        // if (intensified != intense) 
+        intensified = ReferenceMaster.instance.player.Health <= 5 && battle;
 
-        Tween.Volume(FinghtingIntenseLayer, ((intensified && battle) ? 1 : 0), 2, 0, Tween.EaseInOut);
+        Tween.Volume(FinghtingIntenseLayer, ((intensified && battle) ? 1 : 0), 1, 0, Tween.EaseInOut);
         // if (intensified) Tween.Volume(FinghtingIntenseLayer, (battle ? 1 : 0), 2, 0, Tween.EaseInOut);
         Tween.Volume((battle ? FightingLayer : TownLayer), 1, 2, 2, Tween.EaseInOut);
     }

@@ -18,11 +18,20 @@
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
-        <PauseMenu name="PauseMenu" style="width: 100%; height: 100%; position: absolute; background-color: rgba(0, 0, 0, 0.5); flex-direction: row; display: flex; opacity: 1; -unity-background-scale-mode: scale-to-fit;">
+        <PauseMenu name="PauseMenu" style="width: 100%; height: 100%; position: absolute; background-color: rgba(0, 0, 0, 0.5); flex-direction: row; display: flex; opacity: 1; -unity-background-scale-mode: scale-to-fit; visibility: hidden;">
             <ui:VisualElement style="width: 50%; padding-left: 15%; padding-right: 15%; padding-top: 15%; padding-bottom: 15%; flex-wrap: wrap; justify-content: space-between;">
                 <ui:Button text="Resume" display-tooltip-when-elided="true" name="ResumeButton" />
                 <ui:Button text="Restart" display-tooltip-when-elided="true" name="RestartButton" />
             </ui:VisualElement>
         </PauseMenu>
+        <ConfirmPanel name="ConfirmPanel" style="width: 100%; height: 100%; position: absolute; background-color: rgba(0, 0, 0, 0.5); flex-wrap: wrap; justify-content: space-around; display: none;">
+            <ui:VisualElement>
+                <ui:Label text="You would forsaken&#10;this land and your people?" display-tooltip-when-elided="true" style="font-size: 50px;" />
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-around; height: 15%;">
+                <ui:Button text="Abbandon Tribe&#10;(Proceed)" display-tooltip-when-elided="true" />
+                <ui:Button text="Show Mercy&#10;(Cancel)" display-tooltip-when-elided="true" />
+            </ui:VisualElement>
+        </ConfirmPanel>
     </HUDAndMenu2>
 </ui:UXML>
