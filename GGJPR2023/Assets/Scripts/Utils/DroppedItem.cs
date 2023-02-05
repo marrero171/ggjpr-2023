@@ -42,6 +42,7 @@ public class DroppedItem : Interactable
         {
             rigidbody.isKinematic = true;
             collider.isTrigger = true;
+            StartCoroutine(Expire());
         }
     }
 
@@ -52,4 +53,11 @@ public class DroppedItem : Interactable
         activeActor.activeIntractable = null;
         gameObject.SetActive(false);
     }
+
+    IEnumerator Expire()
+    {
+        yield return new WaitForSeconds(120);
+        gameObject.SetActive(false);
+    }
+
 }

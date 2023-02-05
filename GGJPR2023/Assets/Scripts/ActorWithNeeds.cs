@@ -84,7 +84,7 @@ public class ActorWithNeeds : Actor, IContextProvider
         if (item.itemType == ItemType.Food) basicNeeds.Hunger += item.effectiveAmount;
         if (item.itemType == ItemType.Water) basicNeeds.Thirst += item.effectiveAmount;
         if (Random.Range(0, 10) > 4) Health++;
-        if (item.externalReference != null) DropItem((ItemInfo)item.externalReference, 0);
+        if (item.externalReference != null) SpawnItem((ItemInfo)item.externalReference);
         if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
     }
 
