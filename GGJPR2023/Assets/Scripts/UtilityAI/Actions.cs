@@ -112,7 +112,8 @@ public sealed class VillagerCallForAid : ActionBase
     public override void Execute(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        ctx.villager.RequestHelp(type);
+        if (ctx.baseParent.basicNeeds.Thirst < -1 || ctx.baseParent.basicNeeds.Hunger < -1)
+            ctx.villager.RequestHelp(type);
     }
 }
 
