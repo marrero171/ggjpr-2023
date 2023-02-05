@@ -98,6 +98,7 @@ public class PlayerController : Actor
     {
         if (item == null) return;
         Heal(item.effectiveAmount);
+        if (item.externalReference != null) SpawnItem((ItemInfo)item.externalReference);
         if (useItem && Inventory.ContainsKey(item)) RemoveItem(item, 1);
     }
 

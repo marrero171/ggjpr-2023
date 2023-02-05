@@ -258,7 +258,7 @@ public sealed class ActorUnPlantedNearMe : ContextualScorerBase
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        
+
         Collider[] hits = Physics.OverlapSphere(ctx.baseParent.transform.position, radius, layerMask);
         Transform curr = null;
         float lastDist = radius * 2, dist = lastDist;
@@ -380,7 +380,7 @@ public sealed class ActorCanSeeActorOfType : ContextualScorerBase
     }
 }
 
-public sealed class ActorUnhealthyPlantNearMe: ContextualScorerBase
+public sealed class ActorUnhealthyPlantNearMe : ContextualScorerBase
 {
     [ApexSerialization, FriendlyName("Max Distance")] public float radius;
     [ApexSerialization, FriendlyName("Max Distance")] public LayerMask layerMask;
