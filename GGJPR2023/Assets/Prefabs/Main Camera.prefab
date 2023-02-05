@@ -173,6 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9051b731f3ff290c589d08cc4cb8f0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MusicChangeLayers:
+    serializedVersion: 2
+    m_Bits: 393216
+  MusicChangeRadius: 50
   TownLayer: {fileID: 5807815045763143212}
   FightingLayer: {fileID: 7980353053517674044}
   FinghtingIntenseLayer: {fileID: 6798771510610489796}

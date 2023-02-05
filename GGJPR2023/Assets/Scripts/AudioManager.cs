@@ -1,9 +1,14 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Pixelplacement;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+    public LayerMask MusicChangeLayers;
+    public float MusicChangeRadius = 30;
     public AudioSource TownLayer, FightingLayer, FinghtingIntenseLayer, TransitionLayer;
     public AudioClip TownFight, OutsiedFight;
     bool isFighting = false, intensified = false;
@@ -31,6 +36,13 @@ public class AudioManager : MonoBehaviour
         Tween.Volume(FinghtingIntenseLayer, ((intensified && battle) ? 1 : 0), 1, 0, Tween.EaseInOut);
         // if (intensified) Tween.Volume(FinghtingIntenseLayer, (battle ? 1 : 0), 2, 0, Tween.EaseInOut);
         Tween.Volume((battle ? FightingLayer : TownLayer), 1, 2, 2, Tween.EaseInOut);
+    }
+
+    IEnumerator updateBGMLayerCoroutine()
+    {
+        Collider[] hits = Physics.OverlapSphere(ReferenceMaster.instance.player.transform.position, MusicChangeRadius, MusicChangeLayers);
+        ToggleFighting(hits.Length > 0);
+        yield return new WaitForSeconds(1);
     }
 
 
