@@ -139,6 +139,5 @@ public sealed class ActorUseItem : ActionBase
         // ctx.baseParent
         ctx.baseParent.FindClosestInteraction();
         ctx.baseParent.TryInteract();
-        ctx.baseParent.target = ctx.baseParent.target;
     }
 }
