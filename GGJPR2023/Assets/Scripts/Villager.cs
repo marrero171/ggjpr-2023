@@ -54,6 +54,7 @@ public class Villager : ActorWithNeeds
     }
     public void HearOutcry(VillagerRequest req)
     {
+        print("I have heard " + req.who.name);
         if (BehaviorVector.x < -50) return;
         if (reqExp != null) StopCoroutine(reqExp);
         request = req;
