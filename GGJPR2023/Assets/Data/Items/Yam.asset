@@ -19,4 +19,4 @@ MonoBehaviour:
   description: An vianda that can be turned to other things. Plantable.
   effectiveAmount: 18
   externalReference: {fileID: 11400000, guid: 1aa6b0d2d146888ef845c8e413d8dcec, type: 2}
-  useSound: {fileID: 0}
+  useSound: {fileID: 8300000, guid: 5cf9f1a50d2d616eab4a1749d4cc75cb, type: 3}

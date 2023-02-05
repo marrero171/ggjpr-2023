@@ -19,4 +19,4 @@ MonoBehaviour:
   description: 
   effectiveAmount: 20
   externalReference: {fileID: 11400000, guid: 408ddd8a3a04193bba768d3f055f34c6, type: 2}
-  useSound: {fileID: 0}
+  useSound: {fileID: 8300000, guid: 5cf9f1a50d2d616eab4a1749d4cc75cb, type: 3}

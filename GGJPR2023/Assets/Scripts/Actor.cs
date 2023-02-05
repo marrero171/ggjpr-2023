@@ -179,6 +179,7 @@ public abstract class Actor : MonoBehaviour
                         if (activeIntractable != null) activeIntractable.RequestByActor(this); //Whatever this is.
                         else ThrowProjectile(selectedItem, moveDir);
                     }
+                    else goto default;
                     break;
                 case ItemType.Resource: //What do?
                 default: //Ignore everything and just grab.

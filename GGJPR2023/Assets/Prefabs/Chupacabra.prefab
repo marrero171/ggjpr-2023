@@ -318,15 +318,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79f824fc2b72b55a3a907e27354ad55f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 10
-  MaxHealth: 15
+  Health: 30
+  MaxHealth: 30
   Damage: 2
   interactionRadius: 3
   AttackCollider: {fileID: 5620005317923524288}
   Inventory:
-    list:
-    - Key: {fileID: 11400000, guid: adb4af110274aa3519685696231ef392, type: 2}
-      Value: 15
+    list: []
     keyCollision: 0
   activeIntractable: {fileID: 0}
   selectedItem: {fileID: 0}
@@ -342,7 +340,7 @@ MonoBehaviour:
   isDead: 0
   isPlayer: 0
   defaultDrop: {fileID: 11400000, guid: adb4af110274aa3519685696231ef392, type: 2}
-  maxDrops: 3
+  maxDrops: 8
   NormalSpeed: 8
   RunSpeed: 12
   basicNeeds:
