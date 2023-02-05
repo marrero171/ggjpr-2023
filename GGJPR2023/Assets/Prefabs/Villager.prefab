@@ -224,6 +224,9 @@ MonoBehaviour:
   BehaviorVector: {x: 0, y: 0, z: 0}
   Age: 0
   maxAge: 50
+  villagerMask:
+    serializedVersion: 2
+    m_Bits: 65536
 --- !u!82 &6397380016221982691
 AudioSource:
   m_ObjectHideFlags: 0

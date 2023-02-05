@@ -22,6 +22,8 @@ public class Villager : ActorWithNeeds
     Coroutine reqExp;
     public new IAIContext GetContext(System.Guid id) { return ctx; }
 
+    public LayerMask villagerMask;
+
     public new void OnEnable()
     {
         ctx = new NeedyActorContext(this, this);
@@ -42,22 +44,21 @@ public class Villager : ActorWithNeeds
     }
 
     // Took a massive shortcut.
+
     public void RequestHelp(ItemType type)
     {
-        var villagers = Physics.OverlapSphere(transform.position, 50, LayerMask.NameToLayer("Villagers"));
+        var villagers = Physics.OverlapSphere(transform.position, 50, villagerMask);
         VillagerRequest nRequest = new VillagerRequest(this, type);
         villagers.ToList().ForEach(v => v.SendMessage("HearOutcry", nRequest));
     }
     public void HearOutcry(VillagerRequest req)
     {
         if (BehaviorVector.x < -50) return;
-        StopCoroutine(reqExp);
+        if (reqExp != null) StopCoroutine(reqExp);
         request = req;
         referenceActor = req.who;
         reqExp = StartCoroutine(expireRequest());
     }
-
-
 }
 public class VillagerRequest
 {

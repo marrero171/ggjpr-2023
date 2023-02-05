@@ -27,29 +27,29 @@ MonoBehaviour:
     Assembly-CSharp","_id":9d4e3153822642f297bfee0cd88c4733,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"ActorInteractOrUse, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeInInventory,
     Assembly-CSharp","type":Food,"reversable":false,"score":50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":4639d146c35b4b7984edeb19ebf80876},"_scorers":[{"@type":"HasItemOfTypeNearBy,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":b38a9e6ae0564521a5ac1e407225ad9f},"_scorers":[{"@type":"HasItemOfTypeNearBy,
     Assembly-CSharp","mask":64,"radius":100,"score":20},{"@type":"WhenHungry, Assembly-CSharp","behaviour":SeekClosestMeal,"score":10},{"@type":"WhenHungry,
     Assembly-CSharp","behaviour":LookAround,"score":8}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":4639d146c35b4b7984edeb19ebf80876},"_scorers":[{"@type":"WhenHungry,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":b38a9e6ae0564521a5ac1e407225ad9f},"_scorers":[{"@type":"WhenHungry,
     Assembly-CSharp","behaviour":ConsiderHealth,"score":10},{"@type":"HasItemOfTypeNearBy,
     Assembly-CSharp","mask":64,"radius":50,"score":20}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":eee62f2a14624ec38b95c11c25f67978},"_scorers":[{"@type":"WhenHungry,
     Assembly-CSharp","behaviour":ConsiderHealth,"score":20}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    Assembly-CSharp"}},{"@type":"Apex.AI.ScoreSelector, Assembly-CSharp","_id":4639d146c35b4b7984edeb19ebf80876,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp"}},{"@type":"Apex.AI.ScoreSelector, Assembly-CSharp","_id":b38a9e6ae0564521a5ac1e407225ad9f,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"ActorGetItem, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeNearBy,
     Assembly-CSharp","mask":64,"radius":1,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":1dcbd4a8c606440ca9b86dfe2f02cf73,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"ActorInteractOrUse, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeInInventory,
     Assembly-CSharp","type":Water,"reversable":false,"score":50}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":58a68aec0b6d4ae39d6361a557c65ac5},"_scorers":[{"@type":"HasItemOfTypeNearBy,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":8d52efd8e1c5432fa4d1abe0919d7f7d},"_scorers":[{"@type":"HasItemOfTypeNearBy,
     Assembly-CSharp","mask":16,"radius":100,"score":20},{"@type":"WhenThirsty, Assembly-CSharp","behaviour":SeekClosestMeal,"score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":58a68aec0b6d4ae39d6361a557c65ac5},"_scorers":[{"@type":"WhenThirsty,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":8d52efd8e1c5432fa4d1abe0919d7f7d},"_scorers":[{"@type":"WhenThirsty,
     Assembly-CSharp","behaviour":ConsiderHealth,"score":10},{"@type":"HasItemOfTypeNearBy,
     Assembly-CSharp","mask":16,"radius":80,"score":25}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":ede0663cb6154a5f9885bf6a63c11c3b},"_scorers":[{"@type":"WhenThirsty,
     Assembly-CSharp","behaviour":ConsiderHealth,"score":20}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    Assembly-CSharp"}},{"@type":"Apex.AI.ScoreSelector, Assembly-CSharp","_id":58a68aec0b6d4ae39d6361a557c65ac5,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp"}},{"@type":"Apex.AI.ScoreSelector, Assembly-CSharp","_id":8d52efd8e1c5432fa4d1abe0919d7f7d,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"ActorGetItem, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeNearBy,
     Assembly-CSharp","mask":16,"radius":1,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
@@ -79,7 +79,9 @@ MonoBehaviour:
     Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":5,"maxDist":1},"_scorers":[{"@type":"IsBored,
     Assembly-CSharp","behaviour":WalkAround,"score":5}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":300,"maxDist":50},"_scorers":[{"@type":"IsBored,
-    Assembly-CSharp","behaviour":GoToSomethngInteresting,"score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","behaviour":GoToSomethngInteresting,"score":5}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":e55af828f5524321898e14e55b0cb796},"_scorers":[{"@type":"HasItemOfTypeNearBy,
+    Assembly-CSharp","mask":4176,"radius":5,"score":6}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp"}},{"@type":"Apex.AI.ScoreSelector, Assembly-CSharp","_id":82c54bc4fe494ba195f20af52a18612e,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.CompositeAction, Assembly-CSharp","_actions":[{"@type":"ActorChangeSpeed,
     Assembly-CSharp","Run":false}],"_connectorAction":{"@type":"Apex.AI.SelectorAction,
@@ -108,20 +110,21 @@ MonoBehaviour:
     Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":5d9811c26dfd487fa8464554c45d3180,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":94e33ad3ed854e999ad13d2d57566cd0},"_scorers":[{"@type":"VillagerRespondToRequest,
-    Assembly-CSharp","score":10}]},{"@type":"Apex.AI.CompositeScoreQualifier, Assembly-CSharp","action":{"@type":"Apex.AI.AILinkAction,
-    Assembly-CSharp","_aiId":587eb834e2104b09a613e41acdc4a148},"_scorers":[{"@type":"ActorUnPlantedNearMe,
-    Assembly-CSharp","radius":50,"layerMask":256,"score":4},{"@type":"ActorUnhealthyPlantNearMe,
-    Assembly-CSharp","radius":50,"layerMask":256,"score":4}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","score":4},{"@type":"VillagerHasItemRequesterNeeds, Assembly-CSharp","score":6}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.AILinkAction, Assembly-CSharp","_aiId":587eb834e2104b09a613e41acdc4a148},"_scorers":[{"@type":"ActorUnPlantedNearMe,
+    Assembly-CSharp","radius":50,"layerMask":256,"score":5},{"@type":"ActorUnhealthyPlantNearMe,
+    Assembly-CSharp","radius":50,"layerMask":256,"score":6}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":9f8573fab1054e96815684ea1ce89188}}},{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":94e33ad3ed854e999ad13d2d57566cd0,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"ActorGiveItem, Assembly-CSharp","instaUse":false},"_scorers":[{"@type":"VillagerHasItemRequesterNeeds,
-    Assembly-CSharp","score":20},{"@type":"VillagerCloseToRequester, Assembly-CSharp","dist":2,"score":100}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"VillagerGoToRequester, Assembly-CSharp"},"_scorers":[{"@type":"VillagerHasItemRequesterNeeds,
-    Assembly-CSharp","score":20}]},{"@type":"Apex.AI.CompositeScoreQualifier, Assembly-CSharp","action":{"@type":"ActorGetItem,
-    Assembly-CSharp"},"_scorers":[{"@type":"VillagerHasRequestItemNearBy, Assembly-CSharp","radius":2,"score":15}]},{"@type":"Apex.AI.CompositeScoreQualifier,
-    Assembly-CSharp","action":{"@type":"ActorGetItem, Assembly-CSharp"},"_scorers":[{"@type":"VillagerHasRequestItemNearBy,
-    Assembly-CSharp","radius":75,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    Assembly-CSharp","action":{"@type":"VillagerGoToRequester, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","score":20}]},{"@type":"Apex.AI.CompositeScoreQualifier, Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction,
+    Assembly-CSharp","_selectorId":e9f3145653a74b56ae765adf60e1c92a},"_scorers":[{"@type":"VillagerHasRequestItemNearBy,
+    Assembly-CSharp","radius":8,"score":15}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":e9f3145653a74b56ae765adf60e1c92a},"_scorers":[{"@type":"VillagerHasRequestItemNearBy,
+    Assembly-CSharp","radius":75,"score":10}]},{"@type":"Apex.AI.CompositeAllOrNothingQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGiveItem, Assembly-CSharp","instaUse":false},"_scorers":[{"@type":"VillagerHasItemRequesterNeeds,
+    Assembly-CSharp","score":20},{"@type":"VillagerCloseToRequester, Assembly-CSharp","dist":2,"score":100}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"Apex.AI.SelectorAction, Assembly-CSharp","_selectorId":9f8573fab1054e96815684ea1ce89188}}},{"@type":"Apex.AI.ScoreSelector,
     Assembly-CSharp","_id":ede0663cb6154a5f9885bf6a63c11c3b,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"VillagerGoHome, Assembly-CSharp"},"_scorers":[{"@type":"ActorIsInHomeArea,
     Assembly-CSharp","reversable":true,"score":2}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
@@ -129,45 +132,58 @@ MonoBehaviour:
     Assembly-CSharp","_id":eee62f2a14624ec38b95c11c25f67978,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"VillagerGoHome, Assembly-CSharp"},"_scorers":[{"@type":"ActorIsInHomeArea,
     Assembly-CSharp","reversable":true,"score":2}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    Assembly-CSharp","action":{"@type":"VillagerCallForAid, Assembly-CSharp","type":Food}}}]}'
-  editorConfiguration: '{"offset":{"@x":451,"@y":-276},"zoom":0.55000001,"SelectorView":{"ViewArea":{"@left":297,"@top":-89,"@width":88,"@height":154},"Name":"Main
+    Assembly-CSharp","action":{"@type":"VillagerCallForAid, Assembly-CSharp","type":Food}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","_id":e55af828f5524321898e14e55b0cb796,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGetItem, Assembly-CSharp"},"_scorers":[{"@type":"HasItemOfTypeNearBy,
+    Assembly-CSharp","mask":4176,"radius":1,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}},{"@type":"Apex.AI.ScoreSelector,
+    Assembly-CSharp","_id":e9f3145653a74b56ae765adf60e1c92a,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGetItem, Assembly-CSharp"},"_scorers":[{"@type":"VillagerHasRequestItemNearBy,
+    Assembly-CSharp","radius":2,"score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
+    Assembly-CSharp","action":{"@type":"ActorGoToTarget, Assembly-CSharp"}}}]}'
+  editorConfiguration: '{"offset":{"@x":639,"@y":106},"zoom":0.25,"SelectorView":{"ViewArea":{"@left":569,"@top":191,"@width":40,"@height":70},"Name":"Main
     Selector","QualifierView":{"Name":"Father, I seek substenance","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"I
     have THIRST.","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Attacked!?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Home
-    or Explroe","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":407,"@top":-221,"@width":110,"@height":187},"Name":"Mano
+    or Explroe","ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":619,"@top":131,"@width":50,"@height":85},"Name":"Mano
     tengo hambre.","QualifierView":{"Name":"Pocket Lechon?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Thou may eat, muh child"}},"QualifierView":{"Name":"Where
     can I get food?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgently
     Need food!","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Someone
-    have food plis?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":550,"@top":-221,"@width":88,"@height":88},"Name":"Grab
+    have food plis?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":684,"@top":131,"@width":40,"@height":40},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Am I next to food?","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":715,"@top":-188,"@width":99,"@height":187},"Name":"Thristy
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":759,"@top":146,"@width":45,"@height":85},"Name":"Thristy
     people problems.","QualifierView":{"Name":"Pocket Water?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Drink. --Tyrion''s GF"}},"QualifierView":{"Name":"Where
     can I get woughtur?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"The
     Thirst.","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Someone
-    have water plis?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":880,"@top":-199,"@width":88,"@height":88},"Name":"Grab
+    have water plis?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":834,"@top":141,"@width":40,"@height":40},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Can I at least get some ","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":506,"@top":-23,"@width":121,"@height":154},"Name":"Ugh,
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":664,"@top":221,"@width":55,"@height":70},"Name":"Ugh,
     I can''t belive you''ve done this.","QualifierView":{"Name":"Dude, Where''s my
     Healthcare?","ActionView":{"@connectorType":"Composite","Name":"Y e e t ."}},"QualifierView":{"Name":"Havin''
     a giggle ''ere mate?","ActionView":{"@connectorType":"Composite","Name":"C''mon,
     I''ll fite ye."}},"QualifierView":{"Name":"-Taunts- Ahhh Ajaa? ","ActionView":{"@connectorType":"Composite","Name":"I
-    suggest you run, player."}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":715,"@top":10,"@width":110,"@height":121},"QualifierView":{"Name":"Throw?","ActionView":{"Name":"Attempt
-    Chancletazo"}},"QualifierView":{"Name":"No weapon?","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":1056,"@top":-56,"@width":88,"@height":121},"Name":"Namaste","QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":407,"@top":142,"@width":110,"@height":154},"Name":"Are
+    suggest you run, player."}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":759,"@top":236,"@width":50,"@height":55},"QualifierView":{"Name":"Throw?","ActionView":{"Name":"Attempt
+    Chancletazo"}},"QualifierView":{"Name":"No weapon?","ActionView":{}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":914,"@top":206,"@width":40,"@height":70},"Name":"Namaste","QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"QualifierView":{"Name":"Oooh
+    shiny","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":619,"@top":296,"@width":50,"@height":70},"Name":"Are
     we Home or ","QualifierView":{"Name":"Am I home?","ActionView":{"@connectorType":"Composite"}},"QualifierView":{"Name":"Y
-    este monte?","ActionView":{}},"QualifierView":{"Name":"Following Player?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":539,"@top":208,"@width":110,"@height":121},"Name":"We
+    este monte?","ActionView":{}},"QualifierView":{"Name":"Following Player?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":679,"@top":326,"@width":50,"@height":55},"Name":"We
     Adventurin''?","QualifierView":{"Name":"Has Enemy or Mob Nearyby","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Has
-    Resources Near By","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":693,"@top":142,"@width":110,"@height":88},"Name":"(Mob)
-    looms close.","QualifierView":{"Name":"You are not ready.","ActionView":{"@connectorType":"Composite"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":704,"@top":241,"@width":88,"@height":88},"Name":"Grab
+    Resources Near By","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"ActionView":{}}},"SelectorView":{"ViewArea":{"@left":749,"@top":296,"@width":50,"@height":40},"Name":"(Mob)
+    looms close.","QualifierView":{"Name":"You are not ready.","ActionView":{"@connectorType":"Composite"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":754,"@top":341,"@width":40,"@height":40},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Am I next to it?","ActionView":{"Name":"I''ll
-    take that tyvm"}},"DefaultQualifier":{"Name":"Go to them","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":836,"@top":153,"@width":110,"@height":121},"Name":"Chilltown?","QualifierView":{"Name":"Did
+    take that tyvm"}},"DefaultQualifier":{"Name":"Go to them","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":814,"@top":301,"@width":50,"@height":55},"Name":"Chilltown?","QualifierView":{"Name":"Did
     someone call for help?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Plant
-    needs tending?","ActionView":{"@connectorType":"AILink"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":1034,"@top":142,"@width":88,"@height":187},"Name":"Request
-    Item Processing","QualifierView":{"Name":"Can hand over?","ActionView":{}},"QualifierView":{"Name":"Got
-    the goods?","ActionView":{}},"QualifierView":{"Name":"Is it around?","ActionView":{"Name":"I''ll
-    take that tyvm"}},"QualifierView":{"Name":"Am I next to it?","ActionView":{"Name":"I''ll
-    take that tyvm"}},"DefaultQualifier":{"Name":"Go to them","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":847,"@top":-89,"@width":121,"@height":88},"Name":"Ask
+    needs tending?","ActionView":{"@connectorType":"AILink"}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":874,"@top":291,"@width":40,"@height":85},"Name":"Request
+    Item Processing","QualifierView":{"Name":"Got the goods?","ActionView":{"Name":"I
+    will go to you"}},"QualifierView":{"Name":"Is it around?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Am
+    I next to it?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Can
+    hand over?","ActionView":{}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":819,"@top":191,"@width":55,"@height":40},"Name":"Ask
     for water","QualifierView":{"Name":"Am I home?","ActionView":{}},"DefaultQualifier":{"Name":"Ask
-    for food","ActionView":{}}},"AILinkView":{"@id":587eb834e2104b09a613e41acdc4a148,"ViewArea":{"@left":957,"@top":340,"@width":110,"@height":41}},"SelectorView":{"ViewArea":{"@left":561,"@top":-122,"@width":132,"@height":88},"Name":"Ask
+    for food","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":684,"@top":176,"@width":60,"@height":40},"Name":"Ask
     for water","QualifierView":{"Name":"Am I home?","ActionView":{}},"DefaultQualifier":{"Name":"Ask
-    for food","ActionView":{}}}}'
+    for food","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":989,"@top":221,"@width":40,"@height":40},"Name":"Grab
+    or Walk.","QualifierView":{"Name":"me grab shiny","ActionView":{"Name":"Food
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":974,"@top":286,"@width":55,"@height":40},"Name":"Grab
+    or Walk.","QualifierView":{"Name":"Lemme get that for ya","ActionView":{}},"DefaultQualifier":{"Name":"Go
+    to where food is","ActionView":{}}},"AILinkView":{"@id":587eb834e2104b09a613e41acdc4a148,"ViewArea":{"@left":869,"@top":386,"@width":50,"@height":19}}}'
