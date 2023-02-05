@@ -9,6 +9,7 @@ using static UnityEditor.Progress;
 using Utils;
 [RequireComponent(typeof(CountDownTimer))]
 [RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(AudioSource))]
 public class TreeScript : Interactable
 {
     [Tooltip("Can be used for decor trees or smth")]
@@ -31,6 +32,8 @@ public class TreeScript : Interactable
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
     public GameObject treeObject;
+    public AudioSource audioSource;
+    public AudioClip planted, watered;
 
     public int WaterLevel
     {
@@ -49,7 +52,7 @@ public class TreeScript : Interactable
             {
                 healthy = false;
                 timer.timeMultiplier = 0.60f;
-            } 
+            }
             else
             {
                 healthy = true;
@@ -65,6 +68,7 @@ public class TreeScript : Interactable
     {
         //Grow once and start the timer
         timer = GetComponent<CountDownTimer>();
+        audioSource = GetComponent<AudioSource>();
 
         soilMesh = meshFilter.mesh;
         soilMaterial = meshRenderer.material;
@@ -149,6 +153,7 @@ public class TreeScript : Interactable
         if (preGrown) currentCycle = growthCycles - 1;
         UpdateStage(currentCycle);
         isPlanted = true;
+        audioSource?.PlayOneShot(planted);
         return true;
     }
 
@@ -179,6 +184,8 @@ public class TreeScript : Interactable
         ItemInfo actorItem = activeActor.selectedItem;
         WaterLevel += actorItem.effectiveAmount;
         activeActor.UseItem(actorItem);
+        audioSource?.PlayOneShot(watered);
+
     }
 
     public void Harvest()

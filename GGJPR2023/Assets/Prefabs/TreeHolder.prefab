@@ -92,6 +92,9 @@ MonoBehaviour:
   meshFilter: {fileID: 413751140335018164}
   meshRenderer: {fileID: 849145874574242521}
   treeObject: {fileID: 2315637761009645245}
+  audioSource: {fileID: 553853550058678033}
+  planted: {fileID: 0}
+  watered: {fileID: 0}
   isPlanted: 0
   fullyGrown: 0
 --- !u!114 &2315637760806357442

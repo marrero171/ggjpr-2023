@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.pixelplacement.surge.tween": {
+      "version": "1.0.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.solidalloy.extevents": {
       "version": "1.7.0",
       "depth": 0,
@@ -244,6 +251,13 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "net.roystan.toonwatershader": {
+      "version": "1.0.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
     },
     "org.nuget.system.buffers": {
       "version": "4.5.1",

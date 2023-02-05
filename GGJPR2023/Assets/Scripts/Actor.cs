@@ -7,6 +7,7 @@ using System.Collections;
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public abstract class Actor : MonoBehaviour
 {
 
@@ -25,6 +26,8 @@ public abstract class Actor : MonoBehaviour
     [HideInInspector] public SpriteRenderer renderer;
     [HideInInspector] public Animator animator;
     Coroutine lastAttackerCooldown;
+    public AudioSource audioSource;
+    public AudioClip HurtSound, DeathSound;
 
     [HideInInspector] public bool isDead = false;
     [HideInInspector] public bool isPlayer = false;
@@ -37,6 +40,7 @@ public abstract class Actor : MonoBehaviour
         if (Inventory == null) Inventory = new GenericDictionary<ItemInfo, int>();
         animator = GetComponent<Animator>();
         renderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
     public void LateUpdate()
     {
@@ -66,7 +70,7 @@ public abstract class Actor : MonoBehaviour
             Health = Mathf.Clamp(value, 0, MaxHealth);
             Debug.Log(gameObject.name + " health changed");
             if (isPlayer) HUDAndMenu.instance.UpdateHealth();
-            if (Health == 0) { Die(); }
+            if (Health == 0) { Die(); } else { audioSource?.PlayOneShot(HurtSound); }
         }
         get { return Health; }
     }
@@ -80,6 +84,7 @@ public abstract class Actor : MonoBehaviour
     public virtual void Die()
     {
         isDead = true;
+        audioSource?.PlayOneShot(DeathSound);
         DropInventory();
         if (defaultDrop) SpawnItem(defaultDrop, Random.Range(0, maxDrops + 1));
         if (!isPlayer) gameObject.SetActive(false);
@@ -155,18 +160,22 @@ public abstract class Actor : MonoBehaviour
             {
                 case ItemType.Food:
                     if (activeIntractable != null) activeIntractable.RequestByActor(this); //Whatever this is.
-                    else Consume(selectedItem, true);
+                    else Consume(selectedItem, true); audioSource?.PlayOneShot(selectedItem.useSound);
                     break;
                 case ItemType.Water:
                     if (activeIntractable != null)
                         if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Water plant");
                         else activeIntractable.RequestByActor(this);
-                    else Consume(selectedItem, true);
+                    else Consume(selectedItem, true); audioSource?.PlayOneShot(selectedItem.useSound);
                     break;
                 case ItemType.Plantable:
                     if (activeIntractable != null)
                         if (activeIntractable.tag == "Soil") activeIntractable.RequestByActor(this, "Plant");
                         else activeIntractable.RequestByActor(this); //Whatever this is.
+                    break;
+                case ItemType.Throwable:
+                    if (isPlayer) return;
+                    ThrowProjectile(selectedItem, moveDir);
                     break;
                 case ItemType.Resource: //What do?
                 default: //Ignore everything and just grab.
@@ -195,6 +204,7 @@ public abstract class Actor : MonoBehaviour
         projectile.DamageAmmount = throwInfo.damage;
         projectile.Speed = throwInfo.speed;
         projectile.gameObject.SetActive(true);
+        audioSource?.PlayOneShot(projectileInfo.useSound);
 
     }
     public void AddItem(ItemInfo item, int ammount = 1)

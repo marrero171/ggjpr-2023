@@ -22,4 +22,5 @@ public class ItemInfo : ScriptableObject
 
     public int effectiveAmount = 5;
     public ScriptableObject externalReference;
+    public AudioClip useSound;
 }
