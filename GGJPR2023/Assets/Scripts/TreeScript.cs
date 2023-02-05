@@ -35,6 +35,9 @@ public class TreeScript : Interactable
     public AudioSource audioSource;
     public AudioClip planted, watered;
 
+    public ParticleSystem waterSplash;
+    public ParticleSystem plantedParticles;
+
     public int WaterLevel
     {
         get { return waterLevel; }
@@ -161,6 +164,7 @@ public class TreeScript : Interactable
         if (actorItem == null) return;
         plantInfo = (PlantInfo)actorItem.externalReference;
         if (PlantTree(plantInfo)) activeActor.UseItem(actorItem);
+        plantedParticles?.Play();
     }
 
     public void KillPlant()
@@ -180,6 +184,7 @@ public class TreeScript : Interactable
         ItemInfo actorItem = activeActor.selectedItem;
         WaterLevel += actorItem.effectiveAmount;
         activeActor.UseItem(actorItem);
+        waterSplash.Play();
         audioSource?.PlayOneShot(watered);
 
     }
