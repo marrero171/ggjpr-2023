@@ -61,7 +61,7 @@ public class PlayerController : Actor
     public void OnInteract()
     {
         // Debug.Log("Interacted");
-        activeIntractable = FindClosestInteraction();
+        FindClosestInteraction();
         TryInteract();
     }
 

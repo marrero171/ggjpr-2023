@@ -32,7 +32,7 @@ public class ActorWithNeeds : Actor, IContextProvider
     [HideInInspector] public Collider collider;
     [HideInInspector] public Transform target;
     [HideInInspector] public Transform lastTarget;
-    [HideInInspector] public HomeArea home;
+    public HomeArea home;
 
     public NeedyActorContext ctx;
     public IAIContext GetContext(System.Guid id) { return ctx; }

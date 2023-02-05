@@ -251,12 +251,32 @@ public sealed class ActorIsInHomeArea : ContextualScorerBase
     }
 }
 
-public sealed class VillagerHasUnplanted : ContextualScorerBase
+public sealed class ActorUnPlantedNearMe : ContextualScorerBase
 {
+    [ApexSerialization, FriendlyName("Max Distance")] public float radius;
+    [ApexSerialization, FriendlyName("Max Distance")] public LayerMask layerMask;
     public override float Score(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
-        //TODO: Ask for help
+        
+        Collider[] hits = Physics.OverlapSphere(ctx.baseParent.transform.position, radius, layerMask);
+        Transform curr = null;
+        float lastDist = radius * 2, dist = lastDist;
+        hits.ToList().ForEach(hit =>
+        {
+            hit.TryGetComponent(out TreeScript treeBoi);
+            if (treeBoi == null) return;
+            if (!treeBoi.isPlanted)
+            {
+                dist = Vector3.Distance(ctx.baseParent.transform.position, hit.transform.position);
+                if (dist < lastDist) { lastDist = dist; curr = hit.transform; }
+            }
+        });
+        if (curr != null)
+        {
+            ctx.baseParent.target = curr;
+            return score;
+        }
         return 0;
     }
 }
@@ -355,5 +375,44 @@ public sealed class ActorCanSeeActorOfType : ContextualScorerBase
             return score;
         }
         return 0;
+    }
+}
+
+public sealed class ActorUnhealthyPlantNearMe: ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Max Distance")] public float radius;
+    [ApexSerialization, FriendlyName("Max Distance")] public LayerMask layerMask;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        Collider[] hits = Physics.OverlapSphere(ctx.baseParent.transform.position, radius, layerMask);
+        Transform curr = null;
+        float lastDist = radius * 2, dist = lastDist;
+        hits.ToList().ForEach(hit =>
+        {
+            hit.TryGetComponent(out TreeScript treeBoi);
+            if (treeBoi == null) return;
+            if (!treeBoi.healthy)
+            {
+                dist = Vector3.Distance(ctx.baseParent.transform.position, hit.transform.position);
+                if (dist < lastDist) { lastDist = dist; curr = hit.transform; }
+            }
+        });
+        if (curr != null)
+        {
+            ctx.baseParent.target = curr;
+            return score;
+        }
+        return 0;
+    }
+}
+
+public sealed class VillagerCloseToTarget : ContextualScorerBase
+{
+    [ApexSerialization, FriendlyName("Distance")] public int dist = 50;
+    public override float Score(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        return Vector3.Distance(ctx.baseParent.transform.position, ctx.baseParent.target.transform.position) <= dist ? score : 0;
     }
 }

@@ -21,7 +21,7 @@ public class TreeScript : Interactable
     int currentCycle = 0;
     [SerializeField] int waterLevel = 5;
     int waterThreshold = 5;
-    bool healthy = true;
+    public bool healthy = true;
 
     public PlantInfo plantInfo;
 
@@ -32,7 +32,7 @@ public class TreeScript : Interactable
     public MeshRenderer meshRenderer;
     public GameObject treeObject;
 
-    int WaterLevel
+    public int WaterLevel
     {
         get { return waterLevel; }
         set
@@ -162,8 +162,8 @@ public class TreeScript : Interactable
     public void KillPlant()
     {
         UpdateStage(-1);
-        plantInfo = null;
         isPlanted = false;
+        plantInfo = null;
         fullyGrown = false;
         timer.Stop();
         treeObject.transform.localScale = Vector3.one;

@@ -115,7 +115,7 @@ public abstract class Actor : MonoBehaviour
         if (AttackCollider != null) AttackOff();
     }
 
-    protected Interactable FindClosestInteraction()
+    public void FindClosestInteraction()
     {
         float distanceToClosest = Mathf.Infinity;
         Collider closest = null;
@@ -136,12 +136,12 @@ public abstract class Actor : MonoBehaviour
 
         if (closest == null)
         {
-            return null;
+            activeIntractable = null;
         }
         else
         {
             closest.TryGetComponent(out Interactable interactable);
-            return interactable;
+            activeIntractable = interactable;
         }
     }
 

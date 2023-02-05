@@ -7,6 +7,7 @@ public class HomeArea : MonoBehaviour
 {
     public Collider bounds;
     public Actor spawnableActor;
+    public bool spawnAtStart = false;
     public int maxCount = 20;
     // public int StartingCount = 10;
     public bool isVillage = false;
@@ -18,7 +19,7 @@ public class HomeArea : MonoBehaviour
         actors = new List<Actor>();
         min = new Vector3(-bounds.bounds.extents.x, -bounds.bounds.extents.y, -bounds.bounds.extents.z);
         max = new Vector3(bounds.bounds.extents.x, bounds.bounds.extents.y, bounds.bounds.extents.z);
-        for (int i = 0; i < Random.Range(1, maxCount / 4); i++) RequestNewActor();
+        if (spawnAtStart) for (int i = 0; i < Random.Range(1, maxCount / 4); i++) RequestNewActor();
     }
 
     public void RequestNewActor()

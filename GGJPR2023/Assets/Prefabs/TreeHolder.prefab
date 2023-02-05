@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2315637760806357442}
   - component: {fileID: 2315637760806357445}
   - component: {fileID: 8348101139774550387}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: TreeHolder
   m_TagString: Soil
   m_Icon: {fileID: 0}
@@ -50,10 +50,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
     list:
-    - Key: default
-      Value:
-        _persistentListeners: []
-        Expanded: 1
     - Key: Plant
       Value:
         _persistentListeners:
@@ -87,6 +83,7 @@ MonoBehaviour:
   canDie: 1
   preGrown: 0
   waterLevel: 5
+  healthy: 1
   plantInfo: {fileID: 0}
   soilMesh: {fileID: -2432090755550338912, guid: 7a750de1a3aca4145965c970ab1afcac, type: 3}
   soilMaterial: {fileID: 2100000, guid: 1e3d34bd9547b604db623f95eea455b2, type: 2}
@@ -166,7 +163,7 @@ GameObject:
   - component: {fileID: 2315637761009645246}
   - component: {fileID: 849145874574242521}
   - component: {fileID: 413751140335018164}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TreeRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}

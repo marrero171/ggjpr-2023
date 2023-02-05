@@ -30,6 +30,7 @@ public sealed class ActorGetItem : ActionBase
         ctx.baseParent.ScrollSelectItem(-10, true);
         // MonoBehaviour.print("Attempting Grab");
         // ctx.baseParent.
+        ctx.baseParent.FindClosestInteraction();
         ctx.baseParent.TryInteract();
     }
 }
@@ -39,6 +40,7 @@ public sealed class ActorInteractOrUse : ActionBase
     public override void Execute(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
+        ctx.baseParent.FindClosestInteraction();
         ctx.baseParent.TryInteract();
     }
 }
@@ -124,5 +126,18 @@ public sealed class VillagerGoToRequester : ActionBase
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
         ctx.baseParent.navMeshAgent.SetDestination(ctx.villager.referenceActor.transform.position);
+    }
+}
+
+public sealed class ActorUseItem : ActionBase
+{
+    public override void Execute(IAIContext context)
+    {
+        NeedyActorContext ctx = (NeedyActorContext)context;
+        // ctx.baseParent.ScrollSelectItem(-10, true);
+        MonoBehaviour.print("Attempting Plant");
+        // ctx.baseParent.
+        ctx.baseParent.FindClosestInteraction();
+        ctx.baseParent.TryInteract();
     }
 }

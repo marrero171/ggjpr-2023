@@ -27,7 +27,7 @@ public class DroppedItem : Interactable
         {
             case ItemType.Food: gameObject.layer = LayerMask.NameToLayer("Food"); break;
             case ItemType.Throwable: gameObject.layer = LayerMask.NameToLayer("Throwable"); break;
-            case ItemType.Plantable: gameObject.layer = LayerMask.NameToLayer("Plants"); break;
+            case ItemType.Plantable: gameObject.layer = LayerMask.NameToLayer("Plantable"); break;
             case ItemType.Water: gameObject.layer = LayerMask.NameToLayer("Water"); break;
             case ItemType.Resource: gameObject.layer = LayerMask.NameToLayer("Resources"); break;
         }
