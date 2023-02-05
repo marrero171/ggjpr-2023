@@ -130,7 +130,8 @@ public class TreeScript : Interactable
 
     public bool PlantTree(PlantInfo newPlant)
     {
-        if (isPlanted || newPlant == null) return false;
+        if (isPlanted) return false;
+        if (newPlant == null) return false;
 
         // Use plis
         // Debug.Log("Planting go brr");

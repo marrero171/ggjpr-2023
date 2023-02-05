@@ -76,7 +76,7 @@ MonoBehaviour:
             GUID: 
             _typeNameAndAssembly: 
             _suppressLogs: 0
-          _methodName: Plant
+          _methodName: Water
         Expanded: 1
     keyCollision: 0
   activeActor: {fileID: 0}
