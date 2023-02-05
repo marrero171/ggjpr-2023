@@ -13,13 +13,22 @@ public class HomeArea : MonoBehaviour
     public bool isVillage = false;
     [HideInInspector] public Vector3 min, max;
     public List<ActorWithNeeds> actors;
-    void Start()
+    public List<ItemInfo> spwanables;
+    IEnumerator Start()
     {
+        yield return new WaitUntil(() => ReferenceMaster.instance != null);
         bounds = GetComponent<Collider>();
         actors = new List<ActorWithNeeds>();
         min = new Vector3(-bounds.bounds.extents.x, -bounds.bounds.extents.y, -bounds.bounds.extents.z);
         max = new Vector3(bounds.bounds.extents.x, bounds.bounds.extents.y, bounds.bounds.extents.z);
         if (spawnAtStart) for (int i = 0; i < (isVillage ? maxCount / 4 : (Random.Range(1, (maxCount / maxCount / 2)))); i++) RequestNewActor();
+        if (spawnAtStart) for (int i = 0; i < maxCount; i++)
+            {
+                DroppedItem newItem = Utils.PoolingSystem.instance.GetObject(ReferenceMaster.instance.DroppedItem.gameObject).GetComponent<DroppedItem>();
+                newItem.transform.position = transform.position + new Vector3(Random.Range(-1, 1), 1, Random.Range(-1, 1));
+                newItem.item = spwanables[Random.Range(0, spwanables.Count)];
+                newItem.gameObject.SetActive(true);
+            }
     }
 
     public void RequestNewActor()
