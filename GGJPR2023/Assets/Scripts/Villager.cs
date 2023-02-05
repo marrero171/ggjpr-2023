@@ -50,7 +50,7 @@ public class Villager : ActorWithNeeds
         var villagers = Physics.OverlapSphere(transform.position, 50, villagerMask);
         VillagerRequest nRequest = new VillagerRequest(this, type);
         print(gameObject.name + " is requesting help of type " + type);
-        villagers.ToList().ForEach(v => v.gameObject.SendMessage("HearOutcry", nRequest));
+        villagers.ToList().ForEach(v => v.GetComponent<Villager>().HearOutcry(nRequest));
     }
     public void HearOutcry(VillagerRequest req)
     {
