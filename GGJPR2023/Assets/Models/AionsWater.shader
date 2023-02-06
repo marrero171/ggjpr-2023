@@ -14,7 +14,9 @@ Shader "Custom/AionsWater"
         Tags { "RenderType" = "Transparent" }
         //Blend SrcAlpha OneMinusSrcAlpha
             //Blend One One
-            Blend OneMinusSrcAlpha SrcAlpha
+            Blend SrcAlpha OneMinusDstAlpha
+           // ZWrite OFF
+           // Blend OneMinusSrcAlpha SrcAlpha
         LOD 200
 
         CGPROGRAM
@@ -53,12 +55,12 @@ Shader "Custom/AionsWater"
 
             UVS += float2(u, v);
             // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_MainTex, UVS) * _Color;
+            fixed4 c = tex2D (_MainTex, UVS);
             o.Albedo = c.rgb;
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Alpha = .1;
+            o.Alpha = c.a;
         }
         ENDCG
     }
