@@ -9,7 +9,7 @@ namespace Apex.Serialization
     /// <seealso cref="Apex.Serialization.StageItem" />
     public abstract class StageContainer : StageItem
     {
-        internal StageItem _tailChild;
+        public StageItem _tailChild;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StageContainer"/> class.
@@ -26,7 +26,7 @@ namespace Apex.Serialization
         /// <param name="item">The item.</param>
         public abstract void Add(StageItem item);
 
-        internal abstract void Remove(StageItem item);
+        public abstract void Remove(StageItem item);
 
         /// <summary>
         /// Gets all child items.

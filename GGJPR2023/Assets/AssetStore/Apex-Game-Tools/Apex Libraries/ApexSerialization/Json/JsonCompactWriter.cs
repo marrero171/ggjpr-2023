@@ -3,7 +3,7 @@ namespace Apex.Serialization.Json
 {
     using System.Text;
 
-    internal class JsonCompactWriter : IJsonWriter
+    public class JsonCompactWriter : IJsonWriter
     {
         private StringBuilder _b = new StringBuilder();
 

@@ -2,16 +2,16 @@
 
 namespace Apex.AI.Visualization
 {
-    internal sealed class SelectorActionVisualizer : ConnectorActionVisualizer
+    public sealed class SelectorActionVisualizer : ConnectorActionVisualizer
     {
         private ISelect _connectedSelector;
 
-        internal SelectorActionVisualizer(SelectorAction action, IQualifierVisualizer parent)
+        public SelectorActionVisualizer(SelectorAction action, IQualifierVisualizer parent)
             : base(action, parent)
         {
         }
 
-        internal override void Init()
+        public override void Init()
         {
             _connectedSelector = parent.parent.parent.FindSelector(((SelectorAction)this.action).selector.id);
         }

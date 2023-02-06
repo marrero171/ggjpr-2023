@@ -49,7 +49,7 @@ namespace Apex.LoadBalancing
             private set;
         }
 
-        internal static LoadBalancerConfig From(string name, LoadBalancedQueue q)
+        public static LoadBalancerConfig From(string name, LoadBalancedQueue q)
         {
             return new LoadBalancerConfig
             {
@@ -62,7 +62,7 @@ namespace Apex.LoadBalancing
             };
         }
 
-        internal void ApplyTo(LoadBalancedQueue q)
+        public void ApplyTo(LoadBalancedQueue q)
         {
             q.defaultUpdateInterval = this.updateInterval;
             q.maxUpdatesPerInterval = this.maxUpdatesPerFrame;

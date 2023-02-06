@@ -670,14 +670,14 @@ namespace Apex.Serialization
 
         private struct AIPropInfo
         {
-            internal PropertyInfo prop;
-            internal object defaultValue;
+            public PropertyInfo prop;
+            public object defaultValue;
         }
 
         private struct AIFieldInfo
         {
-            internal FieldInfo field;
-            internal object defaultValue;
+            public FieldInfo field;
+            public object defaultValue;
         }
     }
 }

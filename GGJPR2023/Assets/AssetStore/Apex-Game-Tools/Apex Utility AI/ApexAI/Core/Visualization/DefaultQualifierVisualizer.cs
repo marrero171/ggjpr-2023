@@ -2,11 +2,11 @@
 
 namespace Apex.AI.Visualization
 {
-    internal sealed class DefaultQualifierVisualizer : QualifierVisualizer, IDefaultQualifier
+    public sealed class DefaultQualifierVisualizer : QualifierVisualizer, IDefaultQualifier
     {
         private IDefaultQualifier _defQualifier;
 
-        internal DefaultQualifierVisualizer(IDefaultQualifier q, SelectorVisualizer parent)
+        public DefaultQualifierVisualizer(IDefaultQualifier q, SelectorVisualizer parent)
             : base(q, parent)
         {
             _defQualifier = q;

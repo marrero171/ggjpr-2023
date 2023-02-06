@@ -5,12 +5,12 @@ namespace Apex.AI.Visualization
     using System;
     using System.Collections.Generic;
 
-    internal sealed class SelectorVisualizer : Selector, IVisualizedObject
+    public sealed class SelectorVisualizer : Selector, IVisualizedObject
     {
         private Selector _selector;
         private UtilityAIVisualizer _parent;
 
-        internal SelectorVisualizer(Selector s, UtilityAIVisualizer parent)
+        public SelectorVisualizer(Selector s, UtilityAIVisualizer parent)
         {
             _selector = s;
             _parent = parent;
@@ -33,22 +33,22 @@ namespace Apex.AI.Visualization
             this.defaultQualifier = new DefaultQualifierVisualizer(_selector.defaultQualifier, this);
         }
 
-        internal UtilityAIVisualizer parent
+        public UtilityAIVisualizer parent
         {
             get { return _parent; }
         }
 
-        internal new Guid id
+        public new Guid id
         {
             get { return _selector.id; }
         }
 
-        internal Selector selector
+        public Selector selector
         {
             get { return _selector; }
         }
 
-        internal IQualifier lastSelectedQualifier
+        public IQualifier lastSelectedQualifier
         {
             get;
             private set;
@@ -59,7 +59,7 @@ namespace Apex.AI.Visualization
             get { return _selector; }
         }
 
-        internal void ClearBreakpoints()
+        public void ClearBreakpoints()
         {
             var qualifierCount = this.qualifiers.Count;
             for (int i = 0; i < qualifierCount; i++)
@@ -68,7 +68,7 @@ namespace Apex.AI.Visualization
             }
         }
 
-        internal void Init()
+        public void Init()
         {
             var qualifierCount = this.qualifiers.Count;
             for (int i = 0; i < qualifierCount; i++)
@@ -79,7 +79,7 @@ namespace Apex.AI.Visualization
             ((IQualifierVisualizer)this.defaultQualifier).Init();
         }
 
-        internal void Reset()
+        public void Reset()
         {
             this.lastSelectedQualifier = null;
             var qualifierCount = this.qualifiers.Count;

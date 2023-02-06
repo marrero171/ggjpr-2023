@@ -20,7 +20,7 @@ namespace Apex.AI
         private Guid _selectorId;
         private Selector _selector;
 
-        internal SelectorAction()
+        public SelectorAction()
         {
         }
 

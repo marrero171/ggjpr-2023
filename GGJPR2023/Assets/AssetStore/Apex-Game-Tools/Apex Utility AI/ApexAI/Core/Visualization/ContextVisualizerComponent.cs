@@ -13,10 +13,10 @@ namespace Apex.AI.Visualization
     public abstract class ContextVisualizerComponent : MonoBehaviour
     {
         [SerializeField, HideInInspector]
-        internal string relevantAIId;
+        public string relevantAIId;
 
         [SerializeField, HideInInspector]
-        internal SceneVisualizationMode mode = SceneVisualizationMode.SingleSelectedGameObject;
+        public SceneVisualizationMode mode = SceneVisualizationMode.SingleSelectedGameObject;
 
         private Guid _relevantAIGuid;
 
@@ -51,49 +51,49 @@ namespace Apex.AI.Visualization
             switch (mode)
             {
                 case SceneVisualizationMode.SingleSelectedGameObject:
-                {
-                    var providers = VisualizationManager.visualizedContextProviders;
-                    if (providers.Count > 0)
                     {
-                        var ctx = providers[0].GetContext(_relevantAIGuid);
-                        if (ctx != null)
+                        var providers = VisualizationManager.visualizedContextProviders;
+                        if (providers.Count > 0)
                         {
-                            drawer(ctx);
+                            var ctx = providers[0].GetContext(_relevantAIGuid);
+                            if (ctx != null)
+                            {
+                                drawer(ctx);
+                            }
                         }
-                    }
 
-                    break;
-                }
+                        break;
+                    }
 
                 case SceneVisualizationMode.AllSelectedGameObjects:
-                {
-                    var providers = VisualizationManager.visualizedContextProviders;
-                    var count = providers.Count;
-                    for (int i = 0; i < count; i++)
                     {
-                        var ctx = providers[i].GetContext(_relevantAIGuid);
-                        if (ctx != null)
+                        var providers = VisualizationManager.visualizedContextProviders;
+                        var count = providers.Count;
+                        for (int i = 0; i < count; i++)
                         {
-                            drawer(ctx);
+                            var ctx = providers[i].GetContext(_relevantAIGuid);
+                            if (ctx != null)
+                            {
+                                drawer(ctx);
+                            }
                         }
-                    }
 
-                    break;
-                }
+                        break;
+                    }
 
                 case SceneVisualizationMode.Custom:
-                {
-                    var buffer = ListBufferPool.GetBuffer<IAIContext>(4);
-                    GetContextsToVisualize(buffer, _relevantAIGuid);
-                    var count = buffer.Count;
-                    for (int i = 0; i < count; i++)
                     {
-                        drawer(buffer[i]);
-                    }
+                        var buffer = ListBufferPool.GetBuffer<IAIContext>(4);
+                        GetContextsToVisualize(buffer, _relevantAIGuid);
+                        var count = buffer.Count;
+                        for (int i = 0; i < count; i++)
+                        {
+                            drawer(buffer[i]);
+                        }
 
-                    ListBufferPool.ReturnBuffer(buffer);
-                    break;
-                }
+                        ListBufferPool.ReturnBuffer(buffer);
+                        break;
+                    }
             }
         }
     }

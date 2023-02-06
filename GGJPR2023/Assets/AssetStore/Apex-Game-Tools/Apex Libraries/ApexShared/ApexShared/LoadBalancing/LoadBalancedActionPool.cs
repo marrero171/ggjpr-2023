@@ -210,7 +210,7 @@ namespace Apex.LoadBalancing
         {
             private Action _action;
 
-            internal Action action
+            public Action action
             {
                 get { return _action; }
                 set { _action = value; }
@@ -235,18 +235,18 @@ namespace Apex.LoadBalancing
             private IEnumerator _iter;
             private int _maxMillisecondsUsedPerFrame;
 
-            internal RecycledLongRunningAction()
+            public RecycledLongRunningAction()
             {
                 this.repeat = true;
             }
 
-            internal IEnumerator iter
+            public IEnumerator iter
             {
                 get { return _iter; }
                 set { _iter = value; }
             }
 
-            internal int maxMillisecondsUsedPerFrame
+            public int maxMillisecondsUsedPerFrame
             {
                 get { return _maxMillisecondsUsedPerFrame; }
                 set { _maxMillisecondsUsedPerFrame = value; }
@@ -282,12 +282,12 @@ namespace Apex.LoadBalancing
         {
             private Func<float, bool> _action;
 
-            internal RecycledAction()
+            public RecycledAction()
             {
                 this.repeat = true;
             }
 
-            internal Func<float, bool> action
+            public Func<float, bool> action
             {
                 get { return _action; }
                 set { _action = value; }

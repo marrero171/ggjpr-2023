@@ -17,12 +17,12 @@ namespace Apex.AI.Components
         /// The ai configurations
         /// </summary>
         [SerializeField, HideInInspector]
-        internal UtilityAIConfig[] aiConfigs;
+        public UtilityAIConfig[] aiConfigs;
 
         private IUtilityAIClient[] _clients;
         private int _usedClients;
 
-        internal event Action<IUtilityAIClient> OnNewAI;
+        public event Action<IUtilityAIClient> OnNewAI;
 
         /// <summary>
         /// Gets all the AI clients.
@@ -283,7 +283,7 @@ namespace Apex.AI.Components
             }
         }
 
-        internal void ToggleActive(int idx, bool active)
+        public void ToggleActive(int idx, bool active)
         {
             if (this.aiConfigs[idx].isActive == active)
             {
@@ -313,12 +313,12 @@ namespace Apex.AI.Components
             var c = this.clients;
             for (int i = 0; i < c.Length; i++)
             {
-				var config = this.aiConfigs[i];
-				if (config == null)
-				{
-					continue;
-				}
-				
+                var config = this.aiConfigs[i];
+                if (config == null)
+                {
+                    continue;
+                }
+
                 if (c[i] != null && config.isActive)
                 {
                     c[i].Start();

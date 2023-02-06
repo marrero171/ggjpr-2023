@@ -61,7 +61,7 @@ namespace Apex.Serialization
             item.parent = this;
         }
 
-        internal override void Remove(StageItem item)
+        public override void Remove(StageItem item)
         {
             if (item == null)
             {

@@ -5,9 +5,9 @@ namespace Apex.AI.Components
     using UnityEngine;
     using Utilities;
 
-    internal class AIQuickStarts
+    public class AIQuickStarts
     {
-        internal static void LoadBalancer(GameObject target)
+        public static void LoadBalancer(GameObject target)
         {
             var lb = ComponentHelper.FindFirstComponentInScene<LoadBalancerComponent>();
             if (lb != null)
@@ -26,7 +26,7 @@ namespace Apex.AI.Components
             }
         }
 
-        internal static void UtilityAIClient(GameObject target, bool ensureLoadBalancer)
+        public static void UtilityAIClient(GameObject target, bool ensureLoadBalancer)
         {
             target.AddIfMissing<UtilityAIComponent>();
 

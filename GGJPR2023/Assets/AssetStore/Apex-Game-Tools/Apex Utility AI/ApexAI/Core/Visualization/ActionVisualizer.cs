@@ -2,23 +2,23 @@
 
 namespace Apex.AI.Visualization
 {
-    internal class ActionVisualizer : IAction, IVisualizedObject
+    public class ActionVisualizer : IAction, IVisualizedObject
     {
         private IAction _action;
         private IQualifierVisualizer _parent;
 
-        internal ActionVisualizer(IAction action, IQualifierVisualizer parent)
+        public ActionVisualizer(IAction action, IQualifierVisualizer parent)
         {
             _action = action;
             _parent = parent;
         }
 
-        internal IAction action
+        public IAction action
         {
             get { return _action; }
         }
 
-        internal IQualifierVisualizer parent
+        public IQualifierVisualizer parent
         {
             get { return _parent; }
         }
@@ -28,12 +28,12 @@ namespace Apex.AI.Visualization
             get { return _action; }
         }
 
-        internal virtual void Init()
+        public virtual void Init()
         {
             /* NOOP */
         }
 
-        internal virtual void Execute(IAIContext context, bool doCallback)
+        public virtual void Execute(IAIContext context, bool doCallback)
         {
             _action.Execute(context);
             if (doCallback)

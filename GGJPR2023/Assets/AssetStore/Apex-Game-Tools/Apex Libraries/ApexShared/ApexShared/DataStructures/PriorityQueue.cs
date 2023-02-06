@@ -26,7 +26,7 @@ namespace Apex.DataStructures
         /// <param name="priority">The priority.</param>
         public void Enqueue(T item, int priority)
         {
-            this.AddInternal(new QueueItem(item, priority));
+            this.Addpublic(new QueueItem(item, priority));
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Apex.DataStructures
         /// <returns>The item</returns>
         public T Dequeue()
         {
-            return this.RemoveInternal().item;
+            return this.Removepublic().item;
         }
 
         /// <summary>

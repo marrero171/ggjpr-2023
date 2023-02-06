@@ -3,9 +3,9 @@ namespace Apex.Serialization.Json
 {
     using System.Text;
 
-    internal static class StringHandler
+    public static class StringHandler
     {
-        internal static void EscapeString(string s, StringBuilder b)
+        public static void EscapeString(string s, StringBuilder b)
         {
             b.EnsureCapacity(s.Length);
 
@@ -23,46 +23,46 @@ namespace Apex.Serialization.Json
                     switch (c)
                     {
                         case '\t':
-                        {
-                            escaped = @"\t";
-                            break;
-                        }
+                            {
+                                escaped = @"\t";
+                                break;
+                            }
 
                         case '\n':
-                        {
-                            escaped = @"\n";
-                            break;
-                        }
+                            {
+                                escaped = @"\n";
+                                break;
+                            }
 
                         case '\r':
-                        {
-                            escaped = @"\r";
-                            break;
-                        }
+                            {
+                                escaped = @"\r";
+                                break;
+                            }
 
                         case '\f':
-                        {
-                            escaped = @"\f";
-                            break;
-                        }
+                            {
+                                escaped = @"\f";
+                                break;
+                            }
 
                         case '\b':
-                        {
-                            escaped = @"\b";
-                            break;
-                        }
+                            {
+                                escaped = @"\b";
+                                break;
+                            }
 
                         case '\0':
-                        {
-                            escaped = @"\0";
-                            break;
-                        }
+                            {
+                                escaped = @"\0";
+                                break;
+                            }
 
                         default:
-                        {
-                            doEscape = true;
-                            break;
-                        }
+                            {
+                                doEscape = true;
+                                break;
+                            }
                     }
                 }
                 else if (c > 126)
@@ -74,16 +74,16 @@ namespace Apex.Serialization.Json
                     switch (c)
                     {
                         case '\\':
-                        {
-                            escaped = @"\\";
-                            break;
-                        }
+                            {
+                                escaped = @"\\";
+                                break;
+                            }
 
                         case '\"':
-                        {
-                            escaped = "\\\"";
-                            break;
-                        }
+                            {
+                                escaped = "\\\"";
+                                break;
+                            }
                     }
                 }
 

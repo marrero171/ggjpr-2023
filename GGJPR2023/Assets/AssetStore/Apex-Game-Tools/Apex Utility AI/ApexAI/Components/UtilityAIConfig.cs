@@ -7,7 +7,7 @@ namespace Apex.AI.Components
     /// Configuration settings for AIs 
     /// </summary>
     [Serializable]
-    internal class UtilityAIConfig
+    public class UtilityAIConfig
     {
         public string aiId;
         public float intervalMin;

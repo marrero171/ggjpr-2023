@@ -330,13 +330,13 @@ namespace Apex.LoadBalancing
         {
             private bool _isDisposed;
 
-            internal LoadBalancedQueue parent;
+            public LoadBalancedQueue parent;
 
-            internal float nextUpdate;
+            public float nextUpdate;
 
-            internal float lastUpdate;
+            public float lastUpdate;
 
-            internal float interval;
+            public float interval;
 
             public ILoadBalanced item { get; set; }
 
@@ -390,7 +390,7 @@ namespace Apex.LoadBalancing
                 parent._queue.ReheapifyUpFrom(this);
             }
 
-            internal void Dispose()
+            public void Dispose()
             {
                 if (!_isDisposed)
                 {

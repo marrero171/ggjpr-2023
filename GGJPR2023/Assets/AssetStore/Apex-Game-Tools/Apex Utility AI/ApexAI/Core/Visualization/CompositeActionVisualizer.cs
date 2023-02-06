@@ -5,12 +5,12 @@ namespace Apex.AI.Visualization
     using System.Collections;
     using System.Collections.Generic;
 
-    internal class CompositeActionVisualizer : ConnectorActionVisualizer, ICompositeVisualizer, ICompositeAction, IRequireTermination
+    public class CompositeActionVisualizer : ConnectorActionVisualizer, ICompositeVisualizer, ICompositeAction, IRequireTermination
     {
         private List<ActionVisualizer> _actions;
         private ConnectorActionVisualizer _connectorAction;
 
-        internal CompositeActionVisualizer(CompositeAction action, IQualifierVisualizer parent)
+        public CompositeActionVisualizer(CompositeAction action, IQualifierVisualizer parent)
             : base(action, parent)
         {
             _actions = new List<ActionVisualizer>(action.actions.Count);
@@ -49,7 +49,7 @@ namespace Apex.AI.Visualization
             get { return _connectorAction != null; }
         }
 
-        internal override void Init()
+        public override void Init()
         {
             if (_connectorAction != null)
             {
@@ -57,7 +57,7 @@ namespace Apex.AI.Visualization
             }
         }
 
-        internal override void Execute(IAIContext context, bool doCallback)
+        public override void Execute(IAIContext context, bool doCallback)
         {
             var count = _actions.Count;
             for (int i = 0; i < count; i++)

@@ -17,7 +17,7 @@ namespace Apex.Serialization
         /// <param name="name">The name.</param>
         /// <param name="value">The value.</param>
         /// <param name="isText">Whether of not the value represents textual content.</param>
-        internal StageValue(string name, string value, bool isText)
+        public StageValue(string name, string value, bool isText)
             : base(name)
         {
             this.value = value;

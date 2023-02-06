@@ -32,13 +32,10 @@
         /// <value>
         /// The parent.
         /// </value>
-        public StageContainer parent
-        {
-            get;
-            internal set;
-        }
+        public StageContainer parent;
 
-        internal StageItem next
+
+        public StageItem next
         {
             get;
             set;

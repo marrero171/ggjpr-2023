@@ -26,7 +26,7 @@ namespace Apex.DataStructures
         /// <param name="item">The item to add</param>
         public void Add(T item)
         {
-            AddInternal(item);
+            Addpublic(item);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Apex.DataStructures
         /// <returns>The item at the front of the heap.</returns>
         public T Remove()
         {
-            return RemoveInternal();
+            return Removepublic();
         }
     }
 }

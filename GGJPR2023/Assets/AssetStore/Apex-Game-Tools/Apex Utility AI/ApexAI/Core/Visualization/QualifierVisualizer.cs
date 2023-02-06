@@ -4,13 +4,13 @@ namespace Apex.AI.Visualization
 {
     using System;
 
-    internal class QualifierVisualizer : IQualifierVisualizer, IVisualizedObject
+    public class QualifierVisualizer : IQualifierVisualizer, IVisualizedObject
     {
         private IQualifier _qualifier;
         private ActionVisualizer _action;
         private SelectorVisualizer _parent;
 
-        internal QualifierVisualizer(IQualifier q, SelectorVisualizer parent)
+        public QualifierVisualizer(IQualifier q, SelectorVisualizer parent)
         {
             _qualifier = q;
             _parent = parent;

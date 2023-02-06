@@ -14,7 +14,7 @@ namespace Apex.LoadBalancing
         private readonly SimpleQueue<Action> _queue;
         private readonly int _maxMillisecondsPerFrame;
 
-        internal Marshaller(int maxMillisecondsPerFrame)
+        public Marshaller(int maxMillisecondsPerFrame)
         {
             _maxMillisecondsPerFrame = maxMillisecondsPerFrame;
             _queue = new SimpleQueue<Action>(10);
@@ -33,7 +33,7 @@ namespace Apex.LoadBalancing
             }
         }
 
-        internal void ProcessPending()
+        public void ProcessPending()
         {
             if (_queue.count == 0)
             {

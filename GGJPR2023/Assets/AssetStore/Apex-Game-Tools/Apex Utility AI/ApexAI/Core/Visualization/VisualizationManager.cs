@@ -22,12 +22,12 @@
         /// <value>
         /// <c>true</c> if visualization is active; otherwise, <c>false</c>.
         /// </value>
-        internal static bool isVisualizing
+        public static bool isVisualizing
         {
             get { return _visualizing; }
         }
 
-        internal static IList<IContextProvider> visualizedContextProviders
+        public static IList<IContextProvider> visualizedContextProviders
         {
             get
             {
@@ -129,7 +129,7 @@
             }
         }
 
-        internal static bool BeginVisualization()
+        public static bool BeginVisualization()
         {
             if (_visualizing)
             {
@@ -149,7 +149,7 @@
             return true;
         }
 
-        internal static void UpdateSelectedGameObjects(GameObject[] selected)
+        public static void UpdateSelectedGameObjects(GameObject[] selected)
         {
             if (!_visualizing)
             {
@@ -174,7 +174,7 @@
             }
         }
 
-        internal static bool TryGetVisualizerFor(Type t, out ICustomVisualizer visualizer)
+        public static bool TryGetVisualizerFor(Type t, out ICustomVisualizer visualizer)
         {
             if (_visualizerLookup == null)
             {

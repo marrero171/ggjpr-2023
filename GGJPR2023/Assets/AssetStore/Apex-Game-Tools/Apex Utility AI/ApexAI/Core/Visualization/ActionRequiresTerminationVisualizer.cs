@@ -2,11 +2,11 @@
 
 namespace Apex.AI.Visualization
 {
-    internal class ActionRequiresTerminationVisualizer : ActionVisualizer, IRequireTermination
+    public class ActionRequiresTerminationVisualizer : ActionVisualizer, IRequireTermination
     {
         private IRequireTermination _action;
 
-        internal ActionRequiresTerminationVisualizer(IAction action, IQualifierVisualizer parent)
+        public ActionRequiresTerminationVisualizer(IAction action, IQualifierVisualizer parent)
             : base(action, parent)
         {
             _action = (IRequireTermination)action;

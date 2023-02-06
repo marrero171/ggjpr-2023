@@ -5,11 +5,11 @@ namespace Apex.AI.Visualization
     using System.Collections;
     using System.Collections.Generic;
 
-    internal class CompositeQualifierVisualizer : QualifierVisualizer, ICompositeVisualizer
+    public class CompositeQualifierVisualizer : QualifierVisualizer, ICompositeVisualizer
     {
         private List<IContextualScorer> _scorers;
 
-        internal CompositeQualifierVisualizer(ICompositeScorer q, SelectorVisualizer parent)
+        public CompositeQualifierVisualizer(ICompositeScorer q, SelectorVisualizer parent)
             : base((IQualifier)q, parent)
         {
             _scorers = new List<IContextualScorer>(q.scorers.Count);

@@ -31,14 +31,14 @@ namespace Kino
     {
         #region Public Methods
 
-        // Update internal state with a given bloom instance.
+        // Update state with a given bloom instance.
         public void Prepare(Bloom bloom)
         {
-            #if UNITY_5_6_OR_NEWER
+#if UNITY_5_6_OR_NEWER
             if (bloom.GetComponent<Camera>().allowHDR)
-            #else
+#else
             if (bloom.GetComponent<Camera>().hdr)
-            #endif
+#endif
             {
                 _rangeX = 6;
                 _rangeY = 1.5f;

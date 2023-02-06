@@ -12,7 +12,7 @@ namespace Apex.AI
     /// A range of basic extensions.
     /// </summary>
     public static class BasicExtensions
-    {      
+    {
         /// <summary>
         /// Executes an AI once.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Apex.AI
             return actionExecuted;
         }
 
-        internal static IEnumerable<IQualifier> AllQualifiers(this Selector source)
+        public static IEnumerable<IQualifier> AllQualifiers(this Selector source)
         {
             var qualifiers = source.qualifiers;
             var count = qualifiers.Count;
@@ -74,7 +74,7 @@ namespace Apex.AI
             yield return source.defaultQualifier;
         }
 
-        internal static bool IsConnectedTo(this Selector source, Selector target)
+        public static bool IsConnectedTo(this Selector source, Selector target)
         {
             foreach (var q in source.AllQualifiers())
             {

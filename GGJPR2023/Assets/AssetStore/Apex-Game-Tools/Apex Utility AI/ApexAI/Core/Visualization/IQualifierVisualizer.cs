@@ -1,7 +1,7 @@
 ﻿/* Copyright © 2014 Apex Software. All rights reserved. */
 namespace Apex.AI.Visualization
 {
-    internal interface IQualifierVisualizer : IQualifier
+    public interface IQualifierVisualizer : IQualifier
     {
         /// <summary>
         /// Gets the parent.

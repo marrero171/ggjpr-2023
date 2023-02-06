@@ -210,7 +210,7 @@ namespace Apex.DataStructures
         /// Enters an item in the heap.
         /// </summary>
         /// <param name="item">The item to add</param>
-        protected void AddInternal(T item)
+        protected void Addpublic(T item)
         {
             if (_used == _heap.Length)
             {
@@ -226,7 +226,7 @@ namespace Apex.DataStructures
         /// Removes the item at the front of the heap.
         /// </summary>
         /// <returns>The item at the front of the heap.</returns>
-        protected T RemoveInternal()
+        protected T Removepublic()
         {
             return Remove(0);
         }

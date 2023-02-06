@@ -27,10 +27,6 @@ namespace Apex.LoadBalancing
         /// <summary>
         /// The marshaller that can be used to execute actions on the main thread from another thread
         /// </summary>
-        public static IMarshaller marshaller
-        {
-            get;
-            internal set;
-        }
+        public static IMarshaller marshaller;
     }
 }

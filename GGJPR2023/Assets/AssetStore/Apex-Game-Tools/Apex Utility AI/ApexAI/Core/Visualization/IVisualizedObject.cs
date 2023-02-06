@@ -4,7 +4,7 @@ namespace Apex.AI.Visualization
     /// <summary>
     /// Interface used by visualizers to expose the object they are visualizing.
     /// </summary>
-    internal interface IVisualizedObject
+    public interface IVisualizedObject
     {
         /// <summary>
         /// Gets the target object of this visualizer, i.e. the visualized object.

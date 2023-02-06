@@ -6,7 +6,7 @@
     /// <seealso cref="Apex.Serialization.StageValue" />
     public sealed class StageAttribute : StageValue
     {
-        internal StageAttribute(string name, string value, bool isText)
+        public StageAttribute(string name, string value, bool isText)
             : base(name, value, isText)
         {
         }

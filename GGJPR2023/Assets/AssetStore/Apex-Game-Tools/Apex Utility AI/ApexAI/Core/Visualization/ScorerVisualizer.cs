@@ -1,17 +1,17 @@
 ﻿/* Copyright © 2014 Apex Software. All rights reserved. */
 namespace Apex.AI.Visualization
 {
-    internal class ScorerVisualizer : IContextualScorer
+    public class ScorerVisualizer : IContextualScorer
     {
         private IContextualScorer _scorer;
         private CompositeQualifierVisualizer _parent;
 
-        internal ScorerVisualizer(IContextualScorer scorer, CompositeQualifierVisualizer parent)
+        public ScorerVisualizer(IContextualScorer scorer, CompositeQualifierVisualizer parent)
         {
             _scorer = scorer;
             _parent = parent;
         }
-        
+
         /// <summary>
         /// Gets or sets a value indicating whether this instance is disabled.
         /// </summary>
@@ -24,23 +24,23 @@ namespace Apex.AI.Visualization
             set { _scorer.isDisabled = value; }
         }
 
-        internal CompositeQualifierVisualizer parent
+        public CompositeQualifierVisualizer parent
         {
             get { return _parent; }
         }
 
-        internal IContextualScorer scorer
+        public IContextualScorer scorer
         {
             get { return _scorer; }
         }
 
-        internal string lastScore
+        public string lastScore
         {
             get;
             private set;
         }
 
-        internal void Reset()
+        public void Reset()
         {
             this.lastScore = "-";
         }

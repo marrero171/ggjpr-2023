@@ -175,7 +175,7 @@ namespace Apex.Debugging
                 get { return _summedUpdatedItemsCount / Math.Max(_updateCount, 1); }
             }
 
-            internal void Update()
+            public void Update()
             {
                 if (this.frameUpdatedItemsCount > 0)
                 {

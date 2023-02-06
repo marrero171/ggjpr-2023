@@ -36,7 +36,7 @@ namespace Apex.AI
         /// <summary>
         /// Gets or sets the connector action, e.g. SelectorAction if one exists.
         /// </summary>
-        internal IConnectorAction connectorAction
+        public IConnectorAction connectorAction
         {
             get { return _connectorAction; }
             set { _connectorAction = value; }

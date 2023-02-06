@@ -4,7 +4,7 @@ namespace Apex.AI.Visualization
     using System;
     using System.Collections.Generic;
 
-    internal sealed class UtilityAIVisualizer : IUtilityAI
+    public sealed class UtilityAIVisualizer : IUtilityAI
     {
         private IUtilityAI _ai;
         private List<Action> _postExecute;
@@ -12,7 +12,7 @@ namespace Apex.AI.Visualization
         private List<SelectorVisualizer> _selectorVisualizers;
         private List<UtilityAIVisualizer> _linkedAIs = new List<UtilityAIVisualizer>();
 
-        internal UtilityAIVisualizer(IUtilityAI ai)
+        public UtilityAIVisualizer(IUtilityAI ai)
         {
             _ai = ai;
 
@@ -54,7 +54,7 @@ namespace Apex.AI.Visualization
             get { return _ai; }
         }
 
-        internal List<UtilityAIVisualizer> linkedAIs
+        public List<UtilityAIVisualizer> linkedAIs
         {
             get { return _linkedAIs; }
         }
@@ -75,7 +75,7 @@ namespace Apex.AI.Visualization
             get { return _selectorVisualizers[idx]; }
         }
 
-        internal void PostExecute()
+        public void PostExecute()
         {
             var count = _postExecute.Count;
             for (int i = 0; i < count; i++)
@@ -84,7 +84,7 @@ namespace Apex.AI.Visualization
             }
         }
 
-        internal void Hook(Action postExecute)
+        public void Hook(Action postExecute)
         {
             if (!_postExecute.Contains(postExecute))
             {
@@ -92,7 +92,7 @@ namespace Apex.AI.Visualization
             }
         }
 
-        internal void Unhook(Action postExecute)
+        public void Unhook(Action postExecute)
         {
             _postExecute.Remove(postExecute);
         }
@@ -111,7 +111,7 @@ namespace Apex.AI.Visualization
             return null;
         }
 
-        internal IQualifierVisualizer FindQualifierVisualizer(IQualifier target)
+        public IQualifierVisualizer FindQualifierVisualizer(IQualifier target)
         {
             var selectorCount = _selectorVisualizers.Count;
             for (int i = 0; i < selectorCount; i++)
@@ -131,7 +131,7 @@ namespace Apex.AI.Visualization
             return null;
         }
 
-        internal ActionVisualizer FindActionVisualizer(IAction target)
+        public ActionVisualizer FindActionVisualizer(IAction target)
         {
             ActionVisualizer result = null;
 
@@ -206,7 +206,7 @@ namespace Apex.AI.Visualization
             return action;
         }
 
-        internal void ClearBreakpoints()
+        public void ClearBreakpoints()
         {
             var selectorCount = _selectorVisualizers.Count;
             for (int i = 0; i < selectorCount; i++)
@@ -235,7 +235,7 @@ namespace Apex.AI.Visualization
             throw new NotSupportedException("Cannot alter AI during visualization.");
         }
 
-        internal void Reset()
+        public void Reset()
         {
             var selectorCount = _selectorVisualizers.Count;
             for (int i = 0; i < selectorCount; i++)

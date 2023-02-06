@@ -18,7 +18,7 @@ namespace Apex.AI
         private Guid _aiId;
         private ISelect _linkedAI;
 
-        internal AILinkAction()
+        public AILinkAction()
         {
         }
 
@@ -43,7 +43,7 @@ namespace Apex.AI
             set { _aiId = value; }
         }
 
-        internal IUtilityAI linkedAI
+        public IUtilityAI linkedAI
         {
             get { return _linkedAI as IUtilityAI; }
         }
@@ -77,7 +77,7 @@ namespace Apex.AI
             if (_linkedAI == null)
             {
                 _linkedAI = new BrokenLink();
-                
+
                 Debug.LogWarning(string.Format("{0} : Failed to initialize a linked AI, the ID does not match an existing AI.", ((IUtilityAI)rootObject).name));
             }
         }

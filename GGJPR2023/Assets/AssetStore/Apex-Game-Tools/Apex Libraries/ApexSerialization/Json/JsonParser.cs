@@ -7,7 +7,7 @@ namespace Apex.Serialization.Json
     /// <summary>
     /// A simple recursive json reader. It will not handle any type of syntax or semantic errors.
     /// </summary>
-    internal sealed class JsonParser : IJsonParser
+    public sealed class JsonParser : IJsonParser
     {
         private string _s;
         private int _idx;
@@ -18,7 +18,7 @@ namespace Apex.Serialization.Json
         private char[] _hexBuffer;
         private StageContainer _curRoot;
 
-        internal JsonParser()
+        public JsonParser()
         {
             _b = new StringBuffer(1024);
             _hexBuffer = new char[4];
@@ -37,11 +37,11 @@ namespace Apex.Serialization.Json
                 switch (c)
                 {
                     case '{':
-                    {
-                        _idx++;
-                        ParseElement(null);
-                        break;
-                    }
+                        {
+                            _idx++;
+                            ParseElement(null);
+                            break;
+                        }
                 }
             }
 
@@ -69,22 +69,22 @@ namespace Apex.Serialization.Json
                     case '\n':
                     case '\r':
                     case '\f':
-                    {
-                        /* Skip white space and item separator */
-                        break;
-                    }
+                        {
+                            /* Skip white space and item separator */
+                            break;
+                        }
 
                     case '}':
-                    {
-                        _curRoot = _curRoot.parent ?? _curRoot;
-                        return;
-                    }
+                        {
+                            _curRoot = _curRoot.parent ?? _curRoot;
+                            return;
+                        }
 
                     default:
-                    {
-                        ParseItem();
-                        break;
-                    }
+                        {
+                            ParseItem();
+                            break;
+                        }
                 }
             }
         }
@@ -107,22 +107,22 @@ namespace Apex.Serialization.Json
                     case '\n':
                     case '\r':
                     case '\f':
-                    {
-                        /* Skip white space and item separator */
-                        break;
-                    }
+                        {
+                            /* Skip white space and item separator */
+                            break;
+                        }
 
                     case ']':
-                    {
-                        _curRoot = _curRoot.parent ?? _curRoot;
-                        return;
-                    }
+                        {
+                            _curRoot = _curRoot.parent ?? _curRoot;
+                            return;
+                        }
 
                     default:
-                    {
-                        ParseItemType(null, false);
-                        break;
-                    }
+                        {
+                            ParseItemType(null, false);
+                            break;
+                        }
                 }
             }
         }
@@ -136,34 +136,34 @@ namespace Apex.Serialization.Json
                 switch (c)
                 {
                     case '"':
-                    {
-                        _idx++;
-                        if (_s[_idx] == '@')
                         {
-                            isAttribute = true;
                             _idx++;
+                            if (_s[_idx] == '@')
+                            {
+                                isAttribute = true;
+                                _idx++;
+                            }
+
+                            ParseString();
+                            break;
                         }
 
-                        ParseString();
-                        break;
-                    }
-
                     case ':':
-                    {
-                        _idx++;
-                        ParseItemType(_b.Flush(), isAttribute);
-                        return;
-                    }
+                        {
+                            _idx++;
+                            ParseItemType(_b.Flush(), isAttribute);
+                            return;
+                        }
 
                     case ' ':
                     case '\t':
                     case '\n':
                     case '\r':
                     case '\f':
-                    {
-                        /* Skip white space */
-                        break;
-                    }
+                        {
+                            /* Skip white space */
+                            break;
+                        }
                 }
             }
         }
@@ -176,43 +176,43 @@ namespace Apex.Serialization.Json
                 switch (c)
                 {
                     case '{':
-                    {
-                        _idx++;
-                        ParseElement(name);
-                        return;
-                    }
+                        {
+                            _idx++;
+                            ParseElement(name);
+                            return;
+                        }
 
                     case '[':
-                    {
-                        _idx++;
-                        ParseList(name);
-                        return;
-                    }
+                        {
+                            _idx++;
+                            ParseList(name);
+                            return;
+                        }
 
                     case '"':
-                    {
-                        _idx++;
-                        ParseString();
-                        var item = isAttribute ? new StageAttribute(name, _b.Flush(), true) : new StageValue(name, _b.Flush(), true);
-                        _curRoot.Add(item);
-                        return;
-                    }
+                        {
+                            _idx++;
+                            ParseString();
+                            var item = isAttribute ? new StageAttribute(name, _b.Flush(), true) : new StageValue(name, _b.Flush(), true);
+                            _curRoot.Add(item);
+                            return;
+                        }
 
                     case ' ':
                     case '\t':
                     case '\n':
                     case '\r':
                     case '\f':
-                    {
-                        /* Skip white space */
-                        break;
-                    }
+                        {
+                            /* Skip white space */
+                            break;
+                        }
 
                     default:
-                    {
-                        ParseValue(name, isAttribute);
-                        return;
-                    }
+                        {
+                            ParseValue(name, isAttribute);
+                            return;
+                        }
                 }
             }
         }
@@ -229,38 +229,38 @@ namespace Apex.Serialization.Json
                     case ',':
                     case ']':
                     case '}':
-                    {
-                        if (_valEnd >= 0)
                         {
-                            _b.Append(_s, _valStart, (_valEnd - _valStart) + 1);
-                        }
+                            if (_valEnd >= 0)
+                            {
+                                _b.Append(_s, _valStart, (_valEnd - _valStart) + 1);
+                            }
 
-                        var item = isAttribute ? new StageAttribute(name, _b.Flush(), false) : new StageValue(name, _b.Flush(), false);
-                        _curRoot.Add(item);
-                        _idx--;
-                        return;
-                    }
+                            var item = isAttribute ? new StageAttribute(name, _b.Flush(), false) : new StageValue(name, _b.Flush(), false);
+                            _curRoot.Add(item);
+                            _idx--;
+                            return;
+                        }
 
                     case ' ':
                     case '\t':
                     case '\n':
                     case '\r':
                     case '\f':
-                    {
-                        /* Skip white space */
-                        if (_valEnd == -1)
                         {
-                            _valStart++;
+                            /* Skip white space */
+                            if (_valEnd == -1)
+                            {
+                                _valStart++;
+                            }
+
+                            break;
                         }
 
-                        break;
-                    }
-
                     default:
-                    {
-                        _valEnd = _idx;
-                        break;
-                    }
+                        {
+                            _valEnd = _idx;
+                            break;
+                        }
                 }
             }
         }
@@ -275,34 +275,34 @@ namespace Apex.Serialization.Json
                 switch (c)
                 {
                     case '"':
-                    {
-                        if (_valEnd >= 0)
                         {
-                            _b.Append(_s, _valStart, (_valEnd - _valStart) + 1);
-                        }
+                            if (_valEnd >= 0)
+                            {
+                                _b.Append(_s, _valStart, (_valEnd - _valStart) + 1);
+                            }
 
-                        return;
-                    }
+                            return;
+                        }
 
                     case '\\':
-                    {
-                        if (_valEnd >= 0)
                         {
-                            _b.Append(_s, _valStart, (_valEnd - _valStart) + 1);
-                            _valEnd = -1;
+                            if (_valEnd >= 0)
+                            {
+                                _b.Append(_s, _valStart, (_valEnd - _valStart) + 1);
+                                _valEnd = -1;
+                            }
+
+                            _idx++;
+                            UnescapeChar();
+                            _valStart = _idx + 1;
+                            break;
                         }
 
-                        _idx++;
-                        UnescapeChar();
-                        _valStart = _idx + 1;
-                        break;
-                    }
-
                     default:
-                    {
-                        _valEnd = _idx;
-                        break;
-                    }
+                        {
+                            _valEnd = _idx;
+                            break;
+                        }
                 }
             }
         }
@@ -314,56 +314,56 @@ namespace Apex.Serialization.Json
             {
                 case '\\':
                 case '"':
-                {
-                    _b.Append(c);
-                    break;
-                }
+                    {
+                        _b.Append(c);
+                        break;
+                    }
 
                 case 't':
-                {
-                    _b.Append('\t');
-                    break;
-                }
+                    {
+                        _b.Append('\t');
+                        break;
+                    }
 
                 case 'n':
-                {
-                    _b.Append('\n');
-                    break;
-                }
+                    {
+                        _b.Append('\n');
+                        break;
+                    }
 
                 case 'r':
-                {
-                    _b.Append('\r');
-                    break;
-                }
+                    {
+                        _b.Append('\r');
+                        break;
+                    }
 
                 case 'f':
-                {
-                    _b.Append('\f');
-                    break;
-                }
+                    {
+                        _b.Append('\f');
+                        break;
+                    }
 
                 case 'b':
-                {
-                    _b.Append('\b');
-                    break;
-                }
+                    {
+                        _b.Append('\b');
+                        break;
+                    }
 
                 case '0':
-                {
-                    _b.Append('\0');
-                    break;
-                }
+                    {
+                        _b.Append('\0');
+                        break;
+                    }
 
                 case 'u':
-                {
-                    _s.CopyTo(_idx + 1, _hexBuffer, 0, 4);
-                    string hexValues = new string(_hexBuffer);
-                    char hexChar = Convert.ToChar(int.Parse(hexValues, NumberStyles.HexNumber, NumberFormatInfo.InvariantInfo));
-                    _b.Append(hexChar);
-                    _idx += 4;
-                    break;
-                }
+                    {
+                        _s.CopyTo(_idx + 1, _hexBuffer, 0, 4);
+                        string hexValues = new string(_hexBuffer);
+                        char hexChar = Convert.ToChar(int.Parse(hexValues, NumberStyles.HexNumber, NumberFormatInfo.InvariantInfo));
+                        _b.Append(hexChar);
+                        _idx += 4;
+                        break;
+                    }
             }
         }
     }

@@ -3,16 +3,16 @@ namespace Apex.AI.Visualization
 {
     using System.Linq;
 
-    internal sealed class AILinkActionVisualizer : ConnectorActionVisualizer
+    public sealed class AILinkActionVisualizer : ConnectorActionVisualizer
     {
         private UtilityAIVisualizer _linkedAI;
 
-        internal AILinkActionVisualizer(AILinkAction action, IQualifierVisualizer parent)
+        public AILinkActionVisualizer(AILinkAction action, IQualifierVisualizer parent)
             : base(action, parent)
         {
         }
 
-        internal override void Init()
+        public override void Init()
         {
             var ai = ((AILinkAction)this.action).linkedAI;
             if (ai != null)

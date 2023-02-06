@@ -7,7 +7,7 @@ namespace Apex.Serialization.Json
     /// The default serializer. Serializes to and from json.
     /// </summary>
     /// <seealso cref="Apex.Serialization.ISerializer" />
-    internal class JsonSerializer : ISerializer
+    public class JsonSerializer : ISerializer
     {
         /// <summary>
         /// Deserializes the serialized representation of an object to staging.

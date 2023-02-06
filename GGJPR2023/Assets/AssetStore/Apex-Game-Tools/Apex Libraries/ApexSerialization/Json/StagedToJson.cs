@@ -1,11 +1,11 @@
 ﻿/* Copyright © 2014 Apex Software. All rights reserved. */
 namespace Apex.Serialization.Json
 {
-    internal struct StagedToJson
+    public struct StagedToJson
     {
         private IJsonWriter _json;
 
-        internal StagedToJson(bool pretty)
+        public StagedToJson(bool pretty)
         {
             if (pretty)
             {
@@ -17,7 +17,7 @@ namespace Apex.Serialization.Json
             }
         }
 
-        internal string Serialize(StageElement element)
+        public string Serialize(StageElement element)
         {
             WriteElement(element);
             return _json.ToString();
