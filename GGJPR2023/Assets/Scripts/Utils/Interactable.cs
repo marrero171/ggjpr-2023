@@ -34,6 +34,10 @@ public class Interactable : MonoBehaviour
             ev.Invoke();
         }
         if (events.ContainsKey(name)) events[name].Invoke();
+    }
 
+    public void SpawnItemWhereActorIs(ItemInfo item)
+    {
+        activeActor.SpawnItem(item);
     }
 }
