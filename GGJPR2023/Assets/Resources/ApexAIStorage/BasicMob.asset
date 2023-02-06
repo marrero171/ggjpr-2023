@@ -76,28 +76,28 @@ MonoBehaviour:
     Assembly-CSharp","isDisabled":true,"behaviour":WalkAround,"score":5}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":300,"maxDist":50},"_scorers":[{"@type":"IsBored,
     Assembly-CSharp","behaviour":GoToSomethngInteresting,"score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
-    Assembly-CSharp"}}]}'
-  editorConfiguration: '{"offset":{"@x":466,"@y":-123},"zoom":0.60000002,"SelectorView":{"ViewArea":{"@left":502,"@top":57,"@width":120,"@height":168},"Name":"Main
+    Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":5,"maxDist":5}}}]}'
+  editorConfiguration: '{"offset":{"@x":330,"@y":-201},"zoom":0.60000002,"SelectorView":{"ViewArea":{"@left":366,"@top":-21,"@width":120,"@height":168},"Name":"Main
     Selector","QualifierView":{"Name":"Father, I seek substenance","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"I
     have THIRST.","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Attacked!?","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{"Name":"Bruh
     lets just chill","ActionView":{"@connectorType":"Composite","Name":"First, We
-    Relax."}}},"SelectorView":{"ViewArea":{"@left":670,"@top":-63,"@width":120,"@height":168},"Name":"Mano
+    Relax."}}},"SelectorView":{"ViewArea":{"@left":534,"@top":-141,"@width":120,"@height":168},"Name":"Mano
     tengo hambre.","QualifierView":{"Name":"Pocket Lechon?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Thou may eat, muh child"}},"QualifierView":{"Name":"Where
     can I get food?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"Urgently
-    Need food!","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":838,"@top":33,"@width":120,"@height":96},"Name":"Grab
+    Need food!","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":702,"@top":-45,"@width":120,"@height":96},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Am I next to food?","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":970,"@top":-51,"@width":120,"@height":168},"Name":"Thristy
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":834,"@top":-129,"@width":120,"@height":168},"Name":"Thristy
     people problems.","QualifierView":{"Name":"Pocket Water?","Description":"My brother
     in Yukaju, you have food?","ActionView":{"Name":"Drink. --Tyrion''s GF"}},"QualifierView":{"Name":"Where
     can I get woughtur?","ActionView":{"@connectorType":"Selector"}},"QualifierView":{"Name":"The
-    Thirst.","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":1126,"@top":33,"@width":120,"@height":96},"Name":"Grab
+    Thirst.","ActionView":{"@connectorType":"Selector"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":990,"@top":-45,"@width":120,"@height":96},"Name":"Grab
     or Walk.","QualifierView":{"Name":"Can I at least get some ","ActionView":{"Name":"Food
-    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":670,"@top":141,"@width":132,"@height":168},"Name":"Ugh,
+    go grabby grabby"}},"DefaultQualifier":{"Name":"Go to where food is","ActionView":{}}},"SelectorView":{"ViewArea":{"@left":534,"@top":63,"@width":132,"@height":168},"Name":"Ugh,
     I can''t belive you''ve done this.","QualifierView":{"Name":"Dude, Where''s my
     Healthcare?","ActionView":{"@connectorType":"Composite","Name":"Y e e t ."}},"QualifierView":{"Name":"Havin''
     a giggle ''ere mate?","ActionView":{"@connectorType":"Composite","Name":"C''mon,
     I''ll fite ye."}},"QualifierView":{"Name":"-Taunts- Ahhh Ajaa? ","ActionView":{"@connectorType":"Composite","Name":"I
-    suggest you run, player."}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":862,"@top":165,"@width":120,"@height":132},"QualifierView":{"Name":"Barge
+    suggest you run, player."}},"DefaultQualifier":{"ActionView":{"@connectorType":"Selector"}}},"SelectorView":{"ViewArea":{"@left":726,"@top":87,"@width":120,"@height":132},"QualifierView":{"Name":"Barge
     Only?","ActionView":{}},"QualifierView":{"Name":"Throw?","ActionView":{"Name":"Attempt
-    Chancletazo"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":1066,"@top":201,"@width":120,"@height":132},"Name":"Namaste","QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{}}}'
+    Chancletazo"}},"DefaultQualifier":{}},"SelectorView":{"ViewArea":{"@left":930,"@top":123,"@width":120,"@height":132},"Name":"Namaste","QualifierView":{"ActionView":{}},"QualifierView":{"ActionView":{}},"DefaultQualifier":{"ActionView":{}}}}'
