@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3861351d717fbaa47be36d20f295f5d6, type: 3}
-  m_Name: Coconut
+  m_Name: Coconut Starter
   m_EditorClassIdentifier: 
   <itemSprite>k__BackingField: {fileID: 21300000, guid: 7d8460ce578a7743cad319241676a3de, type: 3}
-  <itemType>k__BackingField: 0
+  <itemType>k__BackingField: 2
   <itemName>k__BackingField: Coconut
   <isEdible>k__BackingField: 1
   description: Description of item.
   effectiveAmount: 20
-  externalReference: {fileID: 11400000, guid: 3b15393bc735a04caa216ba15cf86abb, type: 2}
+  externalReference: {fileID: 11400000, guid: f4820f221761bb349bee0860dc5fc83d, type: 2}
   useSound: {fileID: 8300000, guid: 5cf9f1a50d2d616eab4a1749d4cc75cb, type: 3}

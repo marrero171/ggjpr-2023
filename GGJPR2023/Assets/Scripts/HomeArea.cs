@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(BoxCollider))]
 public class HomeArea : MonoBehaviour
@@ -41,11 +42,21 @@ public class HomeArea : MonoBehaviour
         }
         Vector3 pos = transform.position;
         Vector3 boundary = bounds.bounds.extents;
-        actor.transform.position = transform.position;
+        Vector3 refVec = transform.position + Random.onUnitSphere * 50;
+        refVec.y = transform.position.y;
+        // NavMeshHit hit;
+        // if (NavMesh.SamplePosition(refVec, out hit, 10000, NavMesh.AllAreas))
+        // actor.navMeshAgent.Warp(hit.position);
+        // transform.position = hit.position;
+        actor.transform.position = refVec;
         // actor.transform.position = GetPointWithintBounds();
         // actor.transform.position = new Vector3(pos.x + Random.Range(-bounds.x, bounds.x),
         //                                      pos.y + 3,
         //                                      pos.z + Random.Range(-bounds.z, bounds.z));
+
+        actor.basicNeeds.Hunger = Random.Range(-20, 20);
+        actor.basicNeeds.Thirst = Random.Range(-20, 20);
+        actor.basicNeeds.Emotion = Random.Range(-20, 20);
         if (isVillage)
         {
             var villager = (Villager)actor;

@@ -4,8 +4,9 @@ using UnityEngine;
 using Utils.AIHelpers;
 using Apex.AI;
 using Apex.AI.Components;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(UtilityAIComponent))]
 public class ActorWithNeeds : Actor, IContextProvider
 {
@@ -28,7 +29,7 @@ public class ActorWithNeeds : Actor, IContextProvider
     public OpponentCloseEnough WhenCloseEnough;
     public OpponentLowHealth WhenEnemyLowHealth;
 
-    [HideInInspector] public UnityEngine.AI.NavMeshAgent navMeshAgent;
+    [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public Collider collider;
     [Tooltip("Debugging of targets")]
     public Transform target;
@@ -47,8 +48,11 @@ public class ActorWithNeeds : Actor, IContextProvider
     public new void Start()
     {
         base.Start();
-        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.updateRotation = false;
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(transform.position, out hit, 50, NavMesh.AllAreas))
+            navMeshAgent.Warp(hit.position);
         if (needDecreaseRate > 0) StartCoroutine(UpdateNeeds());
     }
 
@@ -102,6 +106,12 @@ public class ActorWithNeeds : Actor, IContextProvider
             yield return new WaitUntil(() => !AttackCollider.gameObject.activeInHierarchy);
         }
         yield return null;
+    }
+
+    void Die()
+    {
+        if (home != null) home.RequestNewActor();
+        base.Die();
     }
 }
 

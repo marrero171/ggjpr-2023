@@ -56,7 +56,7 @@ public class DroppedItem : Interactable
 
     IEnumerator Expire()
     {
-        yield return new WaitForSeconds(120);
+        yield return new WaitForSeconds(1000);
         gameObject.SetActive(false);
     }
 

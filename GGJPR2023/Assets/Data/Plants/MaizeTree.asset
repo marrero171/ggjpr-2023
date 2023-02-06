@@ -25,3 +25,4 @@ MonoBehaviour:
   possibleDrops:
   - {fileID: 11400000, guid: 408ddd8a3a04193bba768d3f055f34c6, type: 2}
   - {fileID: 11400000, guid: ebe13b105b05df39886db2425b7cf064, type: 2}
+  - {fileID: 11400000, guid: 71e3f38714b2edcc4bdd1c25e17a41f5, type: 2}

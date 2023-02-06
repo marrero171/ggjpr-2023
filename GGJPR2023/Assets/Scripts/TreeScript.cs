@@ -5,7 +5,6 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEditor.Progress;
 using Utils;
 [RequireComponent(typeof(CountDownTimer))]
 [RequireComponent(typeof(BoxCollider))]

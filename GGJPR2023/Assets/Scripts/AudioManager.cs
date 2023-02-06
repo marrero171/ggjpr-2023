@@ -11,17 +11,20 @@ public class AudioManager : MonoBehaviour
     public float MusicChangeRadius = 30;
     public AudioSource TownLayer, FightingLayer, FinghtingIntenseLayer, TransitionLayer;
     public AudioClip TownFight, OutsiedFight;
+    PlayerController playerController;
     bool isFighting = false, intensified = false;
 
-    AudioClip Battlefield { get { return ReferenceMaster.instance.player.isInTown ? TownFight : OutsiedFight; } }
+    AudioClip Battlefield { get { return playerController.isInTown ? TownFight : OutsiedFight; } }
 
     private void Start()
     {
         AudioManager.instance = this;
+        playerController = GameObject.FindObjectOfType<PlayerController>();
         TownLayer.volume = 0;
         FightingLayer.volume = 0;
         FinghtingIntenseLayer.volume = 0;
         Tween.Volume(TownLayer, 1, 5, 1);
+        StartCoroutine(updateBGMLayerCoroutine());
     }
 
     public void ToggleFighting(bool battle, bool intense = false)
@@ -31,7 +34,7 @@ public class AudioManager : MonoBehaviour
 
         if (isFighting != battle) isFighting = battle;
         // if (intensified != intense) 
-        intensified = ReferenceMaster.instance.player.Health <= 5 && battle;
+        intensified = playerController.Health <= 5 && battle;
 
         Tween.Volume(FinghtingIntenseLayer, ((intensified && battle) ? 1 : 0), 1, 0, Tween.EaseInOut);
         // if (intensified) Tween.Volume(FinghtingIntenseLayer, (battle ? 1 : 0), 2, 0, Tween.EaseInOut);
@@ -40,9 +43,12 @@ public class AudioManager : MonoBehaviour
 
     IEnumerator updateBGMLayerCoroutine()
     {
-        Collider[] hits = Physics.OverlapSphere(ReferenceMaster.instance.player.transform.position, MusicChangeRadius, MusicChangeLayers);
-        ToggleFighting(hits.Length > 0);
-        yield return new WaitForSeconds(1);
+        while (true)
+        {
+            Collider[] hits = Physics.OverlapSphere(playerController.transform.position, MusicChangeRadius, MusicChangeLayers);
+            ToggleFighting(hits.Length > 0);
+            yield return new WaitForSeconds(1);
+        }
     }
 
 

@@ -1,7 +1,5 @@
-using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Progress;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : Actor

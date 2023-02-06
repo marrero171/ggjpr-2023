@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4651d5761f5b9146b0857e210ea2633, type: 3}
   m_Name: CoconutTree
   m_EditorClassIdentifier: 
-  waterRequired: 6
+  waterRequired: 999
   cycleInterval: 30
   stages:
     list:
@@ -26,3 +26,7 @@ MonoBehaviour:
   harvestable: {fileID: 11400000, guid: eb2e539ecca0f614694f266c39ecb206, type: 2}
   possibleDrops:
   - {fileID: 11400000, guid: eb2e539ecca0f614694f266c39ecb206, type: 2}
+  - {fileID: 11400000, guid: 71e3f38714b2edcc4bdd1c25e17a41f5, type: 2}
+  - {fileID: 11400000, guid: 71e3f38714b2edcc4bdd1c25e17a41f5, type: 2}
+  - {fileID: 11400000, guid: 71e3f38714b2edcc4bdd1c25e17a41f5, type: 2}
+  - {fileID: 11400000, guid: 71e3f38714b2edcc4bdd1c25e17a41f5, type: 2}

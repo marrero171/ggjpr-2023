@@ -122,6 +122,7 @@ public sealed class VillagerGoHome : ActionBase
     public override void Execute(IAIContext context)
     {
         NeedyActorContext ctx = (NeedyActorContext)context;
+        if(ctx.villager.home==null) return;
         ctx.baseParent.navMeshAgent.SetDestination(ctx.villager.home.transform.position);
     }
 }
