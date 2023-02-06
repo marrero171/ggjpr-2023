@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d327ecf945f4b1490f8917cde73fcb0, type: 3}
   m_Name: ExtEvents_PackageSettings
   m_EditorClassIdentifier: 
-  _showInvocationWarning: 1
+  _showInvocationWarning: 0
