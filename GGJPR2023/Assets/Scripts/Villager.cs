@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Apex.AI;
 using Apex.AI.Components;
+using Unity.VisualScripting;
 
 public class Villager : ActorWithNeeds
 {
@@ -28,6 +29,8 @@ public class Villager : ActorWithNeeds
     {
         ctx = new NeedyActorContext(this, this);
         Age = 0;
+        GameObject.Find("Home").TryGetComponent(out HomeArea homeArea);
+        home = homeArea;
         StartCoroutine(AgingCoroutine());
     }
 
