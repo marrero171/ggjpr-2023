@@ -2014,7 +2014,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721542800}
-  m_LocalRotation: {x: 0.23175052, y: 3.4076313e-15, z: -1.2350149e-15, w: 0.9727753}
+  m_LocalRotation: {x: 0.23175052, y: 1.727996e-15, z: -8.5576083e-16, w: 0.9727753}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3738,7 +3738,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282022440}
-  m_LocalRotation: {x: 0.24935995, y: -0.0000000083314236, z: 0.000000002145291, w: 0.9684109}
+  m_LocalRotation: {x: 0.24935995, y: 0.000000008331424, z: -0.0000000021452913, w: 0.9684109}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4550,11 +4550,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 689011770662323579, guid: b673c87b4881c18b3a5e26768d8c79cb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016662847
+      value: 0.000000016662847
       objectReference: {fileID: 0}
     - target: {fileID: 689011770662323579, guid: b673c87b4881c18b3a5e26768d8c79cb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004290582
+      value: -0.000000004290582
       objectReference: {fileID: 0}
     - target: {fileID: 689011770662323579, guid: b673c87b4881c18b3a5e26768d8c79cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5149,6 +5149,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 988553318793754185, guid: 1d3cca7e9f4055604b58149bf61d9922, type: 3}
+      propertyPath: Inventory.keyCollision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988553318793754185, guid: 1d3cca7e9f4055604b58149bf61d9922, type: 3}
+      propertyPath: Inventory.list.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 988553318793754185, guid: 1d3cca7e9f4055604b58149bf61d9922, type: 3}
+      propertyPath: Inventory.list.Array.data[0].Key
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d337aefb9ca53fe7a7dec65e48915ee, type: 2}
+    - target: {fileID: 988553318793754185, guid: 1d3cca7e9f4055604b58149bf61d9922, type: 3}
+      propertyPath: Inventory.list.Array.data[0].Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 988553318793754191, guid: 1d3cca7e9f4055604b58149bf61d9922, type: 3}
       propertyPath: m_Name
       value: Player

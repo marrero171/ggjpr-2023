@@ -73,7 +73,7 @@ MonoBehaviour:
     Assembly-CSharp","type":Throwable,"reversable":false,"score":10}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp"}},{"@type":"Apex.AI.ScoreSelector, Assembly-CSharp","_id":453497b9e1924dc29de548dfb8ad63cd,"_qualifiers":[{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":5,"maxDist":1},"_scorers":[{"@type":"IsBored,
-    Assembly-CSharp","isDisabled":true,"behaviour":WalkAround,"score":5}]},{"@type":"Apex.AI.CompositeScoreQualifier,
+    Assembly-CSharp","behaviour":WalkAround,"score":5}]},{"@type":"Apex.AI.CompositeScoreQualifier,
     Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":300,"maxDist":50},"_scorers":[{"@type":"IsBored,
     Assembly-CSharp","behaviour":GoToSomethngInteresting,"score":5}]}],"_defaultQualifier":{"@type":"Apex.AI.DefaultQualifier,
     Assembly-CSharp","action":{"@type":"ActorWalkAround, Assembly-CSharp","minDist":5,"maxDist":5}}}]}'

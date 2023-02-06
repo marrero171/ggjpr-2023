@@ -30,23 +30,25 @@ public class AudioManager : MonoBehaviour
     public void ToggleFighting(bool battle, bool intense = false)
     {
         Tween.Volume((battle ? TownLayer : FightingLayer), 0, 2, 0, Tween.EaseInOut);
-        if (!isFighting) { TransitionLayer.Play(); FightingLayer.clip = Battlefield; FightingLayer.Play(); }
+        if (!isFighting && battle) { TransitionLayer.Play(); FightingLayer.clip = Battlefield; FightingLayer.Play(); }
 
         if (isFighting != battle) isFighting = battle;
         // if (intensified != intense) 
         intensified = playerController.Health <= 5 && battle;
 
-        Tween.Volume(FinghtingIntenseLayer, ((intensified && battle) ? 1 : 0), 1, 0, Tween.EaseInOut);
+        Tween.Volume(FinghtingIntenseLayer, (intensified ? 1 : 0), 1, 0, Tween.EaseInOut);
         // if (intensified) Tween.Volume(FinghtingIntenseLayer, (battle ? 1 : 0), 2, 0, Tween.EaseInOut);
         Tween.Volume((battle ? FightingLayer : TownLayer), 1, 2, 2, Tween.EaseInOut);
     }
 
     IEnumerator updateBGMLayerCoroutine()
     {
+        yield return new WaitForSeconds(2);
         while (true)
         {
             Collider[] hits = Physics.OverlapSphere(playerController.transform.position, MusicChangeRadius, MusicChangeLayers);
-            ToggleFighting(hits.Length > 0);
+            if (hits.Length > 0 && !isFighting) ToggleFighting(true);
+            if (hits.Length < 1 && isFighting) ToggleFighting(true);
             yield return new WaitForSeconds(1);
         }
     }
